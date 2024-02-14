@@ -1,45 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DaListing</title>
-    <style>
-        @keyframes bubbling {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+<style>
+    @keyframes bubbling {
+        0% {
+            transform: translateY(0);
         }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
 
-        body {
-            background-color: black;
-            color: lime;
-            margin: 0;
-            text-align: center;
-        }
+    body {
+        background-color: black;
+        color: darkGreen; /* Change text color to red */
+        margin: 0;
+        text-align: center;
+    }
 
-        h1 {
-            color: lime;
-            animation: bubbling 1.5s infinite; /* Apply the bubbling animation */
-        }
+    h1 {
+        color: darkGreen; /* Ensure the h1 text is also red */
+        animation: bubbling 1.5s infinite; /* Apply the bubbling animation */
+    }
 
-        .section {
-            margin-top: 20px;
-        }
+    a {
+        color: darkGreen; /* Change link color to red */
+    }
 
-        .disclaimer {
-            margin-top: 40px;
-            font-style: italic;
-            color: gray;
-            text-align: left; /* Align the disclaimer text to the left */
-        }
-    </style>
+    .section {
+        margin-top: 20px;
+    }
+
+    .disclaimer {
+        margin-top: 40px;
+        font-style: italic;
+        color: gray; /* Keep disclaimer text gray or change to red as desired */
+        text-align: left; /* Align the disclaimer text to the left */
+    }
+</style>
+
 </head>
 <body>
     <h1>DaListing</h1>
