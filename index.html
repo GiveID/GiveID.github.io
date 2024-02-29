@@ -1,43 +1,65 @@
-<style>
-    @keyframes bubbling {
-        0% {
-            transform: translateY(0);
+    <style>
+        @keyframes bubbling {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
-        50% {
-            transform: translateY(-10px);
+
+        @keyframes rgbBackground {
+            0% {background-color: rgb(255, 0, 0);}
+            25% {background-color: rgb(0, 255, 0);}
+            50% {background-color: rgb(0, 0, 255);}
+            75% {background-color: rgb(255, 255, 0);}
+            100% {background-color: rgb(255, 0, 0);}
         }
-        100% {
-            transform: translateY(0);
+
+        body.light-mode {
+            animation: rgbBackground 10s linear infinite;
+            margin: 0;
+            text-align: center;
+            color: purple;
         }
-    }
 
-    body {
-        background-color: black;
-        color: darkGreen; /* Change text color to red */
-        margin: 0;
-        text-align: center;
-    }
+        body.dark-mode {
+            background-color: #121212; /* Darker background for dark mode */
+            color: #c0c0c0; /* Light gray text color for readability */
+            margin: 0;
+            text-align: center;
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-    h1 {
-        color: darkGreen; /* Ensure the h1 text is also red */
-        animation: bubbling 1.5s infinite; /* Apply the bubbling animation */
-    }
+        h1 {
+            animation: bubbling 1.5s infinite;
+        }
 
-    a {
-        color: darkGreen; /* Change link color to red */
-    }
+        body.light-mode h1, body.light-mode a {
+            color: purple;
+        }
 
-    .section {
-        margin-top: 20px;
-    }
+        body.dark-mode h1, body.dark-mode a {
+            color: #a0a0a0; /* Slightly lighter text for headers and links in dark mode */
+        }
 
-    .disclaimer {
-        margin-top: 40px;
-        font-style: italic;
-        color: gray; /* Keep disclaimer text gray or change to red as desired */
-        text-align: left; /* Align the disclaimer text to the left */
-    }
-</style>
+        .section {
+            margin-top: 20px;
+        }
+
+        .disclaimer {
+            margin-top: 40px;
+            font-style: italic;
+            color: gray;
+            text-align: left;
+        }
+    </style>
+
+
+
 
 </head>
 <body>
@@ -105,6 +127,7 @@
             <li><a href="https://lunyrbvg.us.to/">https://lunyrbvg.us.to/</a></li>
             <li><a href="https://geometry.solar-energy.cl/">https://geometry.solar-energy.cl/</a></li>
             <li><a href="https://adoption.hepcats.net/">https://adoption.hepcats.net/</a></li>
+            <li><a href="https://docs.google.com/document/d/1v9GB2vBs9s5O6TLbdp_c7A-I_DwJ04TOXlgMJMI2csg/edit?usp=sharing">LIST OF 1000+ PROXYS LOVE YALL POOKIES</a></li>
         </ul>
     </div>
 
@@ -113,5 +136,26 @@
         <p>and I'm not responsible for the use of any of this content.</p>
         <p>Gavin likes babys</p>
     </div>
+<body class="light-mode" id="body">
+    <h1>DaListing</h1>
+    <button onclick="toggleDarkMode()">Change Theme</button>
+    <!-- Rest of your content -->
+    <script>
+        function toggleDarkMode() {
+            var bodyElement = document.body;
+            bodyElement.classList.toggle("dark-mode");
+
+            // Ensure that all text colors are adjusted for dark mode
+            var h1Elements = document.getElementsByTagName('h1');
+            for (var i = 0; i < h1Elements.length; i++) {
+                h1Elements[i].style.color = bodyElement.classList.contains("dark-mode") ? "#a0a0a0" : "purple";
+            }
+
+            var linkElements = document.getElementsByTagName('a');
+            for (var i = 0; i < linkElements.length; i++) {
+                linkElements[i].style.color = bodyElement.classList.contains("dark-mode") ? "#a0a0a0" : "purple";
+            }
+        }
+    </script>
 </body>
 </html>
