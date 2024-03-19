@@ -39,7 +39,7 @@
             margin: 0;
             text-align: center;
             color: gray;
-            font-family: Arial, sans-serif; /* Default font family */
+            font-family: 'Peralta-Regular', sans-serif; /* Use custom font */
         }
 
         h1 {
@@ -93,16 +93,24 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            font-family: "Peralta", serif; /* Apply custom font */
+            font-family: 'Peralta-Regular', sans-serif; /* Use custom font */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Peralta-Regular';
+            src: url('Peralta-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
     </style>
 </head>
 <body>
 <div class="section">
-    <h1 class="peralta-regular">DaListing</h1>
-    <a class="peralta-regular">NEWS: Chuck nores the fish DIED scroll down to pay respects</a>
-    <h3 class="peralta-regular">"MAJOR IDIOT ALERT" -Addison</h3>
-    <h5 class="peralta-regular">Last updated 3/18/2024 7:56PM<h5>
+    <h1>DaListing</h1>
+    <a>NEWS: Chuck nores the fish DIED scroll down to pay respects</a>
+    <h3>"MAJOR IDIOT ALERT" -Addison</h3>
+    <h5>Last updated 3/18/2024 7:56PM<h5>
 </div>
     
 </body>
@@ -140,8 +148,7 @@
             <li><a href="https://pe.matheducation.online/">https://pe.matheducation.online/</a></li>
             <li><a href="https://district.bclib.org/">https://district.bclib.org/</a></li>
             <li><a href="https://derpismymans5.tomahawkchurch.org/">https://derpismymans5.tomahawkchurch.org/</a></li>
-            <li><a href="https://edu.k4ds.org/">https://edu.k4ds.org/</a></li>
-            <li><a href="https://analytics.thebluecanopy.com/">https://analytics.thebluecanopy.com/</a></li>
+            <li><a href="https://edu.k4ds.org/">https://edu.k4ds.org/</a></li> </a><a>
             <li><a href="https://chruchlight.nigelupchurch.com/">https://chruchlight.nigelupchurch.com/</a></li>
             <li><a href="https://classroom.cyber-ag.com/">https://classroom.cyber-ag.com/</a></li>
             <li><a href="https://jonnyeducationdock.nigelupchurch.com/">https://jonnyeducationdock.nigelupchurch.com/</a></li>
@@ -158,12 +165,12 @@
     </div>
 
     <div class="disclaimer">
-        <p class="peralta-regular">I don't condone the use of any of this,</p>
-        <p class="peralta-regular">I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
+        <p>I don't condone the use of any of this,</p>
+        <p>I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
     </div>
 
-    <button id="pay-respects-btn" class="peralta-regular">Pay Respects</button>
-    <p>Times Respects Paid: <span id="pay-respects-count" class="peralta-regular">0</span></p>
+    <button id="pay-respects-btn">Pay Respects</button>
+    <p>Times Respects Paid: <span id="pay-respects-count">0</span></p>
     <img id="fish-image" src="fishy.png" alt="Chuck">
     <script>
         let payRespectsCount = 0;
