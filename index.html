@@ -39,6 +39,7 @@
             margin: 0;
             text-align: center;
             color: gray;
+            font-family: Arial, sans-serif; /* Default font family */
         }
 
         h1 {
@@ -92,15 +93,16 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            font-family: "Peralta", serif; /* Apply custom font */
         }
     </style>
 </head>
 <body>
 <div class="section">
-    <h1>DaListing</h1>
-    <a>NEWS: Chuck nores the fish DIED scroll down to pay respects</a>
-    <h3>"MAJOR IDIOT ALERT" -Addison</h3>
-    <h5>Last updated 3/18/2024 7:56PM<h5>
+    <h1 class="peralta-regular">DaListing</h1>
+    <a class="peralta-regular">NEWS: Chuck nores the fish DIED scroll down to pay respects</a>
+    <h3 class="peralta-regular">"MAJOR IDIOT ALERT" -Addison</h3>
+    <h5 class="peralta-regular">Last updated 3/18/2024 7:56PM<h5>
 </div>
     
 </body>
@@ -156,12 +158,12 @@
     </div>
 
     <div class="disclaimer">
-        <p>I don't condone the use of any of this,</p>
-        <p>I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
+        <p class="peralta-regular">I don't condone the use of any of this,</p>
+        <p class="peralta-regular">I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
     </div>
 
-    <button id="pay-respects-btn">Pay Respects</button>
-    <p>Times Respects Paid: <span id="pay-respects-count">0</span></p>
+    <button id="pay-respects-btn" class="peralta-regular">Pay Respects</button>
+    <p>Times Respects Paid: <span id="pay-respects-count" class="peralta-regular">0</span></p>
     <img id="fish-image" src="fishy.png" alt="Chuck">
     <script>
         let payRespectsCount = 0;
