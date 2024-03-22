@@ -114,7 +114,7 @@
     <h1>FreedomGate</h1>
     <a>NEWS:Uhhh chinesegovernment.xyz will probably never be back up💀due to namecheap locking my account. Added Global Respects Paid</a>
     <h3>"Chuck Norris makes onions cry" -Me</h3>
-    <h5>Last updated 3/21/2024 9:42PM<h5>
+    <h5>Last updated 3/21/2024 9:4PM<h5>
 </div>
     
 </body>
@@ -181,43 +181,27 @@
     <img id="fish-image" src="fishy.png" alt="Chuck" style="width: 200px;">
 </div>
 
-<div class="section">
-    <h2>Global Respects Paid: <span id="global-respects-count">Loading...</span></h2>
-</div>
 
 <script>
-    // Function to update the global respects count
-    function updateGlobalRespectsCount() {
-        fetch('/get_global_respects_count') // Assuming this endpoint returns the global count
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('global-respects-count').textContent = data.count;
-            })
-            .catch(error => {
-                console.error('Error fetching global respects count:', error);
-            });
+    // Function to update the respects count
+    function updateRespectsCount() {
+        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
+        document.getElementById('pay-respects-count').textContent = payRespectsCount;
     }
 
-    // Function to increment the local and global respects count
+    // Function to increment the respects count
     function payRespects() {
-        fetch('/pay_respects', { method: 'POST' }) // Assuming this endpoint increments the count
-            .then(() => {
-                // Update local count
-                let payRespectsCount = parseInt(document.getElementById('pay-respects-count').textContent);
-                document.getElementById('pay-respects-count').textContent = payRespectsCount + 1;
-                // Update global count
-                updateGlobalRespectsCount();
-            })
-            .catch(error => {
-                console.error('Error paying respects:', error);
-            });
+        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
+        payRespectsCount++;
+        localStorage.setItem('payRespectsCount', payRespectsCount);
+        updateRespectsCount();
     }
 
     // Event listener for the Pay Respects button
     document.getElementById('pay-respects-btn').addEventListener('click', payRespects);
 
-    // Initial call to fetch and display the global respects count
-    updateGlobalRespectsCount();
+    // Initial call to fetch and display the respects count
+    updateRespectsCount();
 </script>
 <body class="light-mode" id="body">
 </body>
