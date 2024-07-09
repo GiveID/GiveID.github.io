@@ -3,145 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Tab</title>
-    <!-- Initially set to Chrome.png -->
-    <link rel="icon" id="site-icon" href="Chrome.png" type="image/png">
-    
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="cat_icon.png">
-    <!-- Optional: Add different sizes for better support -->
-    <link rel="apple-touch-icon" sizes="180x180" href="cat_icon.png">
-    
-    <!-- Your CSS styles -->
+    <title>Spotify Now Playing</title>
     <style>
-        /* Your CSS styles */
-        @keyframes bubbling {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes rgbBackground {
-            0% {background-color: rgb(77, 79, 82);}
-            25% {background-color: rgb(0, 0, 0);}
-            50% {background-color: rgb(61, 65, 71);}
-            75% {background-color: rgb(24, 27, 31);}
-            100% {background-color: rgb(20, 20, 20);}
-        }
-
-        body.light-mode {
-            animation: rgbBackground 10s linear infinite;
-            margin: 0;
+        body {
+            font-family: Arial, sans-serif;
             text-align: center;
-            color: gray;
-            font-family: 'Share Tech Mono', sans-serif; /* Use custom font */
+            margin-top: 50px;
         }
-
-        h1 {
-            animation: bubbling 1.5s infinite;
-        }
-
-        h2 {
-            animation: bubbling 2s 1;
-        }
-
-        body.light-mode h1, body.light-mode a {
-            color: #c0c0c0;
-        }
-
-        body.dark-mode h1, body.dark-mode a {
-            color: #a0a0a0; /* Slightly lighter text for headers and links in dark mode */
-        }
-
-        .section {
+        .song-info {
+            font-size: 24px;
             margin-top: 20px;
         }
-
-        .disclaimer {
-            margin-top: 40px;
-            font-style: italic;
-            color: gray;
-            text-align: left;
-        }
-
-        #siez {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999; /* Ensure it's above other content */
-            display: none;
-        }
-
-        #fish-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        #pay-respects-btn {
-            padding: 10px 20px;
+        .coming-soon {
             font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-family: 'Share Tech Mono', sans-serif; /* Use custom font */
-        }
-
-        #scoreboard {
-            margin-top: 20px;
-        }
-    </style>
-    <style>
-        @font-face {
-            font-family: 'Share Tech Mono';
-            src: url('ShareTechMono-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            margin-top: 50px;
+            color: gray;
         }
     </style>
 </head>
 <body>
-<div class="section">
-    <h1>ON MY MOMMA I DELETEDD THIS PAGE</h1>
+    <h1>Asher is listening to:</h1>
+    <div id="song-info" class="song-info">Loading...</div>
 
-<div class="section">
-    <button id="pay-respects-btn">Pay Respects</button>
-    <p>Times Respects Paid: <span id="pay-respects-count">0</span></p>
-    <img id="fish-image" src="fishy.png" alt="Chuck" style="width: 200px;">
-</div>
+    <div class="coming-soon">Coming soon</div>
 
+    <script>
+        async function getCurrentlyPlaying() {
+            const accessToken = 'YOUR_ACCESS_TOKEN'; // Replace with your actual access token
+            const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
 
-<script>
-    // Function to update the respects count
-    function updateRespectsCount() {
-        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
-        document.getElementById('pay-respects-count').textContent = payRespectsCount;
-    }
+            if (response.ok) {
+                const data = await response.json();
+                if (data && data.item) {
+                    const songInfo = `${data.item.name} by ${data.item.artists.map(artist => artist.name).join(', ')}`;
+                    document.getElementById('song-info').textContent = songInfo;
+                } else {
+                    document.getElementById('song-info').textContent = 'No song is currently playing';
+                }
+            } else {
+                document.getElementById('song-info').textContent = 'Unable to fetch currently playing song';
+            }
+        }
 
-    // Function to increment the respects count
-    function payRespects() {
-        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
-        payRespectsCount++;
-        localStorage.setItem('payRespectsCount', payRespectsCount);
-        updateRespectsCount();
-    }
-
-    // Event listener for the Pay Respects button
-    document.getElementById('pay-respects-btn').addEventListener('click', payRespects);
-
-    // Initial call to fetch and display the respects count
-    updateRespectsCount();
-</script>
-<body class="light-mode" id="body">
+        // Call the function to get the currently playing song
+        getCurrentlyPlaying();
+    </script>
 </body>
 </html>
