@@ -11,16 +11,38 @@
             width: 100%;
             height: 100%;
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            overflow: hidden;
+            color: white;
+        }
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #00d2ff, #3a7bd5);
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .content {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            height: 100%;
             text-align: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
         }
         h1 {
             margin: 20px 0;
             font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .proof-container {
             display: flex;
@@ -34,18 +56,40 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
+        .comparison-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .comparison-container img {
+            width: 45%;
+            max-width: 300px;
+            margin: 0 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Proof - Better Than OP Auto Clicker</h1>
-    <div class="proof-container">
-        <div>
-            <h2>Proof 1</h2>
-            <img src="https://giveid.github.io/proof/proof1.jpg" alt="Proof 1">
+    <div class="background"></div>
+    <div class="content">
+        <h1>Proof - Better Than OP Auto Clicker</h1>
+        <div class="proof-container">
+            <div>
+                <h2>Proof 1</h2>
+                <img src="proof1.jpg" alt="Proof 1">
+            </div>
+            <div>
+                <h2>Proof 2</h2>
+                <img src="proof2.jpg" alt="Proof 2">
+            </div>
         </div>
-        <div>
-            <h2>Proof 2</h2>
-            <img src="https://giveid.github.io/proof/proof2.jpg" alt="Proof 2">
+        <div class="comparison-container">
+            <div>
+                <h2>Comparison</h2>
+                <img src="comparison.jpg" alt="Comparison">
+            </div>
         </div>
     </div>
 </body>
