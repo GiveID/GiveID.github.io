@@ -40,32 +40,26 @@
         </form>
     </div>
     <script>
-document.getElementById('keyForm').onsubmit = function(event) {
-    event.preventDefault(); // Prevent the form from submitting traditionally
-    const key = document.getElementById('keyInput').value.trim(); // Get the key from the input, trimming whitespace
-
-    switch (key) {
-        case "Iloveguys":
-            window.location.href = "https://giveid.github.io/yay";
-            break;
-        case "BigMilkers":
-            window.location.href = "https://giveid.github.io/shh";
-            break;
-        case "YeahImCool":
-            window.location.href = "https://giveid.github.io/edu";
-            break;
-        case "GIVECODES":
-            var a = document.createElement('a');
-            a.href = "keys.txt";
-            a.download = "keys.txt";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            break;
-        default:
-            alert('Invalid key. Please try again.');
-            break;
-    }
-};
-
-
+        document.getElementById('keyForm').onsubmit = function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            const key = document.getElementById('keyInput').value; // Get the key from the input
+            
+            // Define the redirection based on the key
+            switch (key) {
+                case "Iloveguys":
+                    window.location.href = "https://giveid.github.io/yay";
+                    break;
+                case "shhKey":
+                    window.location.href = "https://giveid.github.io/shh";
+                    break;
+                case "YeahImCool":
+                    window.location.href = "https://giveid.github.io/edu";
+                    break;
+                default:
+                    alert('Invalid key. Please try again.'); // Alert if key is invalid
+                    break;
+            }
+        };
+    </script>
+</body>
+</html>
