@@ -41,15 +41,23 @@
     </div>
     <script>
         document.getElementById('keyForm').onsubmit = function(event) {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way
+            event.preventDefault(); // Prevent the form from submitting traditionally
             const key = document.getElementById('keyInput').value; // Get the key from the input
-            const allowedKeys = ['LoveAsher', 'LoveYourself', 'LoveMe', 'Iloveguys']; // The list of valid keys
-            if (allowedKeys.includes(key)) {
-                // If the key is valid, generate a random path and redirect
-                const randomPath = Math.random().toString(36).substring(2, 15); // Generate random string
-                window.location.href = `https://giveid.github.io/${randomPath}`;
-            } else {
-                alert('Invalid key. Please try again.'); // Alert if key is invalid
+            
+            // Define the redirection based on the key
+            switch (key) {
+                case "Iloveguys":
+                    window.location.href = "https://giveid.github.io/yay";
+                    break;
+                case "BigMilkers":
+                    window.location.href = "https://giveid.github.io/shh";
+                    break;
+                case "YeahImCool":
+                    window.location.href = "https://giveid.github.io/edu";
+                    break;
+                default:
+                    alert('Invalid key. Please try again.'); // Alert if key is invalid
+                    break;
             }
         };
     </script>
