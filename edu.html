@@ -100,6 +100,38 @@
         #scoreboard {
             margin-top: 20px;
         }
+
+        /* Styles for the black screen prompt */
+        #prompt-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000; /* Ensure it's above other content */
+        }
+        #prompt-screen input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        #prompt-screen button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #prompt-screen #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+        }
     </style>
     <style>
         @font-face {
@@ -111,31 +143,51 @@
     </style>
 </head>
 <body>
-<div class="section">
-    <h1>REBOOTED</h1>
-    <a>NEWS: Im back</a>
-    <h3></h3>
-    <h5>Last updated 7/17/2024 10:56PM<h5>
+<div id="prompt-screen">
+    <h1>Enter key below</h1>
+    <input type="text" id="keyInput" placeholder="Enter key">
+    <button onclick="checkKey()">Submit</button>
+    <div id="message"></div>
 </div>
 
-<!-- Button to change the site icon -->
-<div class="section">
-    <button onclick="changeIcon()">Change Icon to Black and not white (NOT TESTED)</button>
-</div>
+<div id="main-content" style="display: none;">
+    <div class="section">
+        <h1>REBOOTED</h1>
+        <a>NEWS: Im back</a>
+        <h3></h3>
+        <h5>Last updated 7/17/2024 10:56PM<h5>
+    </div>
 
-<script>
-    // Function to change the site icon to DarkerChrome.png
-    function changeIcon() {
-        // Get the link element for the site icon
-        var iconLink = document.getElementById('site-icon');
-        // Change the href attribute to DarkerChrome.png
-        iconLink.href = 'DarkerChrome.png';
-    }
-</script>
+    <!-- Button to change the site icon -->
+    <div class="section">
+        <button onclick="changeIcon()">Change Icon to Black and not white (NOT TESTED)</button>
+    </div>
+
+    <script>
+        // Function to change the site icon to DarkerChrome.png
+        function changeIcon() {
+            // Get the link element for the site icon
+            var iconLink = document.getElementById('site-icon');
+            // Change the href attribute to DarkerChrome.png
+            iconLink.href = 'DarkerChrome.png';
+        }
+
+        // Function to check the key
+        function checkKey() {
+            var input = document.getElementById('keyInput').value;
+            var message = document.getElementById('message');
+            if (input === "YeahImCool") {
+                message.style.color = 'green';
+                message.textContent = "Key accepted!";
+                document.getElementById('prompt-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                message.style.color = 'red';
+                message.textContent = "Incorrect key. Try again.";
+            }
+        }
+    </script>
     
-</body>
-</html>
-
     <div class="section">
         <h2>Best Proxys:</h2>
         <ul>
@@ -182,34 +234,36 @@
         <p>Made by FreedomGate 2024©<p>
     </div>
 
-<div class="section">
-    <button id="pay-respects-btn">Pay Respects</button>
-    <p>Times Respects Paid: <span id="pay-respects-count">0</span></p>
-    <img id="fish-image" src="fishy.png" alt="Chuck" style="width: 200px;">
+    <div class="section">
+        <button id="pay-respects-btn">Pay Respects</button>
+        <p>Times Respects Paid: <span id="pay-respects-count">0</span></p>
+        <img id="fish-image" src="fishy.png" alt="Chuck" style="width: 200px;">
+    </div>
+
+
+    <script>
+        // Function to update the respects count
+        function updateRespectsCount() {
+            let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
+            document.getElementById('pay-respects-count').textContent = payRespectsCount;
+        }
+
+        // Function to increment the respects count
+        function payRespects() {
+            let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
+            payRespectsCount++;
+            localStorage.setItem('payRespectsCount', payRespectsCount);
+            updateRespectsCount();
+        }
+
+        // Event listener for the Pay Respects button
+        document.getElementById('pay-respects-btn').addEventListener('click', payRespects);
+
+        // Initial call to fetch and display the respects count
+        updateRespectsCount();
+    </script>
 </div>
 
-
-<script>
-    // Function to update the respects count
-    function updateRespectsCount() {
-        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
-        document.getElementById('pay-respects-count').textContent = payRespectsCount;
-    }
-
-    // Function to increment the respects count
-    function payRespects() {
-        let payRespectsCount = parseInt(localStorage.getItem('payRespectsCount')) || 0;
-        payRespectsCount++;
-        localStorage.setItem('payRespectsCount', payRespectsCount);
-        updateRespectsCount();
-    }
-
-    // Event listener for the Pay Respects button
-    document.getElementById('pay-respects-btn').addEventListener('click', payRespects);
-
-    // Initial call to fetch and display the respects count
-    updateRespectsCount();
-</script>
 <body class="light-mode" id="body">
 </body>
 </html>
