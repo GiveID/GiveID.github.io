@@ -1,0 +1,9 @@
+                case "Iloveguys":
+                    window.location.href = "https://giveid.github.io/yay";
+                    break;
+                case "BigMilkers":
+                    window.location.href = "https://giveid.github.io/shh";
+                    break;
+                case "YeahImCool":
+                    window.location.href = "https://giveid.github.io/edu";
+                    break;
