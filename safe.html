@@ -40,29 +40,26 @@
         </form>
     </div>
     <script>
-        document.getElementById('keyForm').onsubmit = function(event) {
-            event.preventDefault(); // Prevent the form from submitting traditionally
-            const key = document.getElementById('keyInput').value; // Get the key from the input
-            
-            // Define the redirection based on the key
-            switch (key) {
-                case "Iloveguys":
-                    window.location.href = "https://giveid.github.io/yay";
-                    break;
-                case "BigMilkers":
-                    window.location.href = "https://giveid.github.io/shh";
-                    break;
-                case "YeahImCool":
-                    window.location.href = "https://giveid.github.io/edu";
-                    break;
-                case "GIVECODES":
-                    window.location.href = "https://giveid.github.io/keys.txt"; // Direct link to download the file
-                    break;
-                default:
-                    alert('Invalid key. Please try again.'); // Alert if key is invalid
-                    break;
-            }
-        };
-    </script>
-</body>
-</html>
+document.getElementById('keyForm').onsubmit = function(event) {
+    event.preventDefault(); // Prevent the form from submitting traditionally
+    const key = document.getElementById('keyInput').value.trim(); // Get the key from the input and trim any whitespace
+
+    // Define the redirection based on the key
+    switch (key) {
+        case "Iloveguys":
+            window.location.href = "https://giveid.github.io/yay";
+            break;
+        case "BigMilkers":
+            window.location.href = "https://giveid.github.io/shh";
+            break;
+        case "YeahImCool":
+            window.location.href = "https://giveid.github.io/edu";
+            break;
+        case "GIVECODES": // Make sure this case exists
+            window.location.href = "https://giveid.github.io/keys.txt"; // Make sure the file path is correct
+            break;
+        default:
+            alert('Invalid key. Please try again.'); // Alert if key is invalid
+            break;
+    }
+};
