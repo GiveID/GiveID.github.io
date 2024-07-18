@@ -41,10 +41,11 @@
     </div>
     <script>
 document.getElementById('keyForm').onsubmit = function(event) {
-    event.preventDefault(); // Prevent the form from submitting traditionally
-    const key = document.getElementById('keyInput').value.trim(); // Get the key from the input and trim any whitespace
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    const key = document.getElementById('keyInput').value; // Get the key from the input
 
-    // Define the redirection based on the key
+    console.log(key); // Log the key to the console for debugging
+
     switch (key) {
         case "Iloveguys":
             window.location.href = "https://giveid.github.io/yay";
@@ -55,11 +56,12 @@ document.getElementById('keyForm').onsubmit = function(event) {
         case "YeahImCool":
             window.location.href = "https://giveid.github.io/edu";
             break;
-        case "GIVECODES": // Make sure this case exists
-            window.location.href = "https://giveid.github.io/keys.txt"; // Make sure the file path is correct
+        case "GIVECODES":
+            window.location.href = "https://giveid.github.io/keys.txt";
             break;
         default:
-            alert('Invalid key. Please try again.'); // Alert if key is invalid
+            alert('Invalid key. Please try again.');
             break;
     }
 };
+
