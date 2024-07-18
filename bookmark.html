@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarklet - Auto Clicker</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background: linear-gradient(120deg, #00d2ff, #3a7bd5); /* Same blue gradient as main page */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px;
+            max-width: 600px;
+        }
+        a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: rgba(0, 123, 255, 0.8);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+        a:hover {
+            background-color: rgba(0, 123, 255, 1);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Auto Clicker Bookmarklet</h1>
+        <p>Drag or copy the following link to your bookmarks bar or right-click and add it to bookmarks.</p>
+        <a href="javascript:(function(){alert('Made by giveid.github.io');if(!window.click){window.click=!0;document.body.style.cursor='crosshair';var cps=prompt('Autoclicker CPS: ');if(!cps||isNaN(cps)){alert('You entered something wrong. Try running the script again.');end();}else{alert('Autoclicker activated at '+cps+' CPS! Do [ctrl+e] to stop.');addEventListener('mousemove',function(e){x=e.clientX;y=e.clientY});addEventListener('keydown',function(e){if('e'===e.key&&e.ctrlKey){alert('Autoclicker deactivated! Click the bookmark again to reactivate!');end()}});var x,y;var int=setInterval(function(){var e=document.elementFromPoint(x,y);if(e)e.click()},1000/cps)}function end(){clearInterval(int);window.click=!1;document.body.style.cursor='default'}})();">Activate Auto Clicker</a>
+        <p>Click the bookmark when you are on a webpage where you want to use the auto clicker. Enter the clicks per second (CPS) when prompted.</p>
+    </div>
+</body>
+</html>
