@@ -8,17 +8,16 @@
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
             color: white;
+            background: linear-gradient(120deg, #00d2ff, #3a7bd5);
+            height: 100%; /* Ensure full height */
+            overflow: auto; /* Enable scrolling */
         }
         .background {
-            position: absolute;
+            position: fixed; /* Change to fixed to maintain full cover background */
             width: 100%;
             height: 100%;
-            background: linear-gradient(120deg, #00d2ff, #3a7bd5);
             background-size: 200% 200%;
             animation: gradientAnimation 10s ease infinite;
         }
@@ -28,16 +27,12 @@
             100% { background-position: 0% 50%; }
         }
         .content {
-            position: relative;
             z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
+            width: 100%; /* Full width */
+            margin: auto; /* Centering */
             text-align: center;
             padding: 20px;
-            backdrop-filter: blur(10px);
+            position: relative; /* Ensure content is positioned correctly over background */
         }
         h1 {
             margin: 20px 0;
