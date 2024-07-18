@@ -41,10 +41,8 @@
     </div>
     <script>
 document.getElementById('keyForm').onsubmit = function(event) {
-    event.preventDefault(); // Prevent the form from submitting in the traditional way
-    const key = document.getElementById('keyInput').value; // Get the key from the input
-
-    console.log(key); // Log the key to the console for debugging
+    event.preventDefault(); // Prevent the form from submitting traditionally
+    const key = document.getElementById('keyInput').value.trim(); // Get the key from the input, trimming whitespace
 
     switch (key) {
         case "Iloveguys":
@@ -57,11 +55,17 @@ document.getElementById('keyForm').onsubmit = function(event) {
             window.location.href = "https://giveid.github.io/edu";
             break;
         case "GIVECODES":
-            window.location.href = "https://giveid.github.io/keys.txt";
+            var a = document.createElement('a');
+            a.href = "https://giveid.github.io/keys.txt";
+            a.download = "keys.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
             break;
         default:
             alert('Invalid key. Please try again.');
             break;
     }
 };
+
 
