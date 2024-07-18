@@ -50,7 +50,7 @@
             margin-bottom: 30px;
             max-width: 600px;
         }
-        .download-button, .proof-button {
+        .button {
             display: inline-block;
             padding: 15px 30px;
             background-color: rgba(0, 123, 255, 0.8);
@@ -64,20 +64,21 @@
             position: relative;
             border: none;
             outline: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
         }
-        .download-button:hover, .proof-button:hover {
+        .button:hover {
             background-color: rgba(0, 123, 255, 1);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        .wave {
+        .wave-effect {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: -100%;
+            width: 300%;
             height: 100%;
             background: linear-gradient(60deg, #ff0000, #ffff00, #00ff00, #0000ff, #ff00ff);
             animation: wave 0.7s ease-out forwards;
-            display: none;
         }
         @keyframes wave {
             0% { left: -100%; }
@@ -90,19 +91,16 @@
     <div class="content">
         <h1>Better Than OP Auto Clicker 3.0</h1>
         <p>Welcome to the official site for the Better Than OP Auto Clicker. It's a free tool that's better than the popular "OP auto clicker 3.0"</p>
-        <button class="download-button" onclick="animateAndDownload(this)">Download Now</button>
-        <a href="https://giveid.github.io/proof" class="proof-button">Want Proof?</a>
+        <div class="button" onclick="animateAndDownload(this)">Download Now</div>
+        <a href="https://giveid.github.io/proof" class="proof-button button">Want Proof?</a>
     </div>
     <script>
         function animateAndDownload(button) {
-            var wave = document.createElement('div');
-            wave.className = 'wave';
+            const wave = document.createElement('div');
+            wave.className = 'wave-effect';
             button.appendChild(wave);
-            setTimeout(function() {
-                wave.style.display = 'block';
-            }, 0);
-            setTimeout(function() {
-                button.removeChild(wave);
+            setTimeout(() => {
+                wave.remove(); // Removes the wave effect after it finishes
                 window.location.href = 'ClickerV1.rar'; // Initiates the download after the animation
             }, 700); // Ensure the animation completes before starting the download
         }
