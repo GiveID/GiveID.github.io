@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Content Based on URL</h1>
+    <p id="content">Loading...</p>
+    <script>
+        function extractPath() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('path'); // 'path' is the URL parameter
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const path = extractPath();
+            const contentElement = document.getElementById('content');
+            if (path) {
+                contentElement.textContent = "Content for: " + path;
+            } else {
+                contentElement.textContent = "No specific content loaded.";
+            }
+        });
+    </script>
+</body>
+</html>
