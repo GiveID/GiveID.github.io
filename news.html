@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News - Better Than OP Auto Clicker</title>
+    <title>News - Banana Clicker</title>
     <link rel="icon" type="image/jpeg" href="ICON.jpg">
     <style>
         body, html {
@@ -13,20 +13,20 @@
             height: 100%;
             font-family: 'Arial', sans-serif;
             color: white;
-            background: linear-gradient(120deg, #00d2ff, #3a7bd5); /* Blue gradient background */
+            background: linear-gradient(120deg, #000000, #ffdd00); /* Updated to black and yellow gradient */
             text-align: center;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .background {
             position: absolute;
             width: 100%;
             height: 100%;
             background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         .content {
             position: relative;
@@ -36,20 +36,20 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            margin-top: 50px; /* Adjust as needed */
+            margin-top: 50px; /* Ensure content is well positioned */
         }
         h1 {
             margin-bottom: 20px;
             font-size: 2.5em;
         }
         article {
-            background: rgba(0, 0, 0, 0.5); /* Slight transparency for readability */
+            background: rgba(0, 0, 0, 0.7); /* Slightly darker background for better readability */
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             width: 80%;
-            max-width: 800px; /* Adjust as needed */
+            max-width: 800px;
         }
         p {
             font-size: 1.2em;
@@ -60,11 +60,10 @@
 <body>
     <div class="background"></div>
     <div class="content">
-        <h1>Latest News</h1>
+        <h1>Latest News - Banana Clicker</h1>
         <article>
-            <h2>By coolman</h2>
-            <p>PUT NEWS HERE</p>
-        </article>
+            <h2>Update and Improvements</h2>
+            <p>Exciting new updates are here! Check out the latest features and improvements we've added to Banana Clicker, ensuring a better experience for all users.</p>
         </article>
     </div>
 </body>
