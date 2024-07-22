@@ -12,9 +12,12 @@
             width: 100%;
             height: 100%;
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
             color: white;
             background: linear-gradient(120deg, #00d2ff, #3a7bd5);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .background {
             position: absolute;
@@ -35,8 +38,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            text-align: center;
             padding: 20px;
             backdrop-filter: blur(10px);
         }
@@ -60,10 +61,6 @@
             font-size: 1.2em;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             margin-top: 15px;
-            overflow: hidden;
-            position: relative;
-            border: none;
-            outline: none;
             transition: transform 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
         }
@@ -71,18 +68,22 @@
             background-color: rgba(0, 123, 255, 1);
             transform: scale(1.05);
         }
-        .wave-effect {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 300%;
-            height: 100%;
-            background: linear-gradient(60deg, #ff0000, #ffff00, #00ff00, #0000ff, #ff00ff);
-            animation: wave 0.7s ease-out forwards;
+        .chat-button {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
         }
-        @keyframes wave {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .chat-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -91,10 +92,11 @@
     <div class="content">
         <h1>Better Than OP Auto Clicker 3.0</h1>
         <p>Welcome to the official site for the Better Than OP Auto Clicker. It's a free tool that's better than the popular "OP auto clicker 3.0"</p>
-        <button class="button" onclick="animateAndDownload(this)">Download Now</button>
-        <a href="https://giveid.github.io/proof" class="button proof-button">Want Proof?</a>
-        <a href="https://giveid.github.io/bookmark" class="button">Bookmark</a>
+        <a href="ClickerV1.rar" class="button" onclick="animateAndDownload(this)">Download Now</a>
+        <a href="https://giveid.github.io/proof" class="button">Want Proof?</a>
+        <a href="https://giveid.github.io/bookmark" class="button">Bookmarklet</a>
     </div>
+    <a href="https://giveid.github.io/livechat" class="chat-button">Live Chat</a>
     <script>
         function animateAndDownload(button) {
             const wave = document.createElement('div');
@@ -102,7 +104,7 @@
             button.appendChild(wave);
             setTimeout(() => {
                 wave.remove(); // Removes the wave effect after it finishes
-                window.location.href = 'ClickerV1.zip'; // Initiates the download after the animation
+                window.location.href = 'ClickerV1.rar'; // Initiates the download after the animation
             }, 700); // Ensure the animation completes before starting the download
         }
     </script>
