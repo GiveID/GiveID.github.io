@@ -6,14 +6,22 @@
     <title>Proof - Banana Clicker</title>
     <link rel="icon" type="image/jpeg" href="ICON.jpg">
     <style>
+     <style>
+        @font-face {
+            font-family: 'Chakra Petch';
+            src: url('ChakraPetch-Regular.ttf') format('truetype');
+        }
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            width: 100%;
+            height: 100%;
+            font-family: 'Chakra Petch', sans-serif;
+            overflow: hidden;
             color: white;
-            background: linear-gradient(120deg, #000000, #ffdd00); /* Update to black and yellow gradient */
-            height: 100%; /* Ensure full height */
-            overflow: auto; /* Enable scrolling */
+            background: linear-gradient(120deg, #000000, #ffdd00);
+            background-size: 200% 200%;
+            animation: gradientAnimation 15s ease infinite;
         }
         .background {
             position: fixed; /* Maintain full cover background */
