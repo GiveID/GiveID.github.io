@@ -6,12 +6,16 @@
     <title>Banana Clicker - Download</title>
     <link rel="icon" type="image/jpeg" href="ICON.jpg">
     <style>
+        @font-face {
+            font-family: 'Chakra Petch';
+            src: url('ChakraPetch-Regular.ttf') format('truetype');
+        }
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Chakra Petch', sans-serif;
             overflow: hidden;
             color: white;
             background: linear-gradient(120deg, #000000, #ffdd00);
@@ -39,11 +43,13 @@
             margin-bottom: 20px;
             font-size: 3em;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
         }
         p {
             font-size: 1.2em;
             margin-bottom: 30px;
             max-width: 600px;
+            transition: transform 0.5s ease;
         }
         .button {
             display: inline-block;
@@ -100,6 +106,20 @@
                 window.location.href = 'https://giveid.github.io/security'; // Redirects after the download starts
             }, 700); // Ensure the animation completes before redirecting
         }
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth * 100;
+            const y = e.clientY / window.innerHeight * 100;
+            document.body.style.backgroundPosition = `${x}% ${y}%`;
+
+            const parallaxFactor = 0.05;
+            const content = document.querySelector('.content');
+            const xOffset = (window.innerWidth / 2 - e.clientX) * parallaxFactor;
+            const yOffset = (window.innerHeight / 2 - e.clientY) * parallaxFactor;
+
+            content.querySelector('h1').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            content.querySelector('p').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+        });
     </script>
 </body>
 </html>
