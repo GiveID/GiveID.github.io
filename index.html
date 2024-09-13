@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Clicker - Download</title>
+    <title>FreedomGate Proxy</title>
     <link rel="icon" type="image/jpeg" href="ICON.jpg">
     <style>
         @font-face {
@@ -18,7 +18,7 @@
             font-family: 'Chakra Petch', sans-serif;
             overflow: hidden;
             color: white;
-            background: linear-gradient(120deg, #000000, #ffdd00);
+            background: linear-gradient(120deg, #000000, #808080); /* Black to Gray */
             background-size: 200% 200%;
             animation: gradientAnimation 15s ease infinite;
         }
@@ -43,7 +43,7 @@
             margin-bottom: 20px;
             font-size: 3em;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, text-shadow 0.5s ease;
         }
         p {
             font-size: 1.2em;
@@ -54,23 +54,24 @@
         .button {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #ffd700; /* Banana Yellow */
-            color: #000000; /* Black text for contrast */
+            background-color: #505050; /* Gray */
+            color: #ffffff; /* White text for contrast */
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1.2em;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow */
             margin-top: 15px;
-            overflow: hidden;
             position: relative;
             border: none;
             outline: none;
-            transition: transform 0.3s ease, background-color 0.5s ease;
+            transition: transform 0.3s ease, background-color 0.5s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
         .button:hover {
-            background-color: #ccac00; /* Darker shade of yellow */
+            background-color: #333333; /* Darker shade of gray */
             transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5); /* Larger shadow on hover */
+            filter: blur(3px); /* Subtle background blur on hover */
         }
         .wave-effect {
             position: absolute;
@@ -85,27 +86,50 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
+        .loading-message {
+            position: absolute;
+            font-size: 1.5em;
+            top: 60%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="content">
-        <h1>Welcome to Banana Clicker!</h1>
-        <p>Experience the next level in autoclick technology with Banana Clicker, faster and safer than ever before.</p>
-        <a href="BananaClicker.zip" class="button" download onclick="animateAndDownload(this)">Download Now</a>
-        <a href="https://giveid.github.io/proof" class="button proof-button">Want Proof?</a>
-        <a href="https://giveid.github.io/bookmark" class="button">Bookmark</a>
+        <h1>Welcome to FreedomGate</h1>
+        <p>Please click the button below to be redirected to a working proxy.</p>
+        <a href="#" class="button" id="randomProxyButton">Random Proxy</a>
+        <p id="loadingMessage" class="loading-message"></p>
     </div>
     <script>
-        function animateAndDownload(button) {
-            const wave = document.createElement('div');
-            wave.className = 'wave-effect';
-            button.appendChild(wave);
+        const proxies = [
+            'https://proxy1.com',
+            'https://proxy2.com',
+            'https://proxy3.com',
+            'https://proxy4.com'
+        ];
+        
+        const loadingMessages = [
+            "Connecting to secure tunnel...",
+            "Bypassing restrictions...",
+            "Loading your proxy...",
+            "Establishing secure connection..."
+        ];
+
+        document.getElementById('randomProxyButton').addEventListener('click', function() {
+            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
+            const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+            const loadingMessageEl = document.getElementById('loadingMessage');
+            
+            loadingMessageEl.textContent = randomMessage;
+            loadingMessageEl.style.opacity = 1;
+
             setTimeout(() => {
-                wave.remove(); // Removes the wave effect after it finishes
-                window.location.href = 'https://giveid.github.io/security'; // Redirects after the download starts
-            }, 700); // Ensure the animation completes before redirecting
-        }
+                window.location.href = randomProxy;
+            }, 1500); // Slight delay to show loading message
+        });
 
         document.addEventListener('mousemove', (e) => {
             const x = e.clientX / window.innerWidth * 100;
@@ -114,8 +138,8 @@
 
             const parallaxFactor = 0.05;
             const content = document.querySelector('.content');
-            const xOffset = (window.innerWidth / 2 - e.clientX) * parallaxFactor;
-            const yOffset = (window.innerHeight / 2 - e.clientY) * parallaxFactor;
+            const xOffset = (window.innerWidth / 4 - e.clientX) * parallaxFactor;
+            const yOffset = (window.innerHeight / 4 - e.clientY) * parallaxFactor;
 
             content.querySelector('h1').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
             content.querySelector('p').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
