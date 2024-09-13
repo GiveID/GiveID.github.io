@@ -38,15 +38,17 @@
             text-align: center;
             padding: 20px;
             backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text visibility */
+            border-radius: 10px; /* Rounded corners for a softer look */
         }
         h1 {
             margin-bottom: 20px;
-            font-size: 3em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            font-size: 2.5em; /* Adjusted for better responsiveness */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
             transition: transform 0.5s ease, text-shadow 0.5s ease;
         }
         p {
-            font-size: 1.2em;
+            font-size: 1.1em; /* Slightly smaller for better readability */
             margin-bottom: 30px;
             max-width: 600px;
             transition: transform 0.5s ease;
@@ -54,7 +56,7 @@
         .button {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #505050; /* Gray */
+            background-color: #606060; /* Slightly lighter gray for better contrast */
             color: #ffffff; /* White text for contrast */
             text-decoration: none;
             border-radius: 8px;
@@ -66,12 +68,29 @@
             outline: none;
             transition: transform 0.3s ease, background-color 0.5s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            overflow: hidden;
+            background-clip: padding-box;
         }
         .button:hover {
-            background-color: #333333; /* Darker shade of gray */
+            background-color: #404040; /* Darker shade of gray */
             transform: scale(1.05);
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5); /* Larger shadow on hover */
-            filter: blur(3px); /* Subtle background blur on hover */
+        }
+        .button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: transform 0.5s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+        }
+        .button:active::after {
+            transform: translate(-50%, -50%) scale(1);
         }
         .wave-effect {
             position: absolute;
@@ -89,7 +108,7 @@
         .loading-message {
             position: absolute;
             font-size: 1.5em;
-            top: 60%;
+            top: 70%; /* Adjusted for better positioning */
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -99,16 +118,20 @@
     <div class="background"></div>
     <div class="content">
         <h1>Welcome to FreedomGate</h1>
-        <p>Please click the button below to be redirected to a working proxy.</p>
+        <p>Please click the button below to be redirected to a working proxy. Also, a warning: most sites have some rather BAD ads.</p>
         <a href="#" class="button" id="randomProxyButton">Random Proxy</a>
         <p id="loadingMessage" class="loading-message"></p>
     </div>
     <script>
         const proxies = [
-            'https://proxy1.com',
-            'https://proxy2.com',
-            'https://proxy3.com',
-            'https://proxy4.com'
+            'https://croxyproxy.rocks/',
+            'https://www.unblockyoutube.co/',
+            'https://plainproxies.com/resources/free-web-proxy',
+            'https://noblocc.co.uk/',
+            'https://noblocc.uk/',
+            'https://coccblocc.men/',
+            'https://eduhelp.uk/',
+            'https://noblocc.me/'
         ];
         
         const loadingMessages = [
@@ -119,6 +142,11 @@
         ];
 
         document.getElementById('randomProxyButton').addEventListener('click', function() {
+            if (proxies.length === 0) {
+                alert("No proxies available. Please try again later.");
+                return;
+            }
+
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
             const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
             const loadingMessageEl = document.getElementById('loadingMessage');
