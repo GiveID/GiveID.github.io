@@ -112,7 +112,14 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
+        .ads-container {
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
+    <!-- Google AdSense script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7705365377856071"
+            crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="background"></div>
@@ -121,6 +128,16 @@
         <p>Please click the button below to be redirected to a working proxy. Also, a warning: most sites have some rather BAD ads.</p>
         <a href="#" class="button" id="randomProxyButton">Random Proxy</a>
         <p id="loadingMessage" class="loading-message"></p>
+        <!-- Placeholder for Google AdSense ad -->
+        <div class="ads-container">
+            <ins class="adsbygoogle"
+                 style="display:block; width: 100%; height: 250px;"
+                 data-ad-client="ca-pub-7705365377856071"
+                 data-ad-slot="INSERT_AD_SLOT_ID_HERE"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
     <script>
         const proxies = [
