@@ -96,7 +96,7 @@
         .mirrors-button {
             position: relative;
             padding: 15px 30px;
-            background-color: #676a6e; /* Blue color */
+            background-color: #676a6e; /* Gray color */
             color: white;
             border-radius: 8px;
             font-size: 1.2em;
@@ -104,9 +104,10 @@
             margin-top: 15px;
             cursor: pointer;
             overflow: hidden;
+            text-decoration: none;
         }
         .mirrors-button:hover {
-            background-color: #48494a; /* Darker blue */
+            background-color: #48494a; /* Darker gray */
             transform: scale(1.05);
         }
         .mirrors-button:active::after {
@@ -211,8 +212,7 @@
             const xOffset = (window.innerWidth / 4 - e.clientX) * parallaxFactor;
             const yOffset = (window.innerHeight / 4 - e.clientY) * parallaxFactor;
 
-            content.querySelector('h1').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-            content.querySelector('p').style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            content.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
         });
     </script>
 </body>
