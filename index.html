@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google</title>
+    <title>FreedomGate</title>
     <link rel="icon" type="image/png" href="gooogle.png">
     <style>
         @font-face {
@@ -12,6 +12,7 @@
             src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
         }
 
+        /* Basic page styling */
         body, html {
             margin: 0;
             padding: 0;
@@ -26,11 +27,13 @@
             position: relative;
         }
 
+        /* Smooth background gradient animation */
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
 
+        /* Central content styling */
         .content {
             position: relative;
             z-index: 2;
@@ -48,11 +51,13 @@
             animation: fadeIn 1.8s ease forwards;
         }
 
+        /* Smooth fade-in animation for content */
         @keyframes fadeIn {
             0% { opacity: 0; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
 
+        /* Stylish title with glowing effect */
         h1 {
             font-size: 4.5em;
             font-weight: 900;
@@ -63,11 +68,13 @@
             color: #00e676;
         }
 
+        /* Glowing text effect */
         @keyframes textSlideIn {
             0% { opacity: 0; transform: translateY(-50px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Text with gentle entrance effect */
         p {
             font-size: 1.5em;
             max-width: 800px;
@@ -82,13 +89,15 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Button container with smooth hover effect */
         .button-container {
             display: flex;
             justify-content: center;
             gap: 20px; /* Space between buttons */
-            margin: 30px 0; /* Margin above and below buttons */
+            margin: 30px 0;
         }
 
+        /* Common button styles */
         .button, .mirrors-button, .form-button {
             padding: 20px 30px;
             background-color: #1e1e1e;
@@ -103,12 +112,14 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
         }
 
+        /* Hover effect to add visual depth */
         .button:hover, .mirrors-button:hover, .form-button:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
-            filter: blur(2px);
+            filter: blur(1px);
         }
 
+        /* Flickering loading message */
         .loading-message {
             font-size: 1.8em;
             font-weight: 400;
@@ -121,6 +132,7 @@
             100% { opacity: 1; }
         }
 
+        /* Footer styling */
         .footer {
             position: fixed;
             bottom: 20px;
@@ -131,11 +143,13 @@
             animation: slideUp 1.5s ease;
         }
 
+        /* Smooth entrance animation for footer */
         @keyframes slideUp {
             0% { transform: translateY(80px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
+        /* Background parallax effect */
         .parallax-bg {
             position: absolute;
             top: 0;
@@ -153,10 +167,12 @@
             50% { transform: scale(1.25); }
         }
 
+        /* Glow effect for title */
         .glow-effect {
             animation: glowPulse 2s ease-in-out infinite;
         }
 
+        /* Pulse animation for glowing text */
         @keyframes glowPulse {
             0%, 100% { text-shadow: 0 0 15px #00e676, 0 0 30px #00e676, 0 0 45px #00e676; }
             50% { text-shadow: 0 0 5px #00e676, 0 0 15px #00e676, 0 0 25px #00e676; }
@@ -165,22 +181,30 @@
 </head>
 
 <body>
+    <!-- Parallax animated background -->
     <div class="parallax-bg"></div>
+
+    <!-- Main content -->
     <div class="content">
         <h1 class="glow-effect">Welcome to FreedomGate</h1>
         <p>Your gateway to a free and secure internet experience. Click the button below to access a secure proxy. Please note that some sites may contain ads.</p>
+
+        <!-- Buttons section -->
         <div class="button-container">
             <a class="button" id="randomProxyButton">Random Proxy</a>
             <a href="https://giveid.github.io/mirrors" class="mirrors-button">Mirrors</a>
             <a href="https://giveid.github.io/form" class="form-button">Form</a>
         </div>
+
         <p id="loadingMessage" class="loading-message"></p>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
         © 2024 FreedomGate | Empowering the Internet for All
     </div>
 
+    <!-- JavaScript to randomize proxies and loading messages -->
     <script>
         const proxies = [
             'https://croxyproxy.rocks/',
@@ -194,9 +218,6 @@
         ];
 
         const loadingMessages = [
-            "We're securing your connection...",
-            "Bypassing restrictions...",
-            "Initiating proxy setup...",
             "Connecting you to freedom..."
         ];
 
