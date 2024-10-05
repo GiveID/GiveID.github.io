@@ -19,12 +19,12 @@
             width: 100%;
             height: 100%;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #000000, #141414, #1a1a1a);
-            background-size: 200% 200%;
-            animation: gradientShift 20s ease infinite;
-            overflow: hidden;
+            background: radial-gradient(circle at center, #000000, #1a1a1a, #141414);
+            background-size: cover;
+            animation: gradientShift 15s ease infinite;
             color: white;
             position: relative;
+            cursor: url('https://cur.cursors-4u.net/games/gam-1/gam24.cur'), auto;
         }
 
         /* Smooth background gradient animation */
@@ -33,7 +33,7 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Central content styling */
+        /* Central content styling with glass effect */
         .content {
             position: relative;
             z-index: 2;
@@ -44,10 +44,11 @@
             height: 100%;
             padding: 50px;
             text-align: center;
-            backdrop-filter: blur(25px);
-            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px) saturate(200%) brightness(120%);
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.2);
             animation: fadeIn 1.8s ease forwards;
         }
 
@@ -57,15 +58,28 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Stylish title with glowing effect */
+        /* Stylish title with glowing neon effect */
         h1 {
             font-size: 4.5em;
             font-weight: 900;
-            letter-spacing: 5px;
-            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            letter-spacing: 8px;
+            text-shadow: 0 12px 40px rgba(0, 255, 150, 0.7), 0 8px 20px rgba(0, 230, 140, 0.5);
             margin-bottom: 30px;
             animation: textSlideIn 1.5s ease;
             color: #00e676;
+            position: relative;
+        }
+
+        /* Glowing neon line effect */
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #00e676;
+            bottom: -10px;
+            left: 0;
+            animation: neonGlow 2s ease-in-out infinite;
         }
 
         /* Glowing text effect */
@@ -74,16 +88,23 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Smooth hover glow pulse */
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 15px #00e676, 0 0 40px #00e676, 0 0 60px #00e676; }
+            50% { text-shadow: 0 0 5px #00e676, 0 0 25px #00e676, 0 0 35px #00e676; }
+        }
+
         /* Text with gentle entrance effect */
         p {
             font-size: 1.5em;
             max-width: 800px;
             margin-bottom: 50px;
             line-height: 1.8;
-            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             animation: fadeInText 2.0s ease forwards;
         }
 
+        /* Smooth entrance for paragraph text */
         @keyframes fadeInText {
             0% { opacity: 0; transform: translateY(50px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -97,26 +118,26 @@
             margin: 30px 0;
         }
 
-        /* Common button styles */
+        /* Common button styles with 3D shadow effect */
         .button, .mirrors-button, .form-button {
-            padding: 20px 30px;
-            background-color: #1e1e1e;
+            padding: 20px 40px;
+            background-color: rgba(0, 0, 0, 0.9);
             color: #00e676;
             font-size: 1.6em;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            border-radius: 12px;
+            border-radius: 20px;
             position: relative;
             cursor: pointer;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6), 0 4px 15px rgba(0, 230, 140, 0.4);
+            transition: all 0.4s ease;
         }
 
-        /* Hover effect to add visual depth */
+        /* Deep 3D hover effect */
         .button:hover, .mirrors-button:hover, .form-button:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
-            filter: blur(1px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 230, 140, 0.6), 0 10px 20px rgba(0, 230, 140, 0.7);
+            filter: brightness(1.3);
         }
 
         /* Flickering loading message */
@@ -124,7 +145,7 @@
             font-size: 1.8em;
             font-weight: 400;
             color: #cccccc;
-            animation: flicker 1s infinite alternate;
+            animation: flicker 1.2s infinite alternate;
         }
 
         @keyframes flicker {
@@ -157,25 +178,14 @@
             width: 200%;
             height: 200%;
             background: url('https://source.unsplash.com/1600x900/?space,technology') center/cover no-repeat;
-            animation: parallax 40s ease infinite;
-            filter: blur(8px) brightness(0.7);
+            animation: parallax 35s ease infinite;
+            filter: blur(10px) brightness(0.8);
             z-index: 1;
         }
 
         @keyframes parallax {
             0%, 100% { transform: scale(1.1); }
             50% { transform: scale(1.25); }
-        }
-
-        /* Glow effect for title */
-        .glow-effect {
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        /* Pulse animation for glowing text */
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 15px #00e676, 0 0 30px #00e676, 0 0 45px #00e676; }
-            50% { text-shadow: 0 0 5px #00e676, 0 0 15px #00e676, 0 0 25px #00e676; }
         }
     </style>
 </head>
@@ -209,7 +219,7 @@
         const proxies = [
             'https://croxyproxy.rocks/',
             'https://www.unblockyoutube.co/',
-            'https://plainproxies.com/resources/free-web-proxy',
+            'https://www.blockaway.net/',
             'https://noblocc.co.uk/',
             'https://noblocc.uk/',
             'https://coccblocc.men/',
