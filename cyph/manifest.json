@@ -1,0 +1,24 @@
+{
+  "name": "CipherTalk",
+  "short_name": "Cipher",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0F2027",
+  "theme_color": "#00D1FF",
+  "icons": [
+    {
+      "src": "Cypher.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Cypher.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": "An encrypted messaging application for secure conversations.",
+  "orientation": "portrait",
+  "scope": "/",
+  "prefer_related_applications": false
+}
