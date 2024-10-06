@@ -1,194 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CipherTalk - Encrypted Messaging</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="Cypher.png" sizes="192x192">
-  <style>
-    body {
-      background: #0f2027;
-      background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
-      font-family: 'Courier New', monospace;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      width: 100%;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 15px;
-      background-color: #1B2836;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-    }
-    .header {
-      padding: 15px;
-      background-color: #16222A;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    .header h1 {
-      font-size: 1.8rem;
-      color: #00D1FF;
-      margin: 0;
-    }
-    .status {
-      font-size: 0.9rem;
-      color: #8DACC2;
-      text-align: right;
-    }
-    .message-box {
-      max-width: 80%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-      background-color: #2A3A47;
-      position: relative;
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-    }
-    .message-box:hover {
-      border-image: linear-gradient(to right, #00D1FF, #00FFA2) 1;
-    }
-    .message-box.even {
-      background-color: #1D2C39;
-    }
-    .sender {
-      font-weight: bold;
-      color: #00FFA2;
-      margin-bottom: 5px;
-    }
-    .timestamp {
-      font-size: 0.8rem;
-      color: #B0BEC5;
-      margin-bottom: 10px;
-    }
-    .message {
-      font-size: 1rem;
-      color: white;
-      word-wrap: break-word;
-    }
-    .input-box {
-      display: flex;
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #16222A;
-      border-radius: 15px;
-      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-    .input-box input {
-      flex: 1;
-      padding: 15px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      background-color: #30343C;
-      color: white;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    .input-box input:focus {
-      background-color: #3A4B57;
-    }
-    .input-box button {
-      padding: 15px 20px;
-      margin-left: 10px;
-      background-color: #00D1FF;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-      color: #16222A;
-      transition: background-color 0.3s ease;
-    }
-    .input-box button:hover {
-      background-color: #008EBF;
-    }
-    
-    /* Mobile Styles */
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 1.5rem;
-      }
-      .container {
-        margin: 20px;
-      }
-      .message-box {
-        max-width: 100%;
-      }
-      .input-box {
-        flex-direction: column;
-      }
-      .input-box input {
-        margin-bottom: 10px;
-        width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <title>CipherTalk - Encrypted Messaging</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            font-family: 'Courier New', monospace;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow for scrolling */
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh; /* Set height to full viewport height */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: space-between; /* Space out header, messages, and input */
+            padding: 20px;
+            box-sizing: border-box; /* Ensure padding doesn't increase container size */
+            background-color: #1B2836;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            padding: 15px;
+            background-color: #16222A;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #00D1FF;
+            margin: 0;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            color: #8DACC2;
+            text-align: right;
+        }
+
+        .messages {
+            flex: 1; /* Allow messages section to grow */
+            overflow-y: auto; /* Enable scrolling only for messages */
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            padding: 15px;
+            margin-bottom: 10px; /* Smaller margin */
+            border-radius: 10px;
+            background-color: #2A3A47;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .message-box:hover {
+            background-color: #3A4B57;
+        }
+
+        .sender {
+            font-weight: bold;
+            color: #00FFA2;
+            margin-bottom: 5px;
+        }
+
+        .timestamp {
+            font-size: 0.75rem; /* Smaller timestamp */
+            color: #B0BEC5;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 1rem; /* Slightly smaller message font */
+            color: white;
+        }
+
+        .input-box {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .input-box input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #30343C;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .input-box button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #00D1FF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-box button:hover {
+            background-color: #008EBF;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.2rem; /* Smaller font for mobile */
+            }
+
+            .message {
+                font-size: 0.9rem; /* Adjust message font for mobile */
+            }
+
+            .input-box input {
+                font-size: 0.9rem; /* Adjust input font for mobile */
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>CipherTalk</h1>
-      <div class="status">🔒 End-to-End Encryption</div>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>CipherTalk</h1>
+            <div class="status">🔒 End-to-End Encryption</div>
+        </div>
 
-    <div class="message-box">
-      <div class="sender">Bitlord</div>
-      <div class="timestamp">10:30 AM, September 27th</div>
-      <div class="message">Yo you order number #12031?</div>
-    </div>
+        <div class="messages">
+            <div class="message-box">
+                <div class="sender">Bitlord</div>
+                <div class="timestamp">10:30 AM, September 27th</div>
+                <div class="message">Yo you order number #12031?</div>
+            </div>
 
-    <div class="message-box even">
-      <div class="sender">LOLZXCT</div>
-      <div class="timestamp">10:43 AM, September 27th</div>
-      <div class="message">Yes sir I am</div>
-    </div>
+            <div class="message-box">
+                <div class="sender">LOLZXCT</div>
+                <div class="timestamp">10:43 AM, September 27th</div>
+                <div class="message">Yes sir I am</div>
+            </div>
 
-    <div class="message-box">
-      <div class="sender">Bitlord</div>
-      <div class="timestamp">10:52 AM, September 27th</div>
-      <div class="message">Aight. Give me a sec, ima get your key</div>
-    </div>
+            <div class="message-box">
+                <div class="sender">Bitlord</div>
+                <div class="timestamp">10:52 AM, September 27th</div>
+                <div class="message">Aight. Give me a sec I'm gonna get your key</div>
+            </div>
 
-    <div class="message-box even">
-      <div class="sender">LOLZXCT</div>
-      <div class="timestamp">10:54 AM, September 27th</div>
-      <div class="message">Ok</div>
-    </div>
-    
-    <div class="message-box">
-      <div class="sender">Bitlord</div>
-      <div class="timestamp">11:04 AM, September 27th</div>
-      <div class="message">"ac21e84ddf78084b364854c4499308ffa764ec328" is the private key and the address is</div>
-    </div>
-    
-    <div class="message-box even">
-      <div class="sender">Bitlord</div>
-      <div class="timestamp">11:04 AM, September 27th</div>
-      <div class="message">"1MgAFy9DuhihpbEhmTpabmPmFQ52pQxtPV". If it doesn't have the full 5k, feel free to hit me up. Also, if you don't know how to use, just go to my site — there’s a tutorial there.</div>
-    </div>
-    
-    <div class="message-box">
-      <div class="sender">LOLZXCT</div>
-      <div class="timestamp">11:12 AM, September 27th</div>
-      <div class="message">YOOO THANKS BRO, IT HAS 5.5 ON IT AMAZING</div>
-    </div>
+            <div class="message-box">
+                <div class="sender">Bob</div>
+                <div class="timestamp">10:54 AM, September 27th</div>
+                <div class="message">Ok</div>
+            </div>
 
-    <div class="input-box">
-      <input type="text" placeholder="Type your message...">
-      <button>Send</button>
+            <div class="message-box">
+                <div class="sender">Bitlord</div>
+                <div class="timestamp">11:04 AM, September 27th</div>
+                <div class="message">"ac21e84ddf78084b364854c4499308ffa764ec3285c089d18293876886375c9c" is the private key and the address is</div>
+            </div>
+
+            <div class="message-box">
+                <div class="sender">Bitlord</div>
+                <div class="timestamp">11:04 AM, September 27th</div>
+                <div class="message">"1MgAFy9DuhihpbEhmTpabmPmFQ52pQxtPV. If it doesn't have the full 5k, feel free to hit me up. Also if you don’t know how to use it, just go to my site; there is a tutorial on there.</div>
+            </div>
+
+            <div class="message-box">
+                <div class="sender">Bitlord</div>
+                <div class="timestamp">11:12 AM, September 27th</div>
+                <div class="message">YOOO THANKS BRO IT HAS 5.5 ON IT AMAZING</div>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
     </div>
-  </div>
 </body>
 </html>
