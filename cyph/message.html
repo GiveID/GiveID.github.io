@@ -25,6 +25,23 @@
             box-sizing: border-box; /* Ensure padding doesn't increase container size */
             background-color: #1B2836;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Custom scrollbar width for Firefox */
+            scrollbar-color: #00D1FF #1B2836; /* Custom scrollbar color for Firefox */
+        }
+
+        /* WebKit (Safari, Chrome) scrollbar customization */
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #1B2836;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: #00D1FF;
+            border-radius: 4px;
         }
 
         .header {
@@ -51,7 +68,6 @@
 
         .messages {
             flex: 1; /* Allow messages section to grow */
-            overflow-y: auto; /* Enable scrolling only for messages */
             margin-bottom: 20px;
         }
 
