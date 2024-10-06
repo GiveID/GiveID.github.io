@@ -1,7 +1,7 @@
 {
   "name": "CipherTalk",
   "short_name": "Cipher",
-  "start_url": "./message.html",  // Fixed the URL format here
+  "start_url": "./message.html",  
   "display": "standalone",
   "background_color": "#0F2027",
   "theme_color": "#00D1FF",
