@@ -2,7 +2,7 @@
     "name": "PayPal",
     "short_name": "PayPal",
     "start_url": ".",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#0070ba",
     "theme_color": "#0070ba",
     "icons": [
