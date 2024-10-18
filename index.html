@@ -7,14 +7,14 @@
     <link rel="icon" type="image/png" href="https://example.com/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Reset and New Styling */
+        /* Base Reset and Styling */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(to bottom, #111827, #1f2937);
+            background: linear-gradient(to bottom right, #1a1f3c, #0f0e17);
             color: #e5e7eb;
             overflow: hidden;
             display: flex;
@@ -22,25 +22,43 @@
             align-items: center;
         }
 
-        /* Background Animation */
-        .background {
+        /* Animated Particle Background */
+        .particle-background {
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: url('https://source.unsplash.com/1600x900/?abstract,cyber') center/cover no-repeat;
-            filter: blur(20px) brightness(0.5);
-            animation: moveBackground 30s infinite alternate;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(15, 14, 23, 0.8), rgba(26, 31, 60, 0.9));
+            overflow: hidden;
+            z-index: -1;
         }
 
-        @keyframes moveBackground {
-            0% { transform: translate(-20px, -20px) scale(1.1); }
-            100% { transform: translate(20px, 20px) scale(1.2); }
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: floatUp 8s infinite ease-in-out alternate;
         }
+
+        /* Particle Animation */
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 1; }
+        }
+
+        /* Generate Multiple Particles */
+        .particle:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: -2s; }
+        .particle:nth-child(2) { left: 25%; animation-duration: 9s; animation-delay: -4s; }
+        .particle:nth-child(3) { left: 40%; animation-duration: 7s; animation-delay: -3s; }
+        .particle:nth-child(4) { left: 55%; animation-duration: 8s; animation-delay: -5s; }
+        .particle:nth-child(5) { left: 70%; animation-duration: 10s; animation-delay: -1s; }
+        .particle:nth-child(6) { left: 85%; animation-duration: 9s; animation-delay: -6s; }
 
         /* Main Content Card */
         .content-card {
             position: relative;
-            background: rgba(17, 24, 39, 0.9);
+            background: rgba(17, 24, 39, 0.95);
             border-radius: 15px;
             padding: 40px;
             text-align: center;
@@ -102,17 +120,17 @@
             right: 10px;
             padding: 5px 15px;
             font-size: 0.8em;
-            color: #10b981;
+            color: #a291e6;
             background-color: rgba(31, 41, 55, 0.9);
-            border: 1px solid #10b981;
+            border: 1px solid #603fa6;
             border-radius: 12px;
             cursor: pointer;
             transition: transform 0.2s ease, background-color 0.2s ease;
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 10px rgba(22, 37, 156, 0.3);
         }
 
         .rabbit-button:hover {
-            background-color: #10b981;
+            background-color: #2d257a;
             color: #fff;
             transform: translateY(-3px);
         }
@@ -127,8 +145,15 @@
 </head>
 
 <body>
-    <!-- Background Layer -->
-    <div class="background"></div>
+    <!-- Particle Background Layer -->
+    <div class="particle-background">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
     <!-- Main Content Card -->
     <div class="content-card">
