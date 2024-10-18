@@ -1,220 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreedomGate</title>
-    <link rel="icon" type="image/png" href="gooogle.png">
+    <title>FreedomGate | Unlock the Digital World</title>
+    <link rel="icon" type="image/png" href="https://example.com/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Poppins';
-            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
-        }
-
-        /* Basic page styling */
+        /* Base Reset and New Styling */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #000000, #1a1a1a, #141414);
-            background-size: cover;
-            animation: gradientShift 15s ease infinite;
-            color: white;
-            position: relative;
-            cursor: url('https://cur.cursors-4u.net/games/gam-1/gam24.cur'), auto;
-        }
-
-        /* Smooth background gradient animation */
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Central content styling with glass effect */
-        .content {
-            position: relative;
-            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #111827, #1f2937);
+            color: #e5e7eb;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            padding: 50px;
-            text-align: center;
-            backdrop-filter: blur(15px) saturate(200%) brightness(120%);
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1.8s ease forwards;
         }
 
-        /* Smooth fade-in animation for content */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Stylish title with glowing neon effect */
-        h1 {
-            font-size: 4.5em;
-            font-weight: 900;
-            letter-spacing: 8px;
-            text-shadow: 0 12px 40px rgba(0, 255, 150, 0.7), 0 8px 20px rgba(0, 230, 140, 0.5);
-            margin-bottom: 30px;
-            animation: textSlideIn 1.5s ease;
-            color: #00e676;
-            position: relative;
-        }
-
-        /* Glowing neon line effect */
-        h1::after {
-            content: '';
+        /* Background Animation */
+        .background {
             position: absolute;
-            width: 100%;
-            height: 3px;
-            background-color: #00e676;
-            bottom: -10px;
-            left: 0;
-            animation: neonGlow 2s ease-in-out infinite;
+            width: 150%;
+            height: 150%;
+            background: url('https://source.unsplash.com/1600x900/?abstract,cyber') center/cover no-repeat;
+            filter: blur(20px) brightness(0.5);
+            animation: moveBackground 30s infinite alternate;
         }
 
-        /* Glowing text effect */
-        @keyframes textSlideIn {
-            0% { opacity: 0; transform: translateY(-50px); }
+        @keyframes moveBackground {
+            0% { transform: translate(-20px, -20px) scale(1.1); }
+            100% { transform: translate(20px, 20px) scale(1.2); }
+        }
+
+        /* Main Content Card */
+        .content-card {
+            position: relative;
+            background: rgba(17, 24, 39, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            animation: fadeInCard 1.5s ease-out forwards;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInCard {
+            0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Smooth hover glow pulse */
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 15px #00e676, 0 0 40px #00e676, 0 0 60px #00e676; }
-            50% { text-shadow: 0 0 5px #00e676, 0 0 25px #00e676, 0 0 35px #00e676; }
+        /* Title Styling */
+        h1 {
+            font-size: 3em;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #38bdf8, 0 0 20px #38bdf8;
         }
 
-        /* Text with gentle entrance effect */
+        /* Paragraph Text Styling */
         p {
-            font-size: 1.5em;
-            max-width: 800px;
-            margin-bottom: 50px;
-            line-height: 1.8;
-            text-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            animation: fadeInText 2.0s ease forwards;
+            font-size: 1.2em;
+            margin: 0 0 30px;
+            color: #9ca3af;
         }
 
-        /* Smooth entrance for paragraph text */
-        @keyframes fadeInText {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Button container with smooth hover effect */
+        /* Buttons Container */
         .button-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Space between buttons */
-            margin: 30px 0;
+            gap: 15px;
         }
 
-        /* Common button styles with 3D shadow effect */
-        .button, .mirrors-button, .form-button {
-            padding: 20px 40px;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #00e676;
-            font-size: 1.6em;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 20px;
-            position: relative;
+        /* Stylish Button Design */
+        .button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background: linear-gradient(45deg, #3b82f6, #9333ea);
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6), 0 4px 15px rgba(0, 230, 140, 0.4);
-            transition: all 0.4s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
         }
 
-        /* Deep 3D hover effect */
-        .button:hover, .mirrors-button:hover, .form-button:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 230, 140, 0.6), 0 10px 20px rgba(0, 230, 140, 0.7);
-            filter: brightness(1.3);
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
         }
 
-        /* Flickering loading message */
-        .loading-message {
-            font-size: 1.8em;
-            font-weight: 400;
-            color: #cccccc;
-            animation: flicker 1.2s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        /* Footer styling */
-        .footer {
+        /* Tiny Rabbit Button */
+        .rabbit-button {
             position: fixed;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 1.3em;
-            color: #cccccc;
-            animation: slideUp 1.5s ease;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            color: #10b981;
+            background-color: rgba(31, 41, 55, 0.9);
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
         }
 
-        /* Smooth entrance animation for footer */
-        @keyframes slideUp {
-            0% { transform: translateY(80px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        .rabbit-button:hover {
+            background-color: #10b981;
+            color: #fff;
+            transform: translateY(-3px);
         }
 
-        /* Background parallax effect */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: url('https://source.unsplash.com/1600x900/?space,technology') center/cover no-repeat;
-            animation: parallax 35s ease infinite;
-            filter: blur(10px) brightness(0.8);
-            z-index: 1;
-        }
-
-        @keyframes parallax {
-            0%, 100% { transform: scale(1.1); }
-            50% { transform: scale(1.25); }
+        /* Footer Styling */
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6b7280;
         }
     </style>
 </head>
 
 <body>
-    <!-- Parallax animated background -->
-    <div class="parallax-bg"></div>
+    <!-- Background Layer -->
+    <div class="background"></div>
 
-    <!-- Main content -->
-    <div class="content">
-        <h1 class="glow-effect">Welcome to FreedomGate</h1>
-        <p>Your gateway to a free and secure internet experience. Click the button below to access a secure proxy. Please note that some sites may contain ads.</p>
+    <!-- Main Content Card -->
+    <div class="content-card">
+        <h1>Welcome to FreedomGate</h1>
+        <p>Discover a secure path to a free internet. Use our tools to break through barriers.</p>
 
-        <!-- Buttons section -->
+        <!-- Interactive Buttons -->
         <div class="button-container">
-            <a class="button" id="randomProxyButton">Random Proxy</a>
-            <a href="https://giveid.github.io/mirrors" class="mirrors-button">Mirrors</a>
-            <a href="https://giveid.github.io/form" class="form-button">Form</a>
+            <button class="button" id="randomProxyButton">Random Proxy</button>
+            <a href="https://giveid.github.io/mirrors" class="button">Mirrors</a>
+            <a href="https://giveid.github.io/form" class="button">Form</a>
         </div>
 
-        <p id="loadingMessage" class="loading-message"></p>
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2024 FreedomGate | Empowering Open Access to Information
+        </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        © 2024 FreedomGate | Empowering the Internet for All
-    </div>
+    <!-- Tiny Rabbit Button -->
+    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button">rabbit</a>
 
-    <!-- JavaScript to randomize proxies and loading messages -->
+    <!-- JavaScript for Proxy Functionality -->
     <script>
         const proxies = [
             'https://croxyproxy.rocks/',
@@ -227,29 +164,10 @@
             'https://noblocc.me/'
         ];
 
-        const loadingMessages = [
-            "Connecting you to freedom..."
-        ];
-
-        document.getElementById('randomProxyButton').addEventListener('click', function () {
-            if (proxies.length === 0) {
-                alert("No proxies available. Please try again later.");
-                return;
-            }
-
+        document.getElementById('randomProxyButton').addEventListener('click', () => {
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
-            const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-            const loadingMessageEl = document.getElementById('loadingMessage');
-
-            loadingMessageEl.textContent = randomMessage;
-            loadingMessageEl.style.opacity = 1;
-
-            setTimeout(function () {
-                window.open(randomProxy, '_blank');
-                loadingMessageEl.textContent = '';
-            }, 2500);
+            window.open(randomProxy, '_blank');
         });
     </script>
 </body>
-
 </html>
