@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreedomGate | Unlock the Digital World</title>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Pixelated font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         /* Base Reset and Styling */
         body, html {
@@ -14,15 +14,15 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Press Start 2P', cursive; /* Bitmapped font */
-            background-color: black; /* Dark background */
-            color: #ff00ff; /* Bright magenta text */
+            font-family: 'Press Start 2P', cursive;
+            background-color: black;
+            color: #ff00ff;
             display: flex;
-            justify-content: center; /* Centering content */
-            align-items: center; /* Centering content */
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
-            text-align: center; /* Centering text */
-            position: relative; /* For absolute positioning of effects */
+            text-align: center;
+            position: relative;
         }
 
         /* Background Animation */
@@ -33,8 +33,8 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle, rgba(255,0,255,0.1), rgba(0,0,0,0.7));
-            animation: backgroundAnimation 5s ease infinite; /* Pulsing effect */
-            z-index: -1; /* Send to back */
+            animation: backgroundAnimation 5s ease infinite;
+            z-index: -1;
         }
 
         @keyframes backgroundAnimation {
@@ -45,97 +45,91 @@
 
         /* Main Content Card Styling */
         .content-card {
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
-            border: 5px solid yellow; /* Bright yellow border */
-            border-radius: 0; /* No rounded corners */
-            padding: 30px; /* Balanced padding */
-            box-shadow: 0 0 15px #ff00ff; /* Glowing magenta shadow */
-            animation: flicker 0.2s infinite alternate; /* Flickering effect */
+            background: rgba(0, 0, 0, 0.8);
+            border: 5px solid yellow;
+            padding: 30px;
+            box-shadow: 0 0 15px #ff00ff;
+            animation: flicker 0.2s infinite alternate;
         }
 
-        /* Title and Text Styling */
         h1 {
-            font-size: 2.5em; /* Large title */
-            margin-bottom: 10px; /* Small margin */
-            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
-            filter: blur(0.5px); /* Blurry effect */
-            transform: rotate(-1deg) skew(-1deg); /* Slight rotation and skew for distortion */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 yellow;
+            filter: blur(0.5px);
+            transform: rotate(-1deg) skew(-1deg);
         }
 
         p {
-            font-size: 1em; /* Standard paragraph size */
-            margin: 0 0 20px; /* Small margin */
-            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
-            filter: blur(0.5px); /* Blurry effect */
-            transform: rotate(1deg) skew(1deg); /* Slight rotation and skew for distortion */
+            font-size: 1em;
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 0 yellow;
+            filter: blur(0.5px);
+            transform: rotate(1deg) skew(1deg);
         }
 
-        /* Buttons Styling */
         .button-container {
             display: flex;
-            flex-direction: column; /* Stacked vertically */
-            gap: 5px; /* Narrow gap */
+            flex-direction: column;
+            gap: 5px;
         }
 
         .button {
-            padding: 10px; /* Reduced padding */
-            font-size: 1em; /* Standard size */
-            color: #00ff00; /* Green text */
-            background: #0000ff; /* Blue background */
-            border: 3px solid #ff00ff; /* Bright magenta border */
+            padding: 10px;
+            font-size: 1em;
+            color: #00ff00;
+            background: #0000ff;
+            border: 3px solid #ff00ff;
             cursor: pointer;
-            transition: all 0.3s; /* Smooth transition for hover effect */
-            text-align: center; /* Center text */
-            filter: brightness(0.8); /* Dim button */
-            box-shadow: 0 0 10px #ff00ff; /* Glowing effect */
+            transition: all 0.3s;
+            text-align: center;
+            filter: brightness(0.8);
+            box-shadow: 0 0 10px #ff00ff;
         }
 
         .button:hover {
-            background: #ff00ff; /* Change background color on hover */
-            color: black; /* Change text color on hover */
-            transform: scale(1.1); /* Slight scaling on hover */
-            box-shadow: 0 0 20px #00ff00; /* Bright glow on hover */
+            background: #ff00ff;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ff00;
         }
 
-        /* Rabbit Button Styling */
         .rabbit-button {
             position: fixed;
-            bottom: 10px; /* Position near the bottom */
-            right: 10px; /* Position near the right */
-            padding: 10px; /* Button padding */
-            font-size: 1em; /* Standard size */
-            color: #ff00ff; /* Bright magenta */
-            background-color: black; /* Black background for contrast */
-            border: 3px solid #00ff00; /* Green border */
+            bottom: 10px;
+            right: 10px;
+            padding: 10px;
+            font-size: 1em;
+            color: #ff00ff;
+            background-color: black;
+            border: 3px solid #00ff00;
             cursor: pointer;
-            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
-            filter: brightness(0.8); /* Dim button */
-            animation: flicker 0.2s infinite alternate; /* Flickering effect */
+            text-shadow: 2px 2px 0 yellow;
+            filter: brightness(0.8);
+            animation: flicker 0.2s infinite alternate;
         }
 
         .rabbit-button:hover {
-            background-color: #00ff00; /* Change background on hover */
-            color: black; /* Change text color on hover */
-            transform: scale(1.1); /* Slight scaling on hover */
+            background-color: #00ff00;
+            color: black;
+            transform: scale(1.1);
         }
 
-        /* Footer Styling */
         .footer {
-            margin-top: 20px; /* Adjusted margin */
-            font-size: 1em; /* Standard size */
-            color: #00ff00; /* Green text */
-            text-align: center; /* Centered footer text */
-            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
+            margin-top: 20px;
+            font-size: 1em;
+            color: #00ff00;
+            text-align: center;
+            text-shadow: 2px 2px 0 yellow;
         }
 
-        /* Cursor Effect */
         .cursor {
             display: inline-block;
-            width: 10px; /* Width of the cursor */
-            height: 20px; /* Height of the cursor */
-            background-color: #00ff00; /* Green cursor */
-            animation: blink 1s step-end infinite; /* Blinking effect */
-            vertical-align: middle; /* Align with text */
+            width: 10px;
+            height: 20px;
+            background-color: #00ff00;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
         }
 
         @keyframes blink {
@@ -151,31 +145,25 @@
 </head>
 
 <body>
-    <!-- Animated Background -->
     <div class="background"></div>
 
-    <!-- Main Content Card -->
     <main class="content-card" role="main">
         <h1>Welcome to FreedomGate</h1>
         <p>Why must they block so many websites?</p>
         
-        <!-- Interactive Buttons -->
         <div class="button-container">
-            <a href="https://giveid.github.io/form" class="button" aria-label="Open Form page">Form</a>
-            <button class="button" id="randomProxyButton" aria-label="Open a random proxy">Random Proxy</button>
+            <a href="#" class="button" id="formButton">Form</a>
+            <button class="button" id="randomProxyButton">Random Proxy</button>
         </div>
 
-        <!-- Footer -->
         <footer class="footer" role="contentinfo">
             &copy; 2024 FreedomGate | BAD DESIGN!
-            <span class="cursor"></span> <!-- Blinking cursor -->
+            <span class="cursor"></span>
         </footer>
     </main>
 
-    <!-- Rabbit Button -->
-    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button" aria-label="Visit Rabbit site">rabbit</a>
+    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button">rabbit</a>
 
-    <!-- JavaScript for Proxy Functionality -->
     <script>
         const proxies = [
             'https://croxyproxy.rocks/',
@@ -188,22 +176,36 @@
             'https://noblocc.me/'
         ];
 
-        // Sound effect for button clicks
-        const clickSound = new Audio('UHOH.mp3'); // Using UHOH.mp3 sound
+        const clickSound = new Audio('UHOH.mp3');
 
-        // Event listener for random proxy button
-        document.getElementById('randomProxyButton').addEventListener('click', () => {
-            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
-            window.open(randomProxy, '_blank');
-            clickSound.play(); // Play UHOH sound
+        function playSoundAndNavigate(url) {
+            clickSound.play();
+            setTimeout(() => {
+                window.location.href = url;
+            }, 3000); // 3 second delay
+        }
+
+        document.getElementById('formButton').addEventListener('click', (event) => {
+            event.preventDefault();
+            playSoundAndNavigate('https://giveid.github.io/form');
         });
 
-        // Event listener for all buttons to play sound
-        const buttons = document.querySelectorAll('.button, .rabbit-button');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                clickSound.play(); // Play UHOH sound
-            });
+        document.getElementById('randomProxyButton').addEventListener('click', () => {
+            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
+            clickSound.play();
+            setTimeout(() => {
+                window.open(randomProxy, '_blank');
+            }, 5000); // 5 second delay
+        });
+
+        // Sound effect for rabbit button
+        const rabbitButton = document.querySelector('.rabbit-button');
+        rabbitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            clickSound.play();
+            setTimeout(() => {
+                window.open('https://www.lookmovie2.to/', '_blank');
+            }, 5000); // 5 second delay
         });
     </script>
 </body>
