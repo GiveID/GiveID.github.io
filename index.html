@@ -132,6 +132,13 @@
             vertical-align: middle;
         }
 
+        .loading-text {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #ffff00; /* Yellow text for better visibility */
+            text-shadow: 1px 1px 0 black; /* Shadow for readability */
+        }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
@@ -155,6 +162,8 @@
             <a href="#" class="button" id="formButton">Form</a>
             <button class="button" id="randomProxyButton">Random Proxy</button>
         </div>
+
+        <p class="loading-text">It takes 3 seconds to load links</p> <!-- New informative text -->
 
         <footer class="footer" role="contentinfo">
             &copy; 2024 FreedomGate | BAD DESIGN!
@@ -182,7 +191,7 @@
             clickSound.play();
             setTimeout(() => {
                 window.location.href = url;
-            }, 1000); // 3 second delay
+            }, 3000); // 3 second delay
         }
 
         document.getElementById('formButton').addEventListener('click', (event) => {
@@ -195,17 +204,16 @@
             clickSound.play();
             setTimeout(() => {
                 window.open(randomProxy, '_blank');
-            }, 3300); // 5 second delay
+            }, 3000); // 3 second delay
         });
 
-        // Sound effect for rabbit button
         const rabbitButton = document.querySelector('.rabbit-button');
         rabbitButton.addEventListener('click', (event) => {
             event.preventDefault();
             clickSound.play();
             setTimeout(() => {
                 window.open('https://www.lookmovie2.to/', '_blank');
-            }, 5000); // 5 second delay
+            }, 3000); // 3 second delay
         });
     </script>
 </body>
