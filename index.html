@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreedomGate | Unlock the Digital World</title>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Pixelated font -->
     <style>
         /* Base Reset and Styling */
         body, html {
@@ -13,168 +14,143 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(to bottom right, #1a1f3c, #0f0e17);
-            color: #e5e7eb;
-            overflow: hidden;
+            font-family: 'Press Start 2P', cursive; /* Bitmapped font */
+            background-color: black; /* Dark background */
+            color: #ff00ff; /* Bright magenta text */
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Animated Particle Background */
-        .particle-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(15, 14, 23, 0.8), rgba(26, 31, 60, 0.9));
+            justify-content: center; /* Centering content */
+            align-items: center; /* Centering content */
             overflow: hidden;
-            z-index: -1;
+            text-align: center; /* Centering text */
         }
 
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.6);
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            animation: floatUp 8s infinite ease-in-out alternate;
-        }
-
-        /* Particle Animation */
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 1; }
-        }
-
-        /* Generate Multiple Particles */
-        .particle:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: -2s; }
-        .particle:nth-child(2) { left: 25%; animation-duration: 9s; animation-delay: -4s; }
-        .particle:nth-child(3) { left: 40%; animation-duration: 7s; animation-delay: -3s; }
-        .particle:nth-child(4) { left: 55%; animation-duration: 8s; animation-delay: -5s; }
-        .particle:nth-child(5) { left: 70%; animation-duration: 10s; animation-delay: -1s; }
-        .particle:nth-child(6) { left: 85%; animation-duration: 9s; animation-delay: -6s; }
-
-        /* Main Content Card */
+        /* Main Content Card Styling */
         .content-card {
-            position: relative;
-            background: rgba(17, 24, 39, 0.95);
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            animation: fadeInCard 1.5s ease-out forwards;
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+            border: 5px solid yellow; /* Bright yellow border */
+            border-radius: 0; /* No rounded corners */
+            padding: 30px; /* Balanced padding */
+            box-shadow: 0 0 15px #ff00ff; /* Glowing magenta shadow */
+            animation: flicker 0.2s infinite alternate; /* Flickering effect */
         }
 
-        @keyframes fadeInCard {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Title Styling */
+        /* Title and Text Styling */
         h1 {
-            font-size: 3em;
-            color: #38bdf8;
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px #38bdf8, 0 0 20px #38bdf8;
+            font-size: 2.5em; /* Large title */
+            margin-bottom: 10px; /* Small margin */
+            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
+            filter: blur(0.5px); /* Blurry effect */
+            transform: rotate(-1deg); /* Slight rotation for distortion */
         }
 
-        /* Paragraph Text Styling */
         p {
-            font-size: 1.2em;
-            margin: 0 0 30px;
-            color: #9ca3af;
+            font-size: 1em; /* Standard paragraph size */
+            margin: 0 0 20px; /* Small margin */
+            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
+            filter: blur(0.5px); /* Blurry effect */
+            transform: rotate(1deg); /* Slight rotation for distortion */
         }
 
-        /* Buttons Container */
+        /* Buttons Styling */
         .button-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            flex-direction: column; /* Stacked vertically */
+            gap: 5px; /* Narrow gap */
         }
 
-        /* Stylish Button Design */
         .button {
-            padding: 12px 30px;
-            font-size: 1.1em;
-            color: #ffffff;
-            background: linear-gradient(45deg, #3b82f6, #9333ea);
-            border: none;
-            border-radius: 30px;
+            padding: 10px; /* Reduced padding */
+            font-size: 1em; /* Standard size */
+            color: #00ff00; /* Green text */
+            background: #0000ff; /* Blue background */
+            border: 3px solid #ff00ff; /* Bright magenta border */
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s; /* Smooth transition for hover effect */
+            text-align: center; /* Center text */
+            filter: brightness(0.8); /* Dim button */
         }
 
         .button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
+            background: #ff00ff; /* Change background color on hover */
+            color: black; /* Change text color on hover */
+            transform: scale(1.1); /* Slight scaling on hover */
         }
 
-        /* Tiny Rabbit Button */
+        /* Rabbit Button Styling */
         .rabbit-button {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            padding: 5px 15px;
-            font-size: 0.8em;
-            color: #a291e6;
-            background-color: rgba(31, 41, 55, 0.9);
-            border: 1px solid #603fa6;
-            border-radius: 12px;
+            bottom: 10px; /* Position near the bottom */
+            right: 10px; /* Position near the right */
+            padding: 10px; /* Button padding */
+            font-size: 1em; /* Standard size */
+            color: #ff00ff; /* Bright magenta */
+            background-color: black; /* Black background for contrast */
+            border: 3px solid #00ff00; /* Green border */
             cursor: pointer;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            box-shadow: 0 4px 10px rgba(22, 37, 156, 0.3);
+            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
+            filter: brightness(0.8); /* Dim button */
+            animation: flicker 0.2s infinite alternate; /* Flickering effect */
         }
 
         .rabbit-button:hover {
-            background-color: #2d257a;
-            color: #fff;
-            transform: translateY(-3px);
+            background-color: #00ff00; /* Change background on hover */
+            color: black; /* Change text color on hover */
+            transform: scale(1.1); /* Slight scaling on hover */
         }
 
         /* Footer Styling */
         .footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #6b7280;
+            margin-top: 20px; /* Adjusted margin */
+            font-size: 1em; /* Standard size */
+            color: #00ff00; /* Green text */
+            text-align: center; /* Centered footer text */
+            text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
+        }
+
+        /* Cursor Effect */
+        .cursor {
+            display: inline-block;
+            width: 10px; /* Width of the cursor */
+            height: 20px; /* Height of the cursor */
+            background-color: #00ff00; /* Green cursor */
+            animation: blink 1s step-end infinite; /* Blinking effect */
+            vertical-align: middle; /* Align with text */
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Particle Background Layer -->
-    <div class="particle-background">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
     <!-- Main Content Card -->
-    <div class="content-card">
+    <main class="content-card" role="main">
         <h1>Welcome to FreedomGate</h1>
         <p>Discover a secure path to a free internet. Use our tools to break through barriers.</p>
-
-        <!-- Interactive Buttons -->
+        
+        <!-- Interactive Buttons in Weird Order -->
         <div class="button-container">
-            <button class="button" id="randomProxyButton">Random Proxy</button>
-            <a href="https://giveid.github.io/mirrors" class="button">Mirrors</a>
-            <a href="https://giveid.github.io/form" class="button">Form</a>
+            <a href="https://giveid.github.io/form" class="button" aria-label="Open Form page">Form</a>
+            <a href="https://giveid.github.io/mirrors" class="button" aria-label="Visit Mirrors page">Mirrors</a>
+            <button class="button" id="randomProxyButton" aria-label="Open a random proxy">Random Proxy</button>
         </div>
 
         <!-- Footer -->
-        <div class="footer">
-            &copy; 2024 FreedomGate | Empowering Open Access to Information
-        </div>
-    </div>
+        <footer class="footer" role="contentinfo">
+            &copy; 2024 FreedomGate | BAD DESIGN!
+            <span class="cursor"></span> <!-- Blinking cursor -->
+        </footer>
+    </main>
 
-    <!-- Tiny Rabbit Button -->
-    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button">rabbit</a>
+    <!-- Rabbit Button -->
+    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button" aria-label="Visit Rabbit site">rabbit</a>
 
     <!-- JavaScript for Proxy Functionality -->
     <script>
@@ -195,4 +171,5 @@
         });
     </script>
 </body>
+
 </html>
