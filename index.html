@@ -22,11 +22,30 @@
             align-items: center; /* Centering content */
             overflow: hidden;
             text-align: center; /* Centering text */
+            position: relative; /* For absolute positioning of effects */
+        }
+
+        /* Background Animation */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,255,0.1), rgba(0,0,0,0.7));
+            animation: backgroundAnimation 5s ease infinite; /* Pulsing effect */
+            z-index: -1; /* Send to back */
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: rgba(255, 0, 255, 0.1); }
+            50% { background: rgba(0, 0, 0, 0.7); }
+            100% { background: rgba(255, 0, 255, 0.1); }
         }
 
         /* Main Content Card Styling */
         .content-card {
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
             border: 5px solid yellow; /* Bright yellow border */
             border-radius: 0; /* No rounded corners */
             padding: 30px; /* Balanced padding */
@@ -40,7 +59,7 @@
             margin-bottom: 10px; /* Small margin */
             text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
             filter: blur(0.5px); /* Blurry effect */
-            transform: rotate(-1deg); /* Slight rotation for distortion */
+            transform: rotate(-1deg) skew(-1deg); /* Slight rotation and skew for distortion */
         }
 
         p {
@@ -48,7 +67,7 @@
             margin: 0 0 20px; /* Small margin */
             text-shadow: 2px 2px 0 yellow; /* Heavy shadow */
             filter: blur(0.5px); /* Blurry effect */
-            transform: rotate(1deg); /* Slight rotation for distortion */
+            transform: rotate(1deg) skew(1deg); /* Slight rotation and skew for distortion */
         }
 
         /* Buttons Styling */
@@ -68,12 +87,14 @@
             transition: all 0.3s; /* Smooth transition for hover effect */
             text-align: center; /* Center text */
             filter: brightness(0.8); /* Dim button */
+            box-shadow: 0 0 10px #ff00ff; /* Glowing effect */
         }
 
         .button:hover {
             background: #ff00ff; /* Change background color on hover */
             color: black; /* Change text color on hover */
             transform: scale(1.1); /* Slight scaling on hover */
+            box-shadow: 0 0 20px #00ff00; /* Bright glow on hover */
         }
 
         /* Rabbit Button Styling */
@@ -130,12 +151,15 @@
 </head>
 
 <body>
+    <!-- Animated Background -->
+    <div class="background"></div>
+
     <!-- Main Content Card -->
     <main class="content-card" role="main">
         <h1>Welcome to FreedomGate</h1>
         <p>Discover a secure path to a free internet. Use our tools to break through barriers.</p>
         
-        <!-- Interactive Buttons in Weird Order -->
+        <!-- Interactive Buttons -->
         <div class="button-container">
             <a href="https://giveid.github.io/form" class="button" aria-label="Open Form page">Form</a>
             <a href="https://giveid.github.io/mirrors" class="button" aria-label="Visit Mirrors page">Mirrors</a>
@@ -165,9 +189,22 @@
             'https://noblocc.me/'
         ];
 
+        // Sound effect for button clicks
+        const clickSound = new Audio('UHOH.mp3'); // Using UHOH.mp3 sound
+
+        // Event listener for random proxy button
         document.getElementById('randomProxyButton').addEventListener('click', () => {
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
             window.open(randomProxy, '_blank');
+            clickSound.play(); // Play UHOH sound
+        });
+
+        // Event listener for all buttons to play sound
+        const buttons = document.querySelectorAll('.button, .rabbit-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                clickSound.play(); // Play UHOH sound
+            });
         });
     </script>
 </body>
