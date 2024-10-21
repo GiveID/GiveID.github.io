@@ -33,7 +33,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle, rgba(255,0,255,0.1), rgba(0,0,0,0.7));
-            animation: backgroundAnimation 5s ease infinite;
+            animation: backgroundAnimation 8s ease infinite;
             z-index: -1;
         }
 
@@ -49,7 +49,7 @@
             border: 5px solid yellow;
             padding: 30px;
             box-shadow: 0 0 15px #ff00ff;
-            animation: flicker 0.2s infinite alternate;
+            animation: flicker 0.4s infinite alternate;
         }
 
         h1 {
@@ -76,7 +76,7 @@
 
         .button {
             padding: 10px;
-            font-size: 1em;
+            font-size: 1.2em;
             color: #00ff00;
             background: #0000ff;
             border: 3px solid #ff00ff;
@@ -99,14 +99,14 @@
             bottom: 10px;
             right: 10px;
             padding: 10px;
-            font-size: 1em;
+            font-size: 1.2em;
             color: #ff00ff;
             background-color: black;
             border: 3px solid #00ff00;
             cursor: pointer;
             text-shadow: 2px 2px 0 yellow;
             filter: brightness(0.8);
-            animation: flicker 0.2s infinite alternate;
+            animation: flicker 0.4s infinite alternate;
         }
 
         .rabbit-button:hover {
@@ -134,9 +134,9 @@
 
         .loading-text, .bookmark-text {
             margin-top: 15px;
-            font-size: 0.9em;
-            color: #ffff00; /* Yellow text for better visibility */
-            text-shadow: 1px 1px 0 black; /* Shadow for readability */
+            font-size: 1.1em;
+            color: #ffff00;
+            text-shadow: 1px 1px 0 black;
         }
 
         @keyframes blink {
@@ -147,6 +147,12 @@
         @keyframes flicker {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
+        }
+
+        /* Sound Click Visual Feedback */
+        .flash {
+            background-color: #00ff00;
+            box-shadow: 0 0 20px #ff00ff;
         }
     </style>
 </head>
@@ -159,8 +165,9 @@
         <p>Why must they block so many websites?</p>
         
         <div class="button-container">
-            <a href="#" class="button" id="formButton">Form</a>
-            <button class="button" id="randomProxyButton">Random Proxy</button>
+            <a href="#" class="button" id="formButton" aria-label="Form Button">Form</a>
+            <a href="#" class="button" id="Mirrors" aria-label="Form Button">Mirrors</a>
+            <button class="button" id="randomProxyButton" aria-label="Random Proxy Button">Random Proxy</button>
         </div>
 
         <p class="loading-text">It takes 3 seconds to load links</p>
@@ -172,7 +179,7 @@
         </footer>
     </main>
 
-    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button">rabbit</a>
+    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button" aria-label="Rabbit Button">rabbit</a>
 
     <script>
         const proxies = [
@@ -186,13 +193,15 @@
             'https://noblocc.me/'
         ];
 
-        const clickSound = new Audio('UHOH.mp3');
+        const clickSound = new Audio('d.mp3');
 
         function playSoundAndNavigate(url) {
+            document.body.classList.add('flash');
             clickSound.play();
             setTimeout(() => {
                 window.location.href = url;
-            }, 3000); // 3 second delay
+                document.body.classList.remove('flash');
+            }, 2000); // 3 second delay
         }
 
         document.getElementById('formButton').addEventListener('click', (event) => {
@@ -202,19 +211,12 @@
 
         document.getElementById('randomProxyButton').addEventListener('click', () => {
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
+            document.body.classList.add('flash');
             clickSound.play();
             setTimeout(() => {
                 window.open(randomProxy, '_blank');
-            }, 3000); // 3 second delay
-        });
-
-        const rabbitButton = document.querySelector('.rabbit-button');
-        rabbitButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            clickSound.play();
-            setTimeout(() => {
-                window.open('https://ww17.0123movie.net/', '_blank');
-            }, 3000); // 3 second delay
+                document.body.classList.remove('flash');
+            }, 2000); // 3 second delay
         });
     </script>
 </body>
