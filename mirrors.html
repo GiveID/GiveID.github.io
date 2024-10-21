@@ -4,194 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Mirrors</title>
-    <link rel="icon" type="image/jpeg" href="gooogle.png">
+    <title>Site Mirrors | FreedomGate</title>
+    <link rel="icon" type="image/png" href="https://example.com/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Chakra Petch';
-            src: url('ChakraPetch-Regular.ttf') format('truetype');
-        }
-
+        /* Base Reset and Styling */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Chakra Petch', sans-serif;
-            color: white;
-            background: linear-gradient(130deg, #2c3e50, #34495e); /* Dark gradient */
-            animation: backgroundAnimation 12s ease infinite;
+            font-family: 'Press Start 2P', cursive;
+            background-color: black;
+            color: #ff00ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,255,0.1), rgba(0,0,0,0.7));
+            animation: backgroundAnimation 8s ease infinite;
+            z-index: -1;
         }
 
         @keyframes backgroundAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background: rgba(255, 0, 255, 0.1); }
+            50% { background: rgba(0, 0, 0, 0.7); }
+            100% { background: rgba(255, 0, 255, 0.1); }
         }
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            backdrop-filter: blur(15px);
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 40px 20px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        /* Main Content Card Styling */
+        .content-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 5px solid yellow;
+            padding: 30px;
+            box-shadow: 0 0 15px #ff00ff;
+            animation: flicker 0.4s infinite alternate;
         }
 
         h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
-            animation: glow 2s infinite alternate;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 yellow;
+            filter: blur(0.5px);
+            transform: rotate(-1deg) skew(-1deg);
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-            }
-            to {
-                text-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
-            }
+        p, ul {
+            font-size: 1em;
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 0 yellow;
+            filter: blur(0.5px);
+            transform: rotate(1deg) skew(1deg);
         }
 
-        h3 {
-            margin-bottom: 30px;
-            font-size: 1.5em;
-            color: #00ffcc;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .mirror-link {
-            display: inline-block;
-            font-size: 1.5em;
-            background-color: #2980b9; /* Blue background */
-            color: white;
-            padding: 15px 40px;
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #00ff00;
             text-decoration: none;
-            border-radius: 10px;
-            margin: 10px 0;
-            position: relative;
-            overflow: hidden;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .mirror-link:hover {
-            background-color: #3498db; /* Lighter blue on hover */
-            transform: translateY(-5px);
+        .footer {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #00ff00;
+            text-align: center;
+            text-shadow: 2px 2px 0 yellow;
         }
 
-        .mirror-link::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%) scale(0);
-            border-radius: 50%;
-            transition: transform 0.6s ease;
-        }
-
-        .mirror-link:active::after {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .mirror-link span {
-            font-weight: bold;
-            color: #00ffcc;
-        }
-
-        .status {
-            margin-top: 10px;
-            font-size: 1.2em;
-        }
-
-        .return-button {
-            margin-top: 30px;
-            background-color: #606060;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .return-button:hover {
-            background-color: #404040;
-            transform: translateY(-5px);
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
     </style>
 </head>
 
 <body>
-    <div class="content">
-        <h1>Available Mirrors</h1>
-        <h3>If sites are down, it's not my fault</h3>
-        <div id="mirror-links"></div>
-        <a href="https://giveid.github.io/" class="return-button">Return to Home</a>
-    </div>
+    <div class="background"></div>
 
-    <script>
-        const mirrors = [
-            { name: "Primary Mirror", url: "https://giveid.github.io/" },
-            { name: "Backup Mirror", url: "https://giveid.69.mu/" },
-            { name: "Third Mirror", url: "https://balls.ufodns.com/" },
-            { name: "Fourth Mirror", url: "https://matheddu.undo.it/" },
-            { name: "Fifth Mirror", url: "https://educationedu.mooo.com/" },
-            { name: "Sixth Mirror", url: "https://giveid.gerastar.ru/" },
-        ];
+    <main class="content-card" role="main">
+        <h1>Site Mirrors</h1>
+        <p>Use these alternative links to access our site if the main site is unavailable:</p>
+        
+        <ul>
+            <li><a href="http://edumathhelps.42web.io/" target="_blank">edumathhelps.42web.io</a></li>
+            <li><a href="http://eduuuumath.000.pe/" target="_blank">eduuuumath.000.pe</a></li>
+            <li><a href="http://mymathez.great-site.net/" target="_blank">mymathez.great-site.net</a></li>
+        </ul>
 
-        const mirrorLinksDiv = document.getElementById('mirror-links');
-
-        mirrors.forEach(mirror => {
-            const linkElement = document.createElement('a');
-            linkElement.href = mirror.url;
-            linkElement.className = 'mirror-link';
-            linkElement.target = '_blank';
-            linkElement.innerHTML = `${mirror.name}: <span>${mirror.url}</span>`;
-
-            const statusElement = document.createElement('div');
-            statusElement.className = 'status';
-            statusElement.innerText = 'Checking...';
-
-            mirrorLinksDiv.appendChild(linkElement);
-            mirrorLinksDiv.appendChild(statusElement);
-
-            fetch(mirror.url, { method: 'HEAD' })
-                .then(response => {
-                    if (response.ok) {
-                        statusElement.innerText = 'Online';
-                        statusElement.style.color = 'green';
-                    } else {
-                        statusElement.innerText = 'Offline';
-                        statusElement.style.color = 'red';
-                    }
-                })
-                .catch(() => {
-                    statusElement.innerText = 'Offline';
-                    statusElement.style.color = 'red';
-                });
-        });
-    </script>
+        <footer class="footer" role="contentinfo">
+            &copy; 2024 FreedomGate | Unleash Digital Freedom
+        </footer>
+    </main>
 </body>
 
 </html>
