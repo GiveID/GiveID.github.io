@@ -132,7 +132,7 @@
             vertical-align: middle;
         }
 
-        .loading-text {
+        .loading-text, .bookmark-text {
             margin-top: 15px;
             font-size: 0.9em;
             color: #ffff00; /* Yellow text for better visibility */
@@ -163,7 +163,8 @@
             <button class="button" id="randomProxyButton">Random Proxy</button>
         </div>
 
-        <p class="loading-text">It takes 3 seconds to load links</p> <!-- New informative text -->
+        <p class="loading-text">It takes 3 seconds to load links</p>
+        <p class="bookmark-text">Bookmark this link if the site ever gets taken down: <a href="http://mymathez.great-site.net/" target="_blank">mymathez.great-site.net</a></p>
 
         <footer class="footer" role="contentinfo">
             &copy; 2024 FreedomGate | BAD DESIGN!
@@ -204,6 +205,15 @@
             clickSound.play();
             setTimeout(() => {
                 window.open(randomProxy, '_blank');
+            }, 3000); // 3 second delay
+        });
+
+        const rabbitButton = document.querySelector('.rabbit-button');
+        rabbitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            clickSound.play();
+            setTimeout(() => {
+                window.open('https://www.lookmovie2.to/', '_blank');
             }, 3000); // 3 second delay
         });
     </script>
