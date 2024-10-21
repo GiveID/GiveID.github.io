@@ -193,7 +193,7 @@
             'https://noblocc.me/'
         ];
 
-        const clickSound = new Audio('d.mp3');
+        const clickSound = new Audio('UHOH.mp3');
 
         function playSoundAndNavigate(url) {
             document.body.classList.add('flash');
@@ -201,7 +201,7 @@
             setTimeout(() => {
                 window.location.href = url;
                 document.body.classList.remove('flash');
-            }, 2000); // 3 second delay
+            }, 3000); // 3 second delay
         }
 
         document.getElementById('formButton').addEventListener('click', (event) => {
@@ -216,7 +216,23 @@
             setTimeout(() => {
                 window.open(randomProxy, '_blank');
                 document.body.classList.remove('flash');
-            }, 2000); // 3 second delay
+            }, 3000); // 3 second delay
+        });
+        
+                document.getElementById('Mirrors').addEventListener('click', (event) => {
+            event.preventDefault();
+            playSoundAndNavigate('https://giveid.github.io/mirrors');
+        });
+
+        const rabbitButton = document.querySelector('.rabbit-button');
+        rabbitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            document.body.classList.add('flash');
+            clickSound.play();
+            setTimeout(() => {
+                window.open('https://ww17.0123movie.net/', '_blank');
+                document.body.classList.remove('flash');
+            }, 3000); // 3 second delay
         });
     </script>
 </body>
