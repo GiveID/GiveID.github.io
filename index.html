@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +82,6 @@
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
-            filter: brightness(0.8);
             box-shadow: 0 0 10px #ff00ff;
         }
 
@@ -105,8 +103,6 @@
             border: 3px solid #00ff00;
             cursor: pointer;
             text-shadow: 2px 2px 0 yellow;
-            filter: brightness(0.8);
-            animation: flicker 0.4s infinite alternate;
         }
 
         .rabbit-button:hover {
@@ -148,12 +144,6 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-
-        /* Sound Click Visual Feedback */
-        .flash {
-            background-color: #00ff00;
-            box-shadow: 0 0 20px #ff00ff;
-        }
     </style>
 </head>
 
@@ -165,8 +155,8 @@
         <p>Why must they block so many websites?</p>
         
         <div class="button-container">
-            <a href="#" class="button" id="formButton" aria-label="Form Button">Form</a>
-            <a href="#" class="button" id="Mirrors" aria-label="Form Button">Mirrors</a>
+            <a href="https://giveid.github.io/form" class="button" id="formButton" aria-label="Form Button">Form</a>
+            <a href="https://giveid.github.io/mirrors" class="button" id="Mirrors" aria-label="Mirrors Button">Mirrors</a>
             <button class="button" id="randomProxyButton" aria-label="Random Proxy Button">Random Proxy</button>
         </div>
 
@@ -179,7 +169,7 @@
         </footer>
     </main>
 
-    <a href="https://www.lookmovie2.to/" target="_blank" class="rabbit-button" aria-label="Rabbit Button">rabbit</a>
+    <a href="https://ww17.0123movie.net/" target="_blank" class="rabbit-button" aria-label="Rabbit Button">rabbit</a>
 
     <script>
         const proxies = [
@@ -193,48 +183,16 @@
             'https://noblocc.me/'
         ];
 
-        const clickSound = new Audio('UHOH.mp3');
-
-        function playSoundAndNavigate(url) {
-            document.body.classList.add('flash');
-            clickSound.play();
-            setTimeout(() => {
-                window.location.href = url;
-                document.body.classList.remove('flash');
-            }, 3000); // 3 second delay
-        }
-
-        document.getElementById('formButton').addEventListener('click', (event) => {
-            event.preventDefault();
-            playSoundAndNavigate('https://giveid.github.io/form');
-        });
-
         document.getElementById('randomProxyButton').addEventListener('click', () => {
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
-            document.body.classList.add('flash');
-            clickSound.play();
-            setTimeout(() => {
-                window.open(randomProxy, '_blank');
-                document.body.classList.remove('flash');
-            }, 3000); // 3 second delay
-        });
-        
-                document.getElementById('Mirrors').addEventListener('click', (event) => {
-            event.preventDefault();
-            playSoundAndNavigate('https://giveid.github.io/mirrors');
+            window.open(randomProxy, '_blank');
         });
 
         const rabbitButton = document.querySelector('.rabbit-button');
         rabbitButton.addEventListener('click', (event) => {
             event.preventDefault();
-            document.body.classList.add('flash');
-            clickSound.play();
-            setTimeout(() => {
-                window.open('https://ww17.0123movie.net/', '_blank');
-                document.body.classList.remove('flash');
-            }, 3000); // 3 second delay
+            window.open('https://ww17.0123movie.net/', '_blank');
         });
     </script>
 </body>
-
 </html>
