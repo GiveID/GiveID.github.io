@@ -5,171 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreedomGate | Unlock the Digital World</title>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Reset and Styling */
-        body, html {
+        /* Reset and Core Styling */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            width: 100%;
+        }
+
+        html, body {
             height: 100%;
-            font-family: 'Press Start 2P', cursive;
-            background-color: black;
-            color: #ff00ff;
+            width: 100%;
+            font-family: 'Helvetica', Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            text-align: center;
-            position: relative;
         }
 
-        /* Background Animation */
-        .background {
+        /* Subtle Animated Background Gradient */
+        body::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(255,0,255,0.1), rgba(0,0,0,0.7));
-            animation: backgroundAnimation 8s ease infinite;
+            background: linear-gradient(145deg, #202124, #181818);
+            animation: backgroundGradient 8s infinite alternate;
             z-index: -1;
         }
 
-        @keyframes backgroundAnimation {
-            0% { background: rgba(255, 0, 255, 0.1); }
-            50% { background: rgba(0, 0, 0, 0.7); }
-            100% { background: rgba(255, 0, 255, 0.1); }
+        @keyframes backgroundGradient {
+            0% { background: linear-gradient(145deg, #202124, #181818); }
+            50% { background: linear-gradient(145deg, #181818, #202124); }
+            100% { background: linear-gradient(145deg, #202124, #181818); }
         }
 
-        /* Main Content Card Styling */
+        /* Centered Content Card */
         .content-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 5px solid yellow;
-            padding: 30px;
-            box-shadow: 0 0 15px #ff00ff;
-            animation: flicker 0.4s infinite alternate;
+            max-width: 600px;
+            padding: 40px;
+            background: #1e1e1f;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transform: translateY(-20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
         }
 
+        /* Fade-in Animation */
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Heading Styling */
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 0 yellow;
-            filter: blur(0.5px);
-            transform: rotate(-1deg) skew(-1deg);
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 15px;
         }
 
         p {
-            font-size: 1em;
-            margin: 0 0 20px;
-            text-shadow: 2px 2px 0 yellow;
-            filter: blur(0.5px);
-            transform: rotate(1deg) skew(1deg);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #b3b3b3;
+            margin-bottom: 20px;
         }
 
+        /* Button Styling */
         .button-container {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            justify-content: center;
+            gap: 15px;
         }
 
         .button {
-            padding: 10px;
-            font-size: 1.2em;
-            color: #00ff00;
-            background: #0000ff;
-            border: 3px solid #ff00ff;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            background: #333333;
+            padding: 12px 24px;
+            border: 1px solid #424242;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            box-shadow: 0 0 10px #ff00ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .button:hover {
-            background: #ff00ff;
-            color: black;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px #00ff00;
+            background-color: #555555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
 
-        .rabbit-button {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            padding: 10px;
-            font-size: 1.2em;
-            color: #ff00ff;
-            background-color: black;
-            border: 3px solid #00ff00;
-            cursor: pointer;
-            text-shadow: 2px 2px 0 yellow;
-        }
-
-        .rabbit-button:hover {
-            background-color: #00ff00;
-            color: black;
-            transform: scale(1.1);
-        }
-
-        .footer {
+        /* Subtle Text and Links */
+        .bookmark-text, .footer {
+            font-size: 0.9rem;
+            color: #8e8e93;
             margin-top: 20px;
-            font-size: 1em;
-            color: #00ff00;
-            text-align: center;
-            text-shadow: 2px 2px 0 yellow;
         }
 
-        .cursor {
+        .bookmark-text a {
+            color: #76a9ff;
+            text-decoration: none;
+        }
+
+        .bookmark-text a:hover {
+            color: #a3c9ff;
+            text-decoration: underline;
+        }
+
+        /* Cursor Animation */
+        .cursor-blink {
             display: inline-block;
-            width: 10px;
-            height: 20px;
-            background-color: #00ff00;
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-        }
-
-        .loading-text, .bookmark-text {
-            margin-top: 15px;
-            font-size: 1.1em;
-            color: #ffff00;
-            text-shadow: 1px 1px 0 black;
+            width: 8px;
+            height: 1rem;
+            background-color: #76a9ff;
+            animation: blink 1s infinite;
+            margin-left: 5px;
         }
 
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
     </style>
 </head>
 
 <body>
-    <div class="background"></div>
-
     <main class="content-card" role="main">
-        <h1>Welcome to FreedomGate</h1>
-        <p>Why must they block so many websites?</p>
+        <h1>FreedomGate</h1>
+        <p>Unlock the digital world without boundaries.</p>
         
         <div class="button-container">
-            <a href="https://giveid.github.io/form" class="button" id="formButton" aria-label="Form Button">Form</a>
-            <a href="https://giveid.github.io/mirrors" class="button" id="Mirrors" aria-label="Mirrors Button">Mirrors</a>
+            <a href="https://giveid.github.io/form" class="button" aria-label="Form Button">Form</a>
+            <a href="https://giveid.github.io/mirrors" class="button" aria-label="Mirrors Button">Mirrors</a>
             <button class="button" id="randomProxyButton" aria-label="Random Proxy Button">Random Proxy</button>
         </div>
 
-        <p class="loading-text">It takes 3 seconds to load links</p>
-        <p class="bookmark-text">Bookmark this link if the site ever gets taken down: <a href="http://mymathez.great-site.net/" target="_blank">mymathez.great-site.net</a></p>
+        <p class="bookmark-text">Bookmark this link if the site ever goes down: <a href="http://mymathez.great-site.net/" target="_blank">mymathez.great-site.net</a></p>
 
         <footer class="footer" role="contentinfo">
-            &copy; 2024 FreedomGate | BAD DESIGN!
-            <span class="cursor"></span>
+            &copy; 2024 FreedomGate | Inspired by Limitless Possibility
+            <span class="cursor-blink"></span>
         </footer>
     </main>
-
-    <a href="https://ww17.0123movie.net/" target="_blank" class="rabbit-button" aria-label="Rabbit Button">rabbit</a>
 
     <script>
         const proxies = [
@@ -186,12 +176,6 @@
         document.getElementById('randomProxyButton').addEventListener('click', () => {
             const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
             window.open(randomProxy, '_blank');
-        });
-
-        const rabbitButton = document.querySelector('.rabbit-button');
-        rabbitButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            window.open('https://ww17.0123movie.net/', '_blank');
         });
     </script>
 </body>
