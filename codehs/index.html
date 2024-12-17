@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code HS</title>
+  <style>
+    /* Reset and Body Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
 
+    /* Background Particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      animation: float 8s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px) translateX(0px);
+      }
+      100% {
+        transform: translateY(-50px) translateX(30px);
+      }
+    }
+
+    /* Title Styling */
+    .title {
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(90deg, #f39c12, #e67e22, #f39c12);
+      background-size: 200% 200%;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: gradientGlow 3s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    @keyframes gradientGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #f5f5f5;
+      opacity: 0.8;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 40px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button Container */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Button Styling */
+    .button {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #8e44ad, #3498db);
+      color: white;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(142, 68, 173, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #3498db, #8e44ad);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(52, 152, 219, 0.8);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Particles -->
+  <div class="particle" style="width: 50px; height: 50px; top: 10%; left: 20%; animation-duration: 10s;"></div>
+  <div class="particle" style="width: 30px; height: 30px; top: 40%; left: 50%; animation-duration: 12s;"></div>
+  <div class="particle" style="width: 40px; height: 40px; top: 70%; left: 30%; animation-duration: 14s;"></div>
+  <div class="particle" style="width: 60px; height: 60px; top: 60%; left: 80%; animation-duration: 16s;"></div>
+  <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 75%; animation-duration: 11s;"></div>
+
+  <!-- Title -->
+  <div class="title">CODE HS SUCKS</div>
+  <h2>I'm cool for this, right??</h2>
+
+  <!-- Buttons -->
+  <div class="button-container">
+    <a href="#" class="button">1.1</a>
+    <a href="http://codehs.great-site.net/1dot2" target="_blank" class="button">1.2</a>
+    <a href="http://codehs.great-site.net/1dot3" target="_blank" class="button">1.3</a>
+    <a href="http://codehs.great-site.net/1dot4" target="_blank" class="button">1.4</a>
+    <a href="#" class="button">1.5</a>
+  </div>
+</body>
+</html>
