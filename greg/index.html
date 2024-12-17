@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2 Code Sections</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f3460;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background-color: #16213e;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .tab.active {
+      background-color: #3498db;
+    }
+
+    .tab:hover {
+      background-color: #8e44ad;
+    }
+
+    /* Content */
+    .content {
+      display: none;
+      background-color: #1a1a2e;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    pre {
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #8e44ad;
+    }
+
+    /* Copy Confirmation */
+    .copy-confirmation {
+      color: #0a84ff;
+      font-size: 1rem;
+      margin-top: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .copy-confirmation.show {
+      opacity: 1;
+    }
+
+    /* Hidden textarea for fallback copy */
+    textarea {
+      position: absolute;
+      left: -9999px;
+    }
+  </style>
+</head>
+<body>
+  <h1>1.2 Code Sections</h1>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-target="section1">1.2.2</div>
+    <div class="tab" data-target="section2">1.2.4</div>
+    <div class="tab" data-target="section3">1.2.6</div>
+  </div>
+
+  <!-- Content Sections -->
+  <div id="section1" class="content active">
+    <pre>move();
+move();
+move();
+move();</pre>
+    <button class="copy-btn">Copy</button>
+    <div class="copy-confirmation">Copied!</div>
+  </div>
+  <div id="section2" class="content">
+    <pre>turnLeft();
+move();
+move(); 
+turnRight();
+move();
+move();
+move();
+move();
+move();</pre>
+    <button class="copy-btn">Copy</button>
+    <div class="copy-confirmation">Copied!</div>
+  </div>
+  <div id="section3" class="content">
+    <pre>move();
+move();
+move();
+turnLeft();
+move();
+move();
+takeBall();
+turnRight();</pre>
+    <button class="copy-btn">Copy</button>
+    <div class="copy-confirmation">Copied!</div>
+  </div>
+
+  <!-- Hidden textarea for fallback copy -->
+  <textarea id="copyFallback"></textarea>
+
+  <script>
+    // Tab Switching Logic
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+
+    // Copy Button Logic with Fallback
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    const fallbackTextarea = document.getElementById('copyFallback');
+
+    copyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const code = button.previousElementSibling.textContent;
+
+        // Attempt to use Clipboard API
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(() => {
+            showCopyConfirmation(button);
+          }).catch(() => {
+            fallbackCopy(code, button);
+          });
+        } else {
+          // Fallback method for unsupported devices
+          fallbackCopy(code, button);
+        }
+      });
+    });
+
+    function fallbackCopy(text, button) {
+      fallbackTextarea.value = text;
+      fallbackTextarea.select();
+      document.execCommand('copy');
+      showCopyConfirmation(button);
+    }
+
+    function showCopyConfirmation(button) {
+      const confirmation = button.nextElementSibling;
+      confirmation.classList.add('show');
+      setTimeout(() => {
+        confirmation.classList.remove('show');
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
