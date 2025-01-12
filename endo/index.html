@@ -309,19 +309,19 @@ function fixTile() {
   </div>
   <div id="section7" class="content">
     <pre>function start() {
-    // While there is a clear path, keep moving
+    // Move and check each tile until the front is blocked.
     while (frontIsClear()) {
-        checkAndPaint(); // Check and paint the tile if needed
-        move();          // Move to the next tile
+        checkAndPaintTile();
+        move();
     }
-    // Check the last tile
-    checkAndPaint();
+    // Ensure the last tile is checked and painted if needed.
+    checkAndPaintTile();
 }
 
-// Function to check and paint the current tile
-function checkAndPaint() {
+// Checks the color of the current tile and paints it cyan if it is red.
+function checkAndPaintTile() {
     if (colorIs(Color.red)) {
-        paint(Color.cyan); // Paint red tiles cyan
+        paint(Color.cyan);
     }
 }</pre>
     <button class="copy-btn">Copy</button>
