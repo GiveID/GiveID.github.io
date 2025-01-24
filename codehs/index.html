@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheating is not good</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(circle, #1e3c72, #2a5298, #6dd5ed);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+      opacity: 1;
+      transform: scale(0.7) rotateY(90deg);
+      animation: ultimateAnimation 4s ease-in-out forwards;
+    }
+
+    blockquote {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 20px;
+      padding: 10px 20px;
+      border-left: 4px solid #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      text-align: left;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      transform: translateX(-100%);
+      animation: quoteAnimation 3s ease-in-out forwards;
+    }
+
+    @keyframes ultimateAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.7) rotateY(90deg) translateY(-50px);
+      }
+      25% {
+        opacity: 0.5;
+        transform: scale(1) rotateY(45deg) translateY(-20px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1) rotateY(0deg) translateY(10px);
+      }
+      75% {
+        transform: scale(1) rotateY(-15deg) translateY(0);
+      }
+      100% {
+        transform: scale(1) rotateY(0deg) translateY(0);
+      }
+    }
+
+    @keyframes quoteAnimation {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      50% {
+        opacity: 0.5;
+        transform: translateX(10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cheating is not good.</h1>
+  <footer>&copy; 2025</footer>
+</body>
+</html>
 
