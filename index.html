@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreedomGate | Unlock the Digital World</title>
+    <title>FreedomGate | Terminal Access</title>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Core Styling */
+        /* Reset */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -17,158 +17,141 @@
         html, body {
             height: 100%;
             width: 100%;
-            font-family: 'Helvetica', Arial, sans-serif;
-            color: #e0e0e0;
-            background-color: #121212;
+            font-family: 'VT323', monospace;
+            color: #00ff00;
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            text-shadow: 0 0 5px #00ff00;
+            filter: contrast(1.2) brightness(0.9);
         }
 
-        /* Subtle Animated Background Gradient */
+        /* CRT Effect */
         body::before {
-            content: '';
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(145deg, #202124, #181818);
-            animation: backgroundGradient 8s infinite alternate;
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 10%, transparent 70%);
             z-index: -1;
         }
 
-        @keyframes backgroundGradient {
-            0% { background: linear-gradient(145deg, #202124, #181818); }
-            50% { background: linear-gradient(145deg, #181818, #202124); }
-            100% { background: linear-gradient(145deg, #202124, #181818); }
+        /* Old Monitor Scanlines */
+        body::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg, 
+                rgba(0, 255, 0, 0.05) 0px, 
+                rgba(0, 255, 0, 0.05) 1px, 
+                transparent 2px, 
+                transparent 4px
+            );
+            animation: scanlines 0.2s infinite linear;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* Centered Content Card */
-        .content-card {
+        @keyframes scanlines {
+            from { transform: translateY(0); }
+            to { transform: translateY(-2px); }
+        }
+
+        /* FISHEYE EFFECT - Curved Screen */
+        .crt {
+            width: 80%;
             max-width: 600px;
-            padding: 40px;
-            background: #1e1e1f;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            transform: translateY(-20px);
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.5s;
-        }
-
-        /* Fade-in Animation */
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Heading Styling */
-        h1 {
-            font-weight: 700;
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #b3b3b3;
-            margin-bottom: 20px;
-        }
-
-        /* Button Styling */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .button {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #ffffff;
-            background: #333333;
-            padding: 12px 24px;
-            border: 1px solid #424242;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
             border-radius: 8px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 15px #00ff00;
+            text-align: center;
+            position: relative;
+            transform: perspective(800px) rotateX(5deg) scale(1.05);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.98; }
+            100% { opacity: 1; }
+        }
+
+        /* Typewriter Effect */
+        #typed-text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #00ff00;
+            font-size: 1.5rem;
+            animation: typing 3s steps(30) forwards, blinkCursor 0.5s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkCursor {
+            50% { border-color: transparent; }
+        }
+
+        /* Button - Old-school glitching */
+        .button {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            background: transparent;
+            color: #00ff00;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease-in-out;
+            animation: glitch 1.5s infinite;
+            position: relative;
         }
 
         .button:hover {
-            background-color: #555555;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1);
+            background: rgba(0, 255, 0, 0.1);
         }
 
-        /* Subtle Text and Links */
-        .bookmark-text, .footer {
-            font-size: 0.9rem;
-            color: #8e8e93;
-            margin-top: 20px;
+        /* Glitching Text Effect */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #00ff00, -2px -2px #000; }
+            50% { text-shadow: -2px -2px #00ff00, 2px 2px #000; }
+            100% { text-shadow: 2px 2px #00ff00, -2px -2px #000; }
         }
 
-        .bookmark-text a {
-            color: #76a9ff;
-            text-decoration: none;
-        }
-
-        .bookmark-text a:hover {
-            color: #a3c9ff;
-            text-decoration: underline;
-        }
-
-        /* Cursor Animation */
-        .cursor-blink {
-            display: inline-block;
-            width: 8px;
-            height: 1rem;
-            background-color: #76a9ff;
-            animation: blink 1s infinite;
-            margin-left: 5px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* Footer */
+        .footer {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #00ff00;
+            opacity: 0.8;
         }
     </style>
 </head>
 
 <body>
-    <main class="content-card" role="main">
-        <h1>FreedomGate</h1>
-        <p>Unlock the digital world without boundaries.</p>
-        
-        <div class="button-container">
-            <a href="https://gamehhuber.github.io/" class="button" aria-label="Game Hub Button">Game Hub</a>
-            <a href="https://giveid.github.io/codehs" class="button" aria-label="Mirrors Button">Code-HS</a>
-            <button class="button" id="randomProxyButton" aria-label="Random Proxy Button">Random Proxy</button>
-        </div>
-
-        <p class="bookmark-text">Bookmark this link if the site ever goes down: <a href="http://mymathez.great-site.net/" target="_blank">mymathez.great-site.net</a></p>
-
-        <footer class="footer" role="contentinfo">
-            &copy; 2024 FreedomGate | Inspired by Limitless Possibility
-            <span class="cursor-blink"></span>
+    <main class="crt">
+        <h1 id="typed-text">FreedomGate Terminal</h1>
+        <p>_Accessing Secure Digital Network...</p>
+        <button class="button" id="randomProxyButton">Execute Proxy</button>
+        <footer class="footer">
+            &copy; 1984 FreedomGate Systems | PLEASE LET US HAVE ADBLOCKERS
         </footer>
     </main>
 
     <script>
+        // Random Proxy Redirect
         const proxies = [
-            'https://www.unblockyoutube.co/',
-            'https://noblocc.co.uk/',
-            'https://noblocc.uk/',
-            'https://coccblocc.men/',
-            'https://eduhelp.uk/',
-            'https://noblocc.me/'
+            'https://www.unblockyoutube.co/'
         ];
 
         document.getElementById('randomProxyButton').addEventListener('click', () => {
