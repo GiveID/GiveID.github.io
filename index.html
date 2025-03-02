@@ -120,6 +120,25 @@
             transform: scale(1.1);
             background: rgba(0, 255, 0, 0.1);
         }
+        
+        .ass {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #640c85;
+            background: transparent;
+            color: #8411ad;
+            text-transform: uppercase;
+            cursor: wait;
+            transition: all 0.2s ease-in-out;
+            animation: glitch 0s infinite;
+            position: relative;
+        }
+        
+        .ass:hover {
+            transform: scale(1.07);
+            background: rgba(208, 0, 255, 0.1);
+        }
 
         /* Glitching Text Effect */
         @keyframes glitch {
@@ -143,10 +162,23 @@
         <h1 id="typed-text">FreedomGate Terminal</h1>
         <p>_Accessing Secure Digital Network...</p>
         <button class="button" id="randomProxyButton">Execute Proxy</button>
+        <button class="ass" id="gregGro">View proxy list</button>
         <footer class="footer">
             &copy; 1984 FreedomGate Systems | PLEASE LET US HAVE ADBLOCKERS
         </footer>
     </main>
+
+    <script>
+        // Random Proxy Redirect
+        const proxies = [
+            'https://giveid.github.io/list'
+        ];
+
+        document.getElementById('gregGro').addEventListener('click', () => {
+            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
+            window.open(randomProxy, '_blank');
+        });
+    </script>
 
     <script>
         // Random Proxy Redirect
