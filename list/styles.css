@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #0f0f0f, #1a1a1a, #292929);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s infinite linear;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* === Particle Background === */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+/* Glowing effect on particles */
+@keyframes particleGlow {
+    0% { filter: drop-shadow(0 0 5px rgba(61, 28, 99, 0.8)); }
+    50% { filter: drop-shadow(0 0 10px rgba(137, 66, 219, 0.8)); }
+    100% { filter: drop-shadow(0 0 5px rgba(159, 118, 207, 0.8)); }
+}
+
+#particles-js canvas {
+    animation: particleGlow 3s infinite alternate ease-in-out;
+}
+
+/* === Page Container === */
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+/* === Glitch Effect for Titles === */
+
+/* Glitch animation */
+@keyframes glitch {
+    0% { text-shadow: 3px 3px red, -3px -3px blue; }
+    50% { text-shadow: -3px 3px cyan, 3px -3px magenta; }
+    100% { text-shadow: 3px -3px lime, -3px 3px yellow; }
+}
+
+/* === Countdown Timer === */
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.countdown div {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+/* Floating Effect for Countdown Numbers */
+.floating {
+    display: inline-block;
+    animation: floatUpDown 2s infinite ease-in-out;
+}
+
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* === Sneak Peaks Page === */
+.sneak-peaks-container {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* === Image Gallery Animation === */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.animated-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Floating animation for images */
+@keyframes floatUpDownImage {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+    100% { transform: translateY(0); }
+}
+
+.animated-image {
+    animation: floatUpDownImage 3s infinite ease-in-out;
+}
+
+/* Hover effect */
+.animated-image:hover {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0.8;
+}
+
+/* === Sneak Peaks Button === */
+#sneak-peaks {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sneak-peaks:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* === Back Button on Sneak Peaks Page === */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.greg {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: pink;
+    border: 1px solid purple;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.greg:hover {
+    background-color: rgba(159, 118, 207, 0.4);
+}
+
+/* === Footer / Credits === */
+.credits {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Arial', sans-serif;
+}
+
+.credit-name {
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+
+.credits a {
+    color: cyan;
+    text-decoration: none;
+}
+
+.credits a:hover {
+    text-decoration: underline;
+}
+
+/* === Background Gradient Animation === */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
