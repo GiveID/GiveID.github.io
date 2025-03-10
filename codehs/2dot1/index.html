@@ -140,6 +140,7 @@
   <div class="tabs">
     <div class="tab active" data-target="section1">2.1.3-2.1.4</div>
     <div class="tab" data-target="section2">2.1.5</div>
+    <div class="tab" data-target="section3">2.1.7</div>
   </div>
 
   <!-- Content Sections -->
@@ -194,6 +195,41 @@ function greg() {
 function FaceFrickingSouth() {
     turnLeft();
 }
+    </pre>
+    <button class="copy-btn">Copy</button>
+    <div class="copy-confirmation">Copied!</div>
+  </div>
+  
+    <div id="section3" class="content active">
+    <pre>
+function start() {
+    handleFirstSquare(); // Handles the initial position of Karel
+    while (frontIsClear()) { // Continue as long as the front is clear
+        move();
+        checkAndActOnColor(); // Checks the color of the square and acts accordingly
+    }
+}
+
+function handleFirstSquare() {
+    // Perform actions on the first square before the loop starts
+    checkAndActOnColor();
+}
+
+function checkAndActOnColor() {
+    // Use if/else-if/else to handle different actions based on the square's color
+    if (colorIs(Color.yellow)) {
+        // Look up at the statue
+        turnLeft();
+        turnRight(); // Turning right immediately after turning left has no effect, consider revising
+    } else if (colorIs(Color.purple)) {
+        // Leave footprints by painting it black
+        paint(Color.black);
+    } else if (colorIs(Color.gray)) {
+        // Leave footprints by painting it purple
+        paint(Color.purple);
+    }
+}
+
     </pre>
     <button class="copy-btn">Copy</button>
     <div class="copy-confirmation">Copied!</div>
