@@ -141,6 +141,7 @@
     <div class="tab active" data-target="section1">2.1.3-2.1.4</div>
     <div class="tab" data-target="section2">2.1.5</div>
     <div class="tab" data-target="section3">2.1.7</div>
+    <div class="tab" data-target="section4">2.1.8 -WIP</div>
   </div>
 
   <!-- Content Sections -->
@@ -230,6 +231,73 @@ function checkAndActOnColor() {
     }
 }
 
+    </pre>
+    <button class="copy-btn">Copy</button>
+    <div class="copy-confirmation">Copied!</div>
+  </div>
+
+      <div id="section4" class="content active">
+    <pre>
+function start() {
+    for (var row = 0; row < 5; row++) { // Loop through each row, there are 5 rows in total.
+        cleanRow();
+        if (row < 4) { // Check if it's not the last row
+            moveToNextRow();
+        }
+    }
+    moveToFarRight(); // Move to the far right after finishing the last row.
+}
+
+function cleanRow() {
+    while (frontIsClear()) { // Use a while loop for each row
+        // Directly use if/else if/else inside the while loop
+        if (colorIs(Color.purple)) {
+            paint(Color.yellow); // If purple, paint yellow.
+        } else if (colorIs(Color.green)) {
+            paint(Color.yellow); // If green, also paint yellow.
+        } else {
+            paint(Color.gray); // Otherwise, paint gray.
+        }
+        move();
+    }
+    // Handle the last cell of the row
+    if (colorIs(Color.purple)) {
+        paint(Color.yellow);
+    } else if (colorIs(Color.green)) {
+        paint(Color.yellow);
+    } else {
+        paint(Color.gray);
+    }
+}
+
+function moveToNextRow() {
+    turnAround();
+    while (frontIsClear()) {
+        move(); // Move to the end of the row.
+    }
+    turnRight();
+    if (frontIsClear()) {
+        move(); // Move up to the start of the next row.
+        turnRight(); // Face the start of the next row correctly.
+    }
+}
+
+function moveToFarRight() {
+    while (frontIsClear()) { // Continue moving right until hitting a wall.
+        move();
+    }
+}
+
+function turnAround() {
+    turnLeft();
+    turnLeft();
+}
+
+function turnRight() {
+    turnLeft();
+    turnLeft();
+    turnLeft();
+}
     </pre>
     <button class="copy-btn">Copy</button>
     <div class="copy-confirmation">Copied!</div>
