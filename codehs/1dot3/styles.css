@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #0f0f0f, #1a1a1a, #292929);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s infinite linear;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Particle Background */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Glitch Effect */
+.glitch {
+    font-size: 4rem;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    animation: glitch 1s infinite;
+}
+
+#sneak-peaks {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sneak-peaks:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Footer / Credits */
+.credits {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Arial', sans-serif;
+}
+
+.credit-name {
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+
+.credits a {
+    color: cyan;
+    text-decoration: none;
+}
+
+.credits a:hover {
+    text-decoration: underline;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 3px 3px red, -3px -3px blue; }
+    50% { text-shadow: -3px 3px cyan, 3px -3px magenta; }
+    100% { text-shadow: 3px -3px lime, -3px 3px yellow; }
+}
+
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.countdown div {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+/* Floating Effect for Countdown Numbers */
+.floating {
+    display: inline-block;
+    animation: floatUpDown 2s infinite ease-in-out;
+}
+
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
