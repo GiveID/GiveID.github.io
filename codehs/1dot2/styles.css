@@ -1,123 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Apple-Inspired Dark Theme */
 body {
-    background: linear-gradient(45deg, #0f0f0f, #1a1a1a, #292929);
-    background-size: 400% 400%;
-    animation: gradientAnimation 10s infinite linear;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    overflow: hidden;
+  font-family: 'SF Pro Display', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #161616, #1e1e1e);
+  color: #eaeaea;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
 }
 
-/* Particle Background */
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* Headings */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  text-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-in-out;
 }
 
-/* Glitch Effect */
-.glitch {
-    font-size: 4rem;
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-    animation: glitch 1s infinite;
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-#sneak-peaks {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid white;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
+.tab {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #222, #2a2a2a);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.05);
 }
 
-#sneak-peaks:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+.tab.active {
+  background: linear-gradient(135deg, #3498db, #1e90ff);
 }
 
-/* Footer / Credits */
-.credits {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Arial', sans-serif;
+.tab:hover {
+  background: linear-gradient(135deg, #8e44ad, #6a11cb);
+  transform: scale(1.05);
 }
 
-.credit-name {
-    font-weight: bold;
-    color: #ff00ff;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+/* Content Sections */
+.content {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease-in-out;
 }
 
-.credits a {
-    color: cyan;
-    text-decoration: none;
+.content.active {
+  display: block;
 }
 
-.credits a:hover {
-    text-decoration: underline;
+pre {
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  color: #eaeaea;
 }
 
-@keyframes glitch {
-    0% { text-shadow: 3px 3px red, -3px -3px blue; }
-    50% { text-shadow: -3px 3px cyan, 3px -3px magenta; }
-    100% { text-shadow: 3px -3px lime, -3px 3px yellow; }
+/* Copy Button */
+.copy-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3498db, #1e90ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+.copy-btn:hover {
+  background: linear-gradient(135deg, #8e44ad, #6a11cb);
+  transform: scale(1.05);
 }
 
-@keyframes blinkCursor {
-    50% { border-color: transparent; }
+.copy-btn:active {
+  transform: scale(0.95);
 }
 
-/* Countdown Timer */
-.countdown {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+/* Copy Confirmation */
+.copy-confirmation {
+  color: #1e90ff;
+  font-size: 1rem;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.countdown div {
-    font-size: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
+.copy-confirmation.show {
+  opacity: 1;
 }
 
-/* Floating Effect for Countdown Numbers */
-.floating {
-    display: inline-block;
-    animation: floatUpDown 2s infinite ease-in-out;
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes floatUpDown {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  .tab { font-size: 1rem; padding: 10px 18px; }
+  .copy-btn { font-size: 0.9rem; padding: 10px 15px; }
 }
