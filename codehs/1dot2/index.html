@@ -5,30 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1.2 Code Sections</title>
   <link rel="stylesheet" href="styles.css">
+<script>// Tab Switching Logic
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.target).classList.add('active');
+  });
+});
+
+// Copy Button Logic
+const copyButtons = document.querySelectorAll('.copy-btn');
+const fallbackTextarea = document.getElementById('copyFallback');
+
+copyButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const code = button.previousElementSibling.textContent;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(() => {
+        showCopyConfirmation(button);
+      }).catch(() => {
+        fallbackCopy(code, button);
+      });
+    } else {
+      fallbackCopy(code, button);
+    }
+  });
+});
+
+function fallbackCopy(text, button) {
+  fallbackTextarea.value = text;
+  fallbackTextarea.select();
+  document.execCommand('copy');
+  showCopyConfirmation(button);
+}
+
+function showCopyConfirmation(button) {
+  const confirmation = button.nextElementSibling;
+  confirmation.classList.add('show');
+  setTimeout(() => {
+    confirmation.classList.remove('show');
+  }, 1200);
+}
+</script>
+
 </head>
 <body>
-
   <h1>1.2 Code Sections</h1>
 
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab active" data-target="section1">1.2.2</button>
-    <button class="tab" data-target="section2">1.2.4</button>
-    <button class="tab" data-target="section3">1.2.6</button>
+    <div class="tab active" data-target="section1">1.2.2</div>
+    <div class="tab" data-target="section2">1.2.4</div>
+    <div class="tab" data-target="section3">1.2.6</div>
   </div>
 
-  <!-- Code Sections -->
+  <!-- Content Sections -->
   <div id="section1" class="content active">
-    <pre><code>move();
+    <pre>move();
 move();
 move();
-move();</code></pre>
+move();</pre>
     <button class="copy-btn">Copy</button>
-    <span class="copy-confirmation">Copied!</span>
+    <div class="copy-confirmation">Copied!</div>
   </div>
 
   <div id="section2" class="content">
-    <pre><code>turnLeft();
+    <pre>turnLeft();
 move();
 move(); 
 turnRight();
@@ -36,64 +85,26 @@ move();
 move();
 move();
 move();
-move();</code></pre>
+move();</pre>
     <button class="copy-btn">Copy</button>
-    <span class="copy-confirmation">Copied!</span>
+    <div class="copy-confirmation">Copied!</div>
   </div>
 
   <div id="section3" class="content">
-    <pre><code>move();
+    <pre>move();
 move();
 move();
 turnLeft();
 move();
 move();
 takeBall();
-turnRight();</code></pre>
+turnRight();</pre>
     <button class="copy-btn">Copy</button>
-    <span class="copy-confirmation">Copied!</span>
+    <div class="copy-confirmation">Copied!</div>
   </div>
 
-  <!-- Hidden textarea for fallback copy -->
   <textarea id="copyFallback"></textarea>
 
-  <script>
-    // Tab Switching Logic
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab, .content').forEach(el => el.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.target).classList.add('active');
-      });
-    });
-
-    // Copy Button Logic
-    document.querySelectorAll('.copy-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const code = button.previousElementSibling.textContent.trim();
-
-        navigator.clipboard.writeText(code).then(() => {
-          showCopyConfirmation(button);
-        }).catch(() => {
-          fallbackCopy(code, button);
-        });
-      });
-    });
-
-    function fallbackCopy(text, button) {
-      const fallbackTextarea = document.getElementById('copyFallback');
-      fallbackTextarea.value = text;
-      fallbackTextarea.select();
-      document.execCommand('copy');
-      showCopyConfirmation(button);
-    }
-
-    function showCopyConfirmation(button) {
-      const confirmation = button.nextElementSibling;
-      confirmation.classList.add('show');
-      setTimeout(() => confirmation.classList.remove('show'), 1200);
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
