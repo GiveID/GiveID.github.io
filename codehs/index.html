@@ -6,13 +6,6 @@
   <title>Code HS - Next Gen</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    
-    <audio id="bgAudio" loop>
-    <source src="AMB.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-	</audio>
-
-    
     /* Core Reset & Apple-Inspired Dark Mode */
     * {
       margin: 0;
@@ -123,21 +116,6 @@
       overflow: hidden;
     }
 
-    .button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.4s ease;
-    }
-
-    .button:hover::before {
-      left: 100%;
-    }
-
     .button:hover {
       transform: scale(1.05);
       background: linear-gradient(135deg, #2a2a2a, #333);
@@ -148,20 +126,6 @@
       transform: scale(0.95);
       box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.7), inset -5px -5px 10px rgba(255, 255, 255, 0.05);
     }
-    
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var loadButton = document.getElementById("loadSiteBtn"); // Make sure your button has this ID
-        var audio = document.getElementById("bgAudio");
-
-        if (loadButton) {
-            loadButton.addEventListener("click", function() {
-                audio.play().catch(error => console.log("Autoplay blocked: " + error));
-            });
-        }
-    });
-</script>
-    
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -186,8 +150,31 @@
     <a href="http://giveid.github.io/codehs/1dot2" target="_blank" class="button">1.2</a> 
     <a href="http://giveid.github.io/codehs/1dot3" target="_blank" class="button">1.3</a>
     <a href="http://giveid.github.io/codehs/1dot4" target="_blank" class="button">1.4</a>
-	<a href="http://giveid.github.io/codehs/2dot1" target="_blank" class="button">2.1</a>
+    <a href="http://giveid.github.io/codehs/2dot1" target="_blank" class="button">2.1</a>
   </div>
+
+  <!-- Load Button -->
+  <button id="loadSiteBtn" class="button" style="margin-top: 20px;">Load</button>
+
+  <!-- Audio Element -->
+  <audio id="bgAudio" loop>
+      <source src="AMB.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+
+  <!-- JavaScript for Playing Audio -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var loadButton = document.getElementById("loadSiteBtn");
+        var audio = document.getElementById("bgAudio");
+
+        if (loadButton) {
+            loadButton.addEventListener("click", function() {
+                audio.play().catch(error => console.log("Autoplay blocked: " + error));
+            });
+        }
+    });
+  </script>
 
 </body>
 </html>
