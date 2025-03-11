@@ -6,6 +6,13 @@
   <title>Code HS - Next Gen</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    
+    <audio id="bgAudio" loop>
+    <source src="AMB.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+	</audio>
+
+    
     /* Core Reset & Apple-Inspired Dark Mode */
     * {
       margin: 0;
@@ -141,6 +148,20 @@
       transform: scale(0.95);
       box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.7), inset -5px -5px 10px rgba(255, 255, 255, 0.05);
     }
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var loadButton = document.getElementById("loadSiteBtn"); // Make sure your button has this ID
+        var audio = document.getElementById("bgAudio");
+
+        if (loadButton) {
+            loadButton.addEventListener("click", function() {
+                audio.play().catch(error => console.log("Autoplay blocked: " + error));
+            });
+        }
+    });
+</script>
+    
 
     /* Responsive */
     @media (max-width: 768px) {
