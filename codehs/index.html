@@ -6,7 +6,7 @@
   <title>Code HS - Next Gen</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Core Reset & Apple-Inspired Dark Mode */
+    /* Core Reset & Dark Mode */
     * {
       margin: 0;
       padding: 0;
@@ -24,63 +24,28 @@
       color: #eaeaea;
       overflow: hidden;
       position: relative;
-      perspective: 1000px;
     }
 
-    /* Parallax Background Light Effect */
-    .light-effect {
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-      border-radius: 50%;
-      animation: moveLight 10s infinite linear alternate;
-      filter: blur(40px);
+    /* Hidden content before clicking "Load" */
+    .hidden {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    @keyframes moveLight {
-      0% { transform: translate(-50px, -50px); }
-      100% { transform: translate(50px, 50px); }
-    }
-
-    /* Floating 3D Title */
+    /* Title Animation */
     .title {
       font-size: 4rem;
       font-weight: 700;
       text-align: center;
       color: rgba(255, 255, 255, 0.85);
       text-shadow: 0 5px 30px rgba(255, 255, 255, 0.2);
-      animation: floatTitle 3s ease-in-out infinite alternate;
-      transition: transform 0.3s ease-in-out;
     }
 
-    .title:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes floatTitle {
-      0% { transform: translateY(-10px) rotateX(10deg); }
-      100% { transform: translateY(10px) rotateX(-10deg); }
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      opacity: 0.8;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      animation: fadeIn 2s ease-in-out;
-      margin-bottom: 30px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Glassmorphic Card */
+    /* Glassmorphic Container */
     .glass-container {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -88,15 +53,9 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      animation: fadeInUp 1.5s ease-out;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Neumorphic Buttons */
+    /* Buttons */
     .button {
       font-size: 1.2rem;
       font-weight: bold;
@@ -108,69 +67,66 @@
       cursor: pointer;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
       box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6), -6px -6px 15px rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
     .button:hover {
       transform: scale(1.05);
       background: linear-gradient(135deg, #2a2a2a, #333);
-      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.8), -8px -8px 20px rgba(255, 255, 255, 0.1);
-    }
-
-    .button:active {
-      transform: scale(0.95);
-      box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.7), inset -5px -5px 10px rgba(255, 255, 255, 0.05);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       .title { font-size: 2.5rem; }
-      h2 { font-size: 1.2rem; }
       .button { font-size: 1rem; padding: 12px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Light Effect -->
-  <div class="light-effect" style="top: 20%; left: 40%;"></div>
-  <div class="light-effect" style="top: 70%; left: 80%; animation-delay: 2s;"></div>
-  
-  <!-- Title -->
-  <div class="title">CODE HS REIMAGINED</div>
-  <h2>Powered by Lebron James Inc.</h2>
-
-  <!-- Glass Card for Buttons -->
-  <div class="glass-container">
-    <a href="http://giveid.github.io/codehs/1dot2" target="_blank" class="button">1.2</a> 
-    <a href="http://giveid.github.io/codehs/1dot3" target="_blank" class="button">1.3</a>
-    <a href="http://giveid.github.io/codehs/1dot4" target="_blank" class="button">1.4</a>
-    <a href="http://giveid.github.io/codehs/2dot1" target="_blank" class="button">2.1</a>
-  </div>
-
   <!-- Load Button -->
-  <button id="loadSiteBtn" class="button" style="margin-top: 20px;">Load</button>
+  <button id="loadSiteBtn" class="button">Load</button>
+
+  <!-- Hidden Content (Appears After Clicking Load) -->
+  <div id="content" class="hidden">
+    <div class="title">CODE HS REIMAGINED</div>
+    <h2>Powered by Lebron James Inc.</h2>
+
+    <div class="glass-container">
+      <a href="http://giveid.github.io/codehs/1dot2" target="_blank" class="button">1.2</a> 
+      <a href="http://giveid.github.io/codehs/1dot3" target="_blank" class="button">1.3</a>
+      <a href="http://giveid.github.io/codehs/1dot4" target="_blank" class="button">1.4</a>
+      <a href="http://giveid.github.io/codehs/2dot1" target="_blank" class="button">2.1</a>
+    </div>
+  </div>
 
   <!-- Audio Element -->
   <audio id="bgAudio" loop>
-      <source src="AMB.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+    <source src="AMB.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
-  <!-- JavaScript for Playing Audio -->
+  <!-- JavaScript -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
         var loadButton = document.getElementById("loadSiteBtn");
+        var content = document.getElementById("content");
         var audio = document.getElementById("bgAudio");
 
         if (loadButton) {
             loadButton.addEventListener("click", function() {
+                // Show content with fade-in effect
+                content.style.display = "block";
+                setTimeout(() => content.style.opacity = "1", 50);
+                
+                // Play background music
                 audio.play().catch(error => console.log("Autoplay blocked: " + error));
+
+                // Hide Load button after clicking
+                loadButton.style.display = "none";
             });
         }
     });
