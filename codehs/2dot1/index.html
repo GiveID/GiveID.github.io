@@ -132,6 +132,25 @@
       .copy-btn { font-size: 0.9rem; padding: 10px 15px; }
     }
   </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var loadButton = document.getElementById("loadSiteBtn"); // Make sure your button has this ID
+        var audio = document.getElementById("bgAudio");
+
+        if (loadButton) {
+            loadButton.addEventListener("click", function() {
+                audio.play().catch(error => console.log("Autoplay blocked: " + error));
+            });
+        }
+    });
+</script>
+
+  <audio id="bgAudio" loop>
+    <source src="AMB.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+  
 </head>
 <body>
   <h1>CodeHS Code Sections</h1>
