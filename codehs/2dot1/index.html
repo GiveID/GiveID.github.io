@@ -1,377 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeHS Code Sections</title>
-  <style>
-    /* Apple-Inspired Dark Theme */
-    body {
-      font-family: 'SF Pro Display', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #161616, #1e1e1e);
-      color: #eaeaea;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* Headings */
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      text-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease-in-out;
-    }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .tab {
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #222, #2a2a2a);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: white;
-      font-size: 1.1rem;
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.05);
-    }
-
-    .tab.active {
-      background: linear-gradient(135deg, #3498db, #1e90ff);
-    }
-
-    .tab:hover {
-      background: linear-gradient(135deg, #8e44ad, #6a11cb);
-      transform: scale(1.05);
-    }
-
-    /* Content Sections */
-    .content {
-      display: none;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 0.8s ease-in-out;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    pre {
-      text-align: left;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      font-family: 'Courier New', monospace;
-      margin: 0;
-      color: #eaeaea;
-    }
-
-    /* Copy Button */
-    .copy-btn {
-      margin-top: 10px;
-      padding: 12px 20px;
-      background: linear-gradient(135deg, #3498db, #1e90ff);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .copy-btn:hover {
-      background: linear-gradient(135deg, #8e44ad, #6a11cb);
-      transform: scale(1.05);
-    }
-
-    .copy-btn:active {
-      transform: scale(0.95);
-    }
-
-    /* Copy Confirmation */
-    .copy-confirmation {
-      color: #1e90ff;
-      font-size: 1rem;
-      margin-top: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .copy-confirmation.show {
-      opacity: 1;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .tab { font-size: 1rem; padding: 10px 18px; }
-      .copy-btn { font-size: 0.9rem; padding: 10px 15px; }
-    }
-  </style>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var loadButton = document.getElementById("loadSiteBtn"); // Make sure your button has this ID
-        var audio = document.getElementById("bgAudio");
-
-        if (loadButton) {
-            loadButton.addEventListener("click", function() {
-                audio.play().catch(error => console.log("Autoplay blocked: " + error));
-            });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 CodeHS Galaxy 🌌</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Source+Code+Pro" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at bottom, #0b3d91 0%, #000814 100%);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
-    });
-</script>
 
-  <audio id="bgAudio" loop>
-    <source src="AMB.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-  
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 30px;
+            text-shadow: 0 0 20px #00b4d8;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 18px;
+            background: #003566;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            user-select: none;
+        }
+
+        .tab.active, .tab:hover {
+            background: #00b4d8;
+            box-shadow: 0 0 15px #00b4d8;
+            transform: translateY(-4px);
+        }
+
+        .content {
+            display: none;
+            max-width: 800px;
+            background: rgba(10,25,47,0.8);
+            backdrop-filter: blur(5px);
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 12px;
+            animation: fadeIn 0.7s ease-in-out;
+            overflow-y: auto;
+            max-height: 50vh;
+        }
+
+        .content.active { display: block; }
+
+        pre {
+            text-align: left;
+            font-family: 'Source Code Pro', monospace;
+            color: #90e0ef;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            background: #0077b6;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .copy-btn:hover { transform: scale(1.05); }
+
+        .copy-confirmation {
+            opacity: 0;
+            color: #00ffbb;
+            transition: opacity 0.5s;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin: 20px 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        footer a { color: #00b4d8; text-decoration: none; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
+
 <body>
-  <h1>CodeHS Code Sections</h1>
+    <div id="particles-js"></div>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <div class="tab active" data-target="section1">2.1.3-2.1.4</div>
-    <div class="tab" data-target="section2">2.1.5</div>
-    <div class="tab" data-target="section3">2.1.7</div>
-    <div class="tab" data-target="section4">2.1.8 -WIP</div>
-  </div>
+    <h1>Greg</h1>
 
-  <!-- Content Sections -->
-  <div id="section1" class="content active">
-    <pre>
+    <div class="tabs">
+        <div class="tab active" data-target="section1">🌕 2.1.3-2.1.4</div>
+        <div class="tab" data-target="section2">🪐 2.1.5</div>
+        <div class="tab" data-target="section3">✨ 2.1.7</div>
+        <div class="tab" data-target="section4">🚧 2.1.8 (WIP)</div>
+    </div>
+
+    <!-- Section 1 -->
+    <div id="section1" class="content active">
+<pre>
 function start() {
-    while (frontIsClear()) { // Loop continues as long as the path in front of Karel is clear
+    while (frontIsClear()) {
         move();
-        Ihatecodehs();
+        checkColor();
     }
 }
-
-function Ihatecodehs() {
-    if (colorIs(Color.orange))
-        paint(Color.blue);
+function checkColor() {
+    if (colorIs(Color.orange)) paint(Color.blue);
 }
-    </pre>
-    <button class="copy-btn">Copy</button>
-    <div class="copy-confirmation">Copied!</div>
-  </div>
+</pre>
+        <button class="copy-btn">Copy</button>
+        <div class="copy-confirmation">Copied! ✅</div>
+    </div>
 
-  <div id="section2" class="content">
-    <pre>
-// Travel from D.C. to Eastern Europe
+    <!-- Section 2 -->
+    <div id="section2" class="content">
+<pre>
 function start() {
-    IfrickingHateCodeHS();
-}
-
-// Stop in Eastern Europe
-function IfrickingHateCodeHS() {
-    while (!colorIs(Color.red)) { 
-        move();
-    }
-    move(); 
-    
-    while (!colorIs(Color.yellow)) { 
-        if (colorIs(Color.purple)) {
-            greg();
-        }
+    while (!colorIs(Color.red)) move();
+    move();
+    while (!colorIs(Color.yellow)) {
+        if (colorIs(Color.purple)) turnRight();
         move();
         if (colorIs(Color.yellow)) {
-            FaceFrickingSouth();
+            turnLeft();
             break;
         }
     }
 }
+function turnRight() { turnLeft(); turnLeft(); turnLeft(); }
+</pre>
+        <button class="copy-btn">Copy</button>
+        <div class="copy-confirmation">Copied! ✅</div>
+    </div>
 
-function greg() {
-    turnRight();
-}
-
-function FaceFrickingSouth() {
-    turnLeft();
-}
-    </pre>
-    <button class="copy-btn">Copy</button>
-    <div class="copy-confirmation">Copied!</div>
-  </div>
-  
-    <div id="section3" class="content active">
-    <pre>
+    <!-- Section 3 -->
+    <div id="section3" class="content">
+<pre>
 function start() {
-    handleFirstSquare(); // Handles the initial position of Karel
-    while (frontIsClear()) { // Continue as long as the front is clear
+    handleFirstSquare();
+    while (frontIsClear()) {
         move();
-        checkAndActOnColor(); // Checks the color of the square and acts accordingly
+        checkColor();
     }
 }
-
 function handleFirstSquare() {
-    // Perform actions on the first square before the loop starts
-    checkAndActOnColor();
+    checkColor();
 }
-
-function checkAndActOnColor() {
-    // Use if/else-if/else to handle different actions based on the square's color
+function checkColor() {
     if (colorIs(Color.yellow)) {
-        // Look up at the statue
-        turnLeft();
-        turnRight(); // Turning right immediately after turning left has no effect, consider revising
+        turnLeft(); turnRight();
     } else if (colorIs(Color.purple)) {
-        // Leave footprints by painting it black
         paint(Color.black);
     } else if (colorIs(Color.gray)) {
-        // Leave footprints by painting it purple
         paint(Color.purple);
     }
 }
+</pre>
+        <button class="copy-btn">Copy</button>
+        <div class="copy-confirmation">Copied! ✅</div>
+    </div>
 
-    </pre>
-    <button class="copy-btn">Copy</button>
-    <div class="copy-confirmation">Copied!</div>
-  </div>
-
-      <div id="section4" class="content active">
-    <pre>
+    <!-- Section 4 -->
+    <div id="section4" class="content">
+<pre>
 function start() {
-    for (var row = 0; row < 5; row++) { // Loop through each row, there are 5 rows in total.
+    for (var row = 0; row < 5; row++) {
         cleanRow();
-        if (row < 4) { // Check if it's not the last row
-            moveToNextRow();
-        }
+        if (row < 4) moveToNextRow();
     }
-    moveToFarRight(); // Move to the far right after finishing the last row.
+    moveToFarRight();
 }
-
 function cleanRow() {
-    while (frontIsClear()) { // Use a while loop for each row
-        // Directly use if/else if/else inside the while loop
-        if (colorIs(Color.purple)) {
-            paint(Color.yellow); // If purple, paint yellow.
-        } else if (colorIs(Color.green)) {
-            paint(Color.yellow); // If green, also paint yellow.
-        } else {
-            paint(Color.gray); // Otherwise, paint gray.
-        }
-        move();
-    }
-    // Handle the last cell of the row
-    if (colorIs(Color.purple)) {
-        paint(Color.yellow);
-    } else if (colorIs(Color.green)) {
-        paint(Color.yellow);
-    } else {
-        paint(Color.gray);
-    }
-}
-
-function moveToNextRow() {
-    turnAround();
     while (frontIsClear()) {
-        move(); // Move to the end of the row.
-    }
-    turnRight();
-    if (frontIsClear()) {
-        move(); // Move up to the start of the next row.
-        turnRight(); // Face the start of the next row correctly.
-    }
-}
-
-function moveToFarRight() {
-    while (frontIsClear()) { // Continue moving right until hitting a wall.
+        if (colorIs(Color.purple)||colorIs(Color.green)) paint(Color.yellow);
+        else paint(Color.gray);
         move();
     }
 }
+function moveToNextRow() { turnLeft(); move(); turnLeft(); }
+function moveToFarRight() { while(frontIsClear()) move(); }
+function turnRight() { turnLeft(); turnLeft(); turnLeft(); }
+</pre>
+        <button class="copy-btn">Copy</button>
+        <div class="copy-confirmation">Copied! ✅</div>
+    </div>
 
-function turnAround() {
-    turnLeft();
-    turnLeft();
-}
+    <footer>✨ Designed by Ethan Miller | <a href="https://kanye-is-the-best-music-artist.com/evil-lebron.html">Powered by Lebron James</a></footer>
 
-function turnRight() {
-    turnLeft();
-    turnLeft();
-    turnLeft();
-}
-    </pre>
-    <button class="copy-btn">Copy</button>
-    <div class="copy-confirmation">Copied!</div>
-  </div>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 90 },
+                color: { value: "#ffffff" },
+                opacity: { value: 0.3 },
+                size: { value: 2 },
+                move: { enable: true, speed: 1.5 }
+            },
+            interactivity: {
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
 
-  <textarea id="copyFallback"></textarea>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.onclick = () => {
+                document.querySelectorAll('.tab, .content').forEach(el => el.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            };
+        });
 
-  <script>
-    // Tab Switching Logic
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.target).classList.add('active');
-      });
-    });
-
-    // Copy Button Logic
-    const copyButtons = document.querySelectorAll('.copy-btn');
-    const fallbackTextarea = document.getElementById('copyFallback');
-
-    copyButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const code = button.previousElementSibling.textContent;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(code).then(() => {
-            showCopyConfirmation(button);
-          }).catch(() => {
-            fallbackCopy(code, button);
-          });
-        } else {
-          fallbackCopy(code, button);
-        }
-      });
-    });
-
-    function fallbackCopy(text, button) {
-      fallbackTextarea.value = text;
-      fallbackTextarea.select();
-      document.execCommand('copy');
-      showCopyConfirmation(button);
-    }
-
-    function showCopyConfirmation(button) {
-      const confirmation = button.nextElementSibling;
-      confirmation.classList.add('show');
-      setTimeout(() => {
-        confirmation.classList.remove('show');
-      }, 1200);
-    }
-  </script>
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.onclick = () => {
+                navigator.clipboard.writeText(btn.previousElementSibling.textContent);
+                let conf = btn.nextElementSibling;
+                conf.style.opacity = 1;
+                setTimeout(() => conf.style.opacity = 0, 1000);
+            };
+        });
+    </script>
 </body>
+
 </html>
