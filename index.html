@@ -3,23 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Underworld</title>
+    <title>jew</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px gray, -2px -2px black; }
-            25% { text-shadow: -4px 4px red, 4px -4px blue; transform: skewX(-10deg); }
-            50% { text-shadow: 4px -4px cyan, -4px 4px yellow; transform: skewX(10deg); }
-            75% { text-shadow: -6px -6px lime, 6px 6px magenta; transform: skewX(-10deg); }
-            100% { text-shadow: 2px 2px gray, -2px -2px black; }
-        }
-
         @keyframes fadeOut {
             0% { opacity: 1; }
             100% { opacity: 0; visibility: hidden; pointer-events: none; }
         }
 
-        /* 🔥 Fix: Allow clicking through mist */
+        /* 🔥 Allow clicks through mist */
         #mist {
             pointer-events: none;
             transition: opacity 0.2s ease, transform 0.2s ease;
@@ -28,6 +20,16 @@
         /* 🔥 Button pulse effect */
         #enter-btn {
             transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Canvas for particles */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -40,30 +42,34 @@
     <div id="mist" class="absolute inset-0 bg-gradient-to-b from-black via-gray-800 to-black opacity-60"></div>
 
     <!-- Glitching Title -->
-    <h1 id="title" class="text-6xl md:text-8xl font-bold text-center tracking-wider relative z-10 animate-[glitch_1s_infinite]">
-        Ju
+    <h1 id="title" class="text-6xl md:text-8xl font-bold text-center tracking-wider relative z-10">
+        JE
     </h1>
 
     <!-- Pulsing Enter Button -->
     <button id="enter-btn" class="mt-16 text-lg bg-gray-700 text-white px-10 py-4 rounded-lg font-bold transition-all duration-300 hover:scale-110 hover:bg-gray-600 shadow-lg">
         ENTER
     </button>
-    
+
     <!-- Hidden Links -->
     <div id="hidden-links" class="hidden mt-12 flex flex-col space-y-4 text-center relative z-20">
         <a href="https://warm-my-lap.fun" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Warm My Lap</a>
-        <a href="https://underage-gambling.site" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Underage Gambling</a>
-        <a href="https://yesbutno.wtf" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Yes But No</a>
-        <a href="https://kanye-is-the-best-music-artist.com" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Kanye's Music</a>
-        <a href="https://trulyrandom.icu" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Truly Random</a>
-        <a href="https://chinachinachina.online" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">China China China</a>
+        <a href="https://kanye-is-the-best-music-artist.com/" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">KANYE</a>
     </div>
+
+    <!-- Canvas for Particles -->
+    <canvas id="particleCanvas"></canvas>
 
     <script>
         const audio = document.getElementById("bg-music");
         const title = document.getElementById("title");
         const mist = document.getElementById("mist");
         const button = document.getElementById("enter-btn");
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         document.getElementById("enter-btn").addEventListener("click", function() {
             document.getElementById("hidden-links").classList.remove("hidden");
@@ -77,7 +83,7 @@
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const source = audioContext.createMediaElementSource(audio);
             const analyzer = audioContext.createAnalyser();
-            analyzer.fftSize = 256; // Higher value = smoother reaction
+            analyzer.fftSize = 256;
             const bufferLength = analyzer.frequencyBinCount;
             const dataArray = new Uint8Array(bufferLength);
             
@@ -88,31 +94,73 @@
                 requestAnimationFrame(animate);
                 analyzer.getByteFrequencyData(dataArray);
 
-                // 🔥 Stronger Bass Detection (Low frequencies)
+                // 🔥 Detect Bass
                 let bass = dataArray.slice(0, bufferLength / 6).reduce((a, b) => a + b) / (bufferLength / 6);
-                bass = Math.min(bass / 255, 1); // Normalize between 0 and 1
+                bass = Math.min(bass / 255, 1);
 
-                // 🔥 Stronger Treble Detection (High frequencies)
-                let treble = dataArray.slice(3 * bufferLength / 4).reduce((a, b) => a + b) / (bufferLength / 4);
-                treble = Math.min(treble / 255, 1); // Normalize between 0 and 1
-
-                // 🔥 Reacts to Bass - Mist "breathes" and changes opacity
+                // 🔥 Mist "breathes" with bass
                 mist.style.opacity = 0.3 + bass * 0.7;
                 mist.style.transform = `scale(${1 + bass * 0.5})`;
 
-                // 🔥 Reacts to Treble - Makes Title Glitch More
+                // 🔥 Button Glow on Bass
+                button.style.boxShadow = `0 0 ${bass * 40}px rgba(255, 0, 255, 0.8)`;
+                button.style.transform = `scale(${1 + bass * 0.1})`;
+
+                // 🔥 Particle Explosion on Bass Hits
+                if (bass > 0.3) createParticles();
+
+                // 🔥 Title Glitch Effect on High Frequencies
+                let treble = dataArray.slice(3 * bufferLength / 4).reduce((a, b) => a + b) / (bufferLength / 4);
                 let glitchEffect = Math.sin(Date.now() / 50) * treble * 15;
                 title.style.transform = `skewX(${glitchEffect}deg)`;
                 title.style.textShadow = `${glitchEffect}px ${glitchEffect}px rgba(255, 0, 0, 0.8), 
                                           ${-glitchEffect}px ${-glitchEffect}px rgba(0, 255, 0, 0.8)`;
-
-                // 🔥 Reacts to Bass - Button Pulse & Glow
-                button.style.boxShadow = `0 0 ${bass * 40}px rgba(255, 0, 255, 0.8)`;
-                button.style.transform = `scale(${1 + bass * 0.1})`;
             }
 
             animate();
         }
+
+        // 🔥 Particle Explosion Effect
+        let particles = [];
+
+        function createParticles() {
+            let numParticles = 20;
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    size: Math.random() * 5 + 2,
+                    speedX: (Math.random() - 0.5) * 8,
+                    speedY: (Math.random() - 0.5) * 8,
+                    alpha: 1
+                });
+            }
+        }
+
+        function updateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.alpha -= 0.02; // Fade effect
+                ctx.fillStyle = `rgba(255, 0, 255, ${p.alpha})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                if (p.alpha <= 0) particles.splice(i, 1); // Remove faded particles
+            }
+            requestAnimationFrame(updateParticles);
+        }
+
+        updateParticles();
+
+        // 🔥 Resize Canvas on Window Resize
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
     </script>
 </body>
 </html>
