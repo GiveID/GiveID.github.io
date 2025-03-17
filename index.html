@@ -3,192 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreedomGate | Terminal Access</title>
-    <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Cyber Underworld</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Reset */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
         }
 
-        html, body {
-            height: 100%;
-            width: 100%;
-            font-family: 'VT323', monospace;
-            color: #00ff00;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            text-shadow: 0 0 5px #00ff00;
-            filter: contrast(1.2) brightness(0.9);
-        }
-
-        /* CRT Effect */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 10%, transparent 70%);
-            z-index: -1;
-        }
-
-        /* Old Monitor Scanlines */
-        body::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg, 
-                rgba(0, 255, 0, 0.05) 0px, 
-                rgba(0, 255, 0, 0.05) 1px, 
-                transparent 2px, 
-                transparent 4px
-            );
-            animation: scanlines 0.2s infinite linear;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        @keyframes scanlines {
-            from { transform: translateY(0); }
-            to { transform: translateY(-2px); }
-        }
-
-        /* FISHEYE EFFECT - Curved Screen */
-        .crt {
-            width: 80%;
-            max-width: 600px;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.9);
-            border-radius: 8px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 15px #00ff00;
-            text-align: center;
-            position: relative;
-            transform: perspective(800px) rotateX(5deg) scale(1.05);
-            animation: flicker 3s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.98; }
-            100% { opacity: 1; }
-        }
-
-        /* Typewriter Effect */
-        #typed-text {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #00ff00;
-            font-size: 1.5rem;
-            animation: typing 3s steps(30) forwards, blinkCursor 0.5s infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blinkCursor {
-            50% { border-color: transparent; }
-        }
-
-        /* Button - Old-school glitching */
-        .button {
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #00ff00;
-            background: transparent;
-            color: #00ff00;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            animation: glitch 1.5s infinite;
-            position: relative;
-        }
-
-        .button:hover {
-            transform: scale(1.1);
-            background: rgba(0, 255, 0, 0.1);
-        }
-        
-        .ass {
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #640c85;
-            background: transparent;
-            color: #8411ad;
-            text-transform: uppercase;
-            cursor: wait;
-            transition: all 0.2s ease-in-out;
-            animation: glitch 0s infinite;
-            position: relative;
-        }
-        
-        .ass:hover {
-            transform: scale(1.07);
-            background: rgba(208, 0, 255, 0.1);
-        }
-
-        /* Glitching Text Effect */
         @keyframes glitch {
-            0% { text-shadow: 2px 2px #00ff00, -2px -2px #000; }
-            50% { text-shadow: -2px -2px #00ff00, 2px 2px #000; }
-            100% { text-shadow: 2px 2px #00ff00, -2px -2px #000; }
+            0% { text-shadow: 2px 2px gray, -2px -2px black; }
+            25% { text-shadow: -2px 2px gray, 2px -2px black; transform: skewX(-5deg); }
+            50% { text-shadow: 2px -2px gray, -2px 2px black; transform: skewX(5deg); }
+            75% { text-shadow: -2px -2px gray, 2px 2px black; transform: skewX(-5deg); }
+            100% { text-shadow: 2px 2px gray, -2px -2px black; }
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #00ff00;
-            opacity: 0.8;
+        @keyframes mist {
+            0% { opacity: 0.2; transform: translateX(-10%) scale(1.1); }
+            50% { opacity: 0.6; transform: translateX(10%) scale(1.2); }
+            100% { opacity: 0.2; transform: translateX(-10%) scale(1.1); }
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; pointer-events: none; }
         }
     </style>
 </head>
+<body class="bg-black text-gray-400 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+    <audio id="bg-music" loop>
+        <source src="IRANG.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Animated Mist -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-800 to-black opacity-60"></div>
+    <div class="absolute inset-0" style="background: url('https://source.unsplash.com/random/1920x1080?dark') no-repeat center center/cover; opacity: 0.4; animation: mist 8s infinite alternate ease-in-out;"></div>
 
-<body>
-    <main class="crt">
-        <h1 id="typed-text">FreedomGate Terminal</h1>
-        <p>_Accessing Secure Digital Network...</p>
-        <button class="ass" id="gregGro">View proxy list</button>
-        <footer class="footer">
-            &copy; 1984 FreedomGate Systems | PLEASE LET US HAVE ADBLOCKERS
-        </footer>
-    </main>
+    <!-- Glitching Title -->
+    <h1 id="title" class="text-6xl md:text-8xl font-bold text-center tracking-wider animate-[glitch_1s_infinite] relative z-10">
+        GREG
+    </h1>
+
+    <!-- Pulsing Enter Button -->
+    <button id="enter-btn" class="mt-16 text-lg bg-gray-700 text-white px-10 py-4 rounded-lg font-bold transition-all duration-300 hover:scale-110 hover:bg-gray-600 shadow-lg animate-[pulse_1.5s_infinite]">
+        ENTER
+    </button>
+    
+    <!-- Hidden Links -->
+    <div id="hidden-links" class="hidden mt-12 flex flex-col space-y-4 text-center relative z-20">
+        <a href="https://warm-my-lap.fun" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Upload pictues AND chat site</a>
+        <a href="https://yesbutno.wtf" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Good Proxy</a>
+        <a href="https://kanye-is-the-best-music-artist.com" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Kanye</a>
+        <a href="https://trulyrandom.icu" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Truly Random</a>
+        <a href="https://chinachinachina.online" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">China China China</a>
+    </div>
 
     <script>
-        // Random Proxy Redirect
-        const proxies = [
-            'https://giveid.github.io/list'
-        ];
-
-        document.getElementById('gregGro').addEventListener('click', () => {
-            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
-            window.open(randomProxy, '_blank');
-        });
-    </script>
-
-    <script>
-        // Random Proxy Redirect
-        const proxies = [
-            'https://www.unblockyoutube.co/',
-            'https://proxyium.com/'
-        ];
-
-        document.getElementById('randomProxyButton').addEventListener('click', () => {
-            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
-            window.open(randomProxy, '_blank');
+        document.getElementById("enter-btn").addEventListener("click", function() {
+            document.getElementById("hidden-links").classList.remove("hidden");
+            document.getElementById("title").style.animation = "fadeOut 1s forwards ease-out";
+            this.classList.add("hidden");
+            document.getElementById("bg-music").play();
         });
     </script>
 </body>
