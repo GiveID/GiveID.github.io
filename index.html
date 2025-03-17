@@ -8,9 +8,9 @@
     <style>
         @keyframes glitch {
             0% { text-shadow: 2px 2px gray, -2px -2px black; }
-            25% { text-shadow: -2px 2px gray, 2px -2px black; transform: skewX(-5deg); }
-            50% { text-shadow: 2px -2px gray, -2px 2px black; transform: skewX(5deg); }
-            75% { text-shadow: -2px -2px gray, 2px 2px black; transform: skewX(-5deg); }
+            25% { text-shadow: -4px 4px red, 4px -4px blue; transform: skewX(-10deg); }
+            50% { text-shadow: 4px -4px cyan, -4px 4px yellow; transform: skewX(10deg); }
+            75% { text-shadow: -6px -6px lime, 6px 6px magenta; transform: skewX(-10deg); }
             100% { text-shadow: 2px 2px gray, -2px -2px black; }
         }
 
@@ -18,10 +18,17 @@
             0% { opacity: 1; }
             100% { opacity: 0; visibility: hidden; pointer-events: none; }
         }
-        
+
+        /* 🔥 Fix: Allow clicking through mist */
         #mist {
-    pointer-events: none; /* Ensures clicks go through */
-}
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        /* 🔥 Button pulse effect */
+        #enter-btn {
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
     </style>
 </head>
 <body class="bg-black text-gray-400 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
@@ -30,11 +37,11 @@
     </audio>
 
     <!-- Animated Mist -->
-    <div id="mist" class="absolute inset-0 bg-gradient-to-b from-black via-gray-800 to-black opacity-60 transition-all duration-500"></div>
+    <div id="mist" class="absolute inset-0 bg-gradient-to-b from-black via-gray-800 to-black opacity-60"></div>
 
     <!-- Glitching Title -->
     <h1 id="title" class="text-6xl md:text-8xl font-bold text-center tracking-wider relative z-10 animate-[glitch_1s_infinite]">
-        greg
+        Ju
     </h1>
 
     <!-- Pulsing Enter Button -->
@@ -45,9 +52,11 @@
     <!-- Hidden Links -->
     <div id="hidden-links" class="hidden mt-12 flex flex-col space-y-4 text-center relative z-20">
         <a href="https://warm-my-lap.fun" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Warm My Lap</a>
+        <a href="https://underage-gambling.site" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Underage Gambling</a>
         <a href="https://yesbutno.wtf" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Yes But No</a>
         <a href="https://kanye-is-the-best-music-artist.com" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Kanye's Music</a>
         <a href="https://trulyrandom.icu" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">Truly Random</a>
+        <a href="https://chinachinachina.online" target="_blank" class="block text-gray-300 px-6 py-3 border border-gray-500 rounded-md transition duration-300 hover:bg-gray-600 hover:text-white shadow-md">China China China</a>
     </div>
 
     <script>
@@ -68,7 +77,7 @@
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const source = audioContext.createMediaElementSource(audio);
             const analyzer = audioContext.createAnalyser();
-            analyzer.fftSize = 256; // Controls frequency resolution
+            analyzer.fftSize = 256; // Higher value = smoother reaction
             const bufferLength = analyzer.frequencyBinCount;
             const dataArray = new Uint8Array(bufferLength);
             
@@ -79,20 +88,27 @@
                 requestAnimationFrame(animate);
                 analyzer.getByteFrequencyData(dataArray);
 
-                let bass = dataArray.slice(0, bufferLength / 4).reduce((a, b) => a + b) / (bufferLength / 4);
+                // 🔥 Stronger Bass Detection (Low frequencies)
+                let bass = dataArray.slice(0, bufferLength / 6).reduce((a, b) => a + b) / (bufferLength / 6);
+                bass = Math.min(bass / 255, 1); // Normalize between 0 and 1
+
+                // 🔥 Stronger Treble Detection (High frequencies)
                 let treble = dataArray.slice(3 * bufferLength / 4).reduce((a, b) => a + b) / (bufferLength / 4);
+                treble = Math.min(treble / 255, 1); // Normalize between 0 and 1
 
-                // 🔥 Reacts to Bass - Makes Mist Glow
-                mist.style.opacity = 0.3 + bass / 500;
-                mist.style.transform = `scale(${1 + bass / 800})`;
+                // 🔥 Reacts to Bass - Mist "breathes" and changes opacity
+                mist.style.opacity = 0.3 + bass * 0.7;
+                mist.style.transform = `scale(${1 + bass * 0.5})`;
 
-                // 🔥 Reacts to Treble - Makes Title Glitch Harder
-                title.style.transform = `skewX(${Math.sin(Date.now() / 100) * treble / 20}deg)`;
-                title.style.textShadow = `${Math.sin(Date.now() / 50) * 5}px ${Math.cos(Date.now() / 50) * 5}px rgba(255, 0, 0, 0.8), 
-                                          ${Math.cos(Date.now() / 50) * -5}px ${Math.sin(Date.now() / 50) * -5}px rgba(0, 255, 0, 0.8)`;
+                // 🔥 Reacts to Treble - Makes Title Glitch More
+                let glitchEffect = Math.sin(Date.now() / 50) * treble * 15;
+                title.style.transform = `skewX(${glitchEffect}deg)`;
+                title.style.textShadow = `${glitchEffect}px ${glitchEffect}px rgba(255, 0, 0, 0.8), 
+                                          ${-glitchEffect}px ${-glitchEffect}px rgba(0, 255, 0, 0.8)`;
 
-                // 🔥 Reacts to Bass - Button Pulse Effect
-                button.style.boxShadow = `0 0 ${bass / 20}px rgba(255, 0, 255, 0.8)`;
+                // 🔥 Reacts to Bass - Button Pulse & Glow
+                button.style.boxShadow = `0 0 ${bass * 40}px rgba(255, 0, 255, 0.8)`;
+                button.style.transform = `scale(${1 + bass * 0.1})`;
             }
 
             animate();
