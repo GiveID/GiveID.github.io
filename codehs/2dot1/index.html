@@ -130,6 +130,7 @@
         <div class="tab" data-target="section2">🪐 2.1.5</div>
         <div class="tab" data-target="section3">✨ 2.1.7</div>
         <div class="tab" data-target="section4">🚧 2.1.8 (WIP)</div>
+        <div class="tab" data-target="section5">2.1.10</div>
     </div>
 
     <!-- Section 1 -->
@@ -217,6 +218,37 @@ function cleanRow() {
 function moveToNextRow() { turnLeft(); move(); turnLeft(); }
 function moveToFarRight() { while(frontIsClear()) move(); }
 function turnRight() { turnLeft(); turnLeft(); turnLeft(); }
+</pre>
+        <button class="copy-btn">Copy</button>
+        <div class="copy-confirmation">Copied! ✅</div>
+    </div>
+    
+        <div id="section5" class="content">
+<pre>
+function start() {
+    while (frontIsClear()) { 
+        for (var i = 0; i < 12; i++) { 
+            if (frontIsClear()) {
+                move(); 
+                checkAndPaintGrey(); 
+            }
+        }
+        performPeriodicTask(); 
+    }
+}
+function checkAndPaintGrey() {
+    if (colorIs(Color.gray)) { 
+        paint(Color.yellow); 
+    }
+}
+function performPeriodicTask() {
+    turnAround(); 
+    turnAround(); 
+}
+function turnAround() {
+    turnLeft();
+    turnLeft(); 
+}
 </pre>
         <button class="copy-btn">Copy</button>
         <div class="copy-confirmation">Copied! ✅</div>
