@@ -220,37 +220,36 @@ while (frontIsClear()) {
     <div class="copy-confirmation">Copied!</div>
   </div>
   <div id="section4" class="content">
-    <pre>// Main loop to traverse the entire grid
-while (true) {
-    // Paint the current position if needed
-    if (colorIs(Color.orange) || colorIs(Color.gray)) {
-        paint(Color.black);
-    }
-
-    // I promise the code is mad geeked
-    if (frontIsClear()) {
-        move();
-    } else {
-        // Paint the current position at the end of the row if needed
-        if (colorIs(Color.orange) || colorIs(Color.gray)) {
-            paint(Color.black);
-        }
-
-        // Check if Karel can move up a row
-        if (facingEast() && leftIsClear()) {
-            turnLeft(); // Turn left to move up
-            move();     // Move up one row
-            turnLeft(); // Turn left again to face the next row (going west)
-        } else if (facingWest() && rightIsClear()) {
-            turnRight(); // Turn right to move up
-            move();      // Move up one row
-            turnRight(); // Turn right again to face the next row (going east)
-        } else {
-            // No more rows available, end traversal
-            break;
-        }
-    }
-}</pre>
+    <pre>//Karel = stupid
+turnLeft();
+move();
+paint(Color.black);
+turnRight();
+move();
+paint(Color.black);
+turnLeft();
+move();
+turnRight();
+turnRight();
+paint(Color.black);
+move();
+move();
+turnLeft();
+move();
+paint(Color.black);
+move();
+paint(Color.black);
+move();
+turnLeft();
+move();
+paint(Color.black);
+turnLeft();
+move();
+turnRight();
+move();
+paint(Color.black);
+turnRight();
+move();</pre>
     <button class="copy-btn">Copy</button>
     <div class="copy-confirmation">Copied!</div>
   </div>
