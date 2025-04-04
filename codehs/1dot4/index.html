@@ -329,51 +329,43 @@ function checkAndPaintTile() {
   <div id="section8" class="content">
     <pre>function start() {
     while (true) {
-        // Paint fires in the current row
         putOutFiresInRow();
-
-        // Move down to the next row if possible
         if (leftIsClear()) {
             moveDownAndSwitchDirection();
         } else {
-            break; // Stop when no more rows are below
+            break;
         }
     }
 }
 
-// Function to move across a row and paint red tiles cyan
 function putOutFiresInRow() {
     while (frontIsClear()) {
-        checkAndPaint(); // Paint if the tile is red
+        checkAndPaint();
         move();
     }
-    checkAndPaint(); // Paint the last tile in the row
+    checkAndPaint();
 }
 
-// Function to check and paint a red tile
 function checkAndPaint() {
     if (colorIs(Color.red)) {
-        paint(Color.cyan); // Paint red tiles cyan
+        paint(Color.cyan);
     }
 }
 
-// Move Karel down one row and switch direction
 function moveDownAndSwitchDirection() {
-    turnLeft();   // Face down
-    move();       // Move one step down
-    turnLeft();   // Face the new direction
-    moveToWall(); // Align Karel to the wall in the new row
+    turnLeft();
+    move();
+    turnLeft();
+    moveToWall();
 }
 
-// Move Karel to the start/end of a row
 function moveToWall() {
     while (frontIsClear()) {
         move();
     }
-    turnAround(); // Face the opposite direction to start the new row
+    turnAround();
 }
 
-// Turn Karel around
 function turnAround() {
     turnLeft();
     turnLeft();
