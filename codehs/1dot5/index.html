@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2</title>
+    <title>1</title>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         /* Global Styles */
@@ -13,22 +13,104 @@
             padding: 0;
             background-color: #1d1f27;
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: auto;
+            overflow: hidden;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        /* Header Style */
+        /* Title Styling */
         h1 {
             font-size: 3rem;
+            margin-bottom: 30px;
             color: #e0e0e0;
-            margin-bottom: 50px;
+            text-align: center;
             animation: fadeIn 1s ease-out;
         }
 
-        /* Particle Background */
+        /* Code Container Styling */
+        .code-container {
+            background: rgba(34, 40, 49, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 1s ease-out;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Code Box Styling */
+        pre {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 1rem;
+            margin: 0;
+            padding: 20px;
+            background-color: #2a2f3a;
+            border-radius: 10px;
+            height: 250px;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Button Styling */
+        .copy-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #797a79;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(55, 55, 56, 0.4);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .copy-btn:hover {
+            background-color: #b02ed1;
+            transform: translateY(-3px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Confirmation Message Styling */
+        .copy-confirmation {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #cc2ec1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-confirmation.show {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Particle.js Container */
         #particles-js {
             position: absolute;
             top: 0;
@@ -38,86 +120,71 @@
             z-index: -1;
         }
 
-        /* Section Container */
-        .section-container {
-            width: 80%;
-            max-width: 1000px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 30px;
-            justify-items: center;
-            margin-bottom: 50px;
-        }
-
-        /* Section Styling */
-        .section {
-            width: 100%;
-            max-width: 450px;
-            height: 200px;
-            background-color: rgba(34, 40, 49, 0.8);
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .section img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
 
-    <h1>1.5 quizz</h1>
-    <h2>tip: hold down on images to expand them for a better view</h2>
-    <h3>our questions mught be different idek</h3>
+    <h1>❤ 1.5 ❤</h1>
 
-    <div class="section-container">
-        <!-- Q1 to Q10 Sections -->
-        <div class="section">
-            <img src="Q1.png" alt="Q1">
-        </div>
-        <div class="section">
-            <img src="Q2.png" alt="Q2">
-        </div>
-        <div class="section">
-            <img src="Q3.png" alt="Q3">
-        </div>
-        <div class="section">
-            <img src="Q4.png" alt="Q4">
-        </div>
-        <div class="section">
-            <img src="Q5.png" alt="Q5">
-        </div>
-        <div class="section">
-            <img src="Q6.png" alt="Q6">
-        </div>
-        <div class="section">
-            <img src="Q7.png" alt="Q7">
-        </div>
-        <div class="section">
-            <img src="Q8.png" alt="Q8">
-        </div>
-        <div class="section">
-            <img src="Q9.png" alt="Q9">
-        </div>
-        <div class="section">
-            <img src="Q10.png" alt="Q10">
-        </div>
+    <div class="code-container">
+        <pre id="code-section">
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnLeft();
+            move();
+            turnLeft();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall(); 
+                }
+            }
+
+            turnRight();
+            move();
+            turnRight();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnLeft();
+            move();
+            turnLeft();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnRight();
+            move();
+            turnRight();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+        </pre>
+        <button class="copy-btn">Copy Code</button>
+        <div class="copy-confirmation">❤ Copied! ❤</div>
     </div>
+
+    <textarea id="copyFallback" style="position: absolute; left: -9999px;"></textarea>
 
     <script>
         // Particle.js Setup
@@ -138,7 +205,41 @@
                 }
             }
         });
-    </script>
 
+        // Copy Button Logic with Fallback
+        const copyButton = document.querySelector('.copy-btn');
+        const codeText = document.getElementById('code-section').textContent;
+        const fallbackTextarea = document.getElementById('copyFallback');
+        const confirmationMessage = document.querySelector('.copy-confirmation');
+
+        copyButton.addEventListener('click', () => {
+            // Try to use Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(codeText).then(() => {
+                    showCopyConfirmation();
+                }).catch(() => {
+                    fallbackCopy(codeText);
+                });
+            } else {
+                fallbackCopy(codeText); // Fallback for older browsers or unsupported devices
+            }
+        });
+
+        // Fallback for unsupported devices
+        function fallbackCopy(text) {
+            fallbackTextarea.value = text;
+            fallbackTextarea.select();
+            document.execCommand('copy');
+            showCopyConfirmation();
+        }
+
+        // Show confirmation message after copying
+        function showCopyConfirmation() {
+            confirmationMessage.classList.add('show');
+            setTimeout(() => {
+                confirmationMessage.classList.remove('show');
+            }, 1200);
+        }
+    </script>
 </body>
 </html>
