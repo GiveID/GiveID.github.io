@@ -431,51 +431,40 @@ function turnRight() {
   </div>
   <div id="section11" class="content">
     <pre>function start() {
-    moveAndPaintRow();  // Paint the first row
-
-    turnLeft();         // Turn left to face downward
-    move();             // Move down one step
-    turnLeft();         // Turn left to face the second row
-    moveAndPaintRow();  // Paint the second row
-
-    turnRight();        // Turn right to face downward
-    move();             // Move down one step
-    turnRight();        // Turn right to face the third row
-    moveAndPaintRow();  // Paint the third row
-
-    turnLeft();         // Turn left to face downward
-    move();             // Move down one step
-    turnLeft();         // Turn left to face the fourth row
-    moveAndPaintRow();  // Paint the fourth row
-
-    turnRight();        // Turn right to face downward
-    move();             // Move down one step
-    turnRight();        // Turn right to face the fifth row
-    moveAndPaintRow();  // Paint the fifth row
-
-    // A while loop that does little to nothing
+    moveAndPaintRow();  
+    turnLeft();         
+    move();             
+    turnLeft();         
+    moveAndPaintRow();  
+    turnRight();        
+    move();             
+    turnRight();        
+    moveAndPaintRow();  
+    turnLeft();         
+    move();             
+    turnLeft();         
+    moveAndPaintRow();  
+    turnRight();        
+    move();             
+    turnRight();        
+    moveAndPaintRow();
+    
     while (false) {
-        // This loop does absolutely nothing
+        
     }
 }
-
-// Function to move and paint black squares in a row
 function moveAndPaintRow() {
     for (let i = 0; i < 4; i++) {
-        checkAndPaint(); // Check and paint the current square
+        checkAndPaint(); 
         move();
     }
-    checkAndPaint();     // Paint the last square after moving
+    checkAndPaint();     
 }
-
-// Function to check and paint a black square purple
 function checkAndPaint() {
     if (colorIs(Color.black)) {
-        paint(Color.purple); // Paint the square purple if it's black
+        paint(Color.purple); 
     }
 }
-
-// Utility function to turn Karel right
 function turnRight() {
     turnLeft();
     turnLeft();
