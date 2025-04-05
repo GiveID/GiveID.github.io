@@ -3,63 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Copy with Animation</title>
+    <title>1</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #0f3460;
-            color: #fff;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            padding: 0;
+            background-color: #1d1f27;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
+        /* Title Styling */
         h1 {
-            margin-bottom: 20px;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
         }
 
+        /* Code Container Styling */
         .code-container {
-            display: inline-block;
-            background-color: #16213e;
-            padding: 20px;
-            border-radius: 8px;
-            position: relative;
+            background: rgba(34, 40, 49, 0.9);
+            padding: 30px;
+            border-radius: 12px;
             width: 80%;
             max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 1s ease-out;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* Code Box Styling */
         pre {
             font-family: 'Courier New', monospace;
             white-space: pre-wrap;
             word-wrap: break-word;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 0;
-            padding: 10px;
-            background-color: #1a1a2e;
-            border-radius: 8px;
+            padding: 20px;
+            background-color: #2a2f3a;
+            border-radius: 10px;
+            height: 250px;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
         }
 
+        /* Button Styling */
         .copy-btn {
-            margin-top: 10px;
-            padding: 10px 15px;
+            margin-top: 20px;
+            padding: 12px 20px;
             background-color: #3498db;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1.1rem;
             transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+            animation: fadeIn 2s ease-out;
         }
 
         .copy-btn:hover {
-            background-color: #8e44ad;
-            transform: scale(1.1);
+            background-color: #2980b9;
+            transform: translateY(-3px);
         }
 
+        .copy-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Confirmation Message Styling */
         .copy-confirmation {
-            color: #0a84ff;
+            margin-top: 15px;
             font-size: 1rem;
-            margin-top: 10px;
+            color: #2ecc71;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -69,26 +100,34 @@
         }
 
         /* Animations */
-        .fadeIn {
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hidden textarea for fallback copy */
-        textarea {
-            position: absolute;
-            left: -9999px;
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
+
+        /* Particle.js Container */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Code Copy and Paste</h1>
+    <div id="particles-js"></div>
 
-    <div class="code-container fadeIn">
+    <h1>❤ 1.5 ❤</h1>
+
+    <div class="code-container">
         <pre id="code-section">
             while (frontIsClear()) {
                 move();
@@ -142,13 +181,31 @@
             }
         </pre>
         <button class="copy-btn">Copy Code</button>
-        <div class="copy-confirmation">Copied!</div>
+        <div class="copy-confirmation">❤ Copied! ❤</div>
     </div>
 
-    <!-- Hidden textarea for fallback copy -->
-    <textarea id="copyFallback"></textarea>
+    <textarea id="copyFallback" style="position: absolute; left: -9999px;"></textarea>
 
     <script>
+        // Particle.js Setup
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                shape: { type: 'circle', stroke: { width: 0, color: '#ffffff' } },
+                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0 } },
+                size: { value: 4, random: true, anim: { enable: true, speed: 40, size_min: 0.1 } },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out' }
+            },
+            interactivity: {
+                detect_on: 'window',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' }
+                }
+            }
+        });
+
         // Copy Button Logic with Fallback
         const copyButton = document.querySelector('.copy-btn');
         const codeText = document.getElementById('code-section').textContent;
