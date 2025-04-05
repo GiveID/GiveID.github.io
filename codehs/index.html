@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19t</title>
+    <style>
+        :root {
+            --primary-color: #33cc33; /* Bright green for old-school CRT */
+            --secondary-color: #ff6600; /* Retro orange highlights */
+            --highlight-color: #ff00ff;
+            --bg-color: #111111; /* Dark background for contrast */
+            --text-shadow-color: rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            overflow: hidden;
+            perspective: 1000px; /* Reduced depth for subtle fisheye */
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(1);
+            transform-origin: center;
+            animation: fisheyeEffect 10s ease-in-out infinite;
+            filter: brightness(0.9);
+        }
+
+        @keyframes fisheyeEffect {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.05) rotate(1deg);
+            }
+            50% {
+                transform: scale(1) rotate(-1deg);
+            }
+            75% {
+                transform: scale(1.05) rotate(1deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--highlight-color);
+            text-shadow: 0px 0px 8px var(--text-shadow-color);
+            animation: blinkEffect 1s step-start infinite;
+        }
+
+        @keyframes blinkEffect {
+            0%, 100% {
+                visibility: visible;
+            }
+            50% {
+                visibility: hidden;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s ease, color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 15px var(--text-shadow-color);
+            color: var(--secondary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        a:hover {
+            color: var(--highlight-color);
+            transform: translateY(-3px);
+        }
+
+        .link-wrapper {
+            display: inline-block;
+            position: relative;
+            animation: linkGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes linkGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Floating hearts effect for the fisheye theme */
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--highlight-color);
+            animation: floatHearts 15s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) scale(0.8);
+            }
+            50% {
+                transform: translateY(-100px) scale(1);
+            }
+            100% {
+                transform: translateY(0) scale(0.8);
+            }
+        }
+
+        .heart:nth-child(odd) {
+            animation-duration: 18s;
+        }
+
+        .heart:nth-child(even) {
+            animation-duration: 16s;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            li {
+                font-size: 1rem;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>cidgege</h1>
+        <ul>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/1dot2">1.2 "GiveID.github.io /codehs/1dot2"</a></span></li>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/1dot3">1.3 "GiveID.github.io /codehs/1dot3"</a></span></li>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/1dot4">1.4 "GiveID.github.io/codehs/1dot4"</a></span></li>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/1dot5">1.5 "GiveID.github.io/codehs/1dot5"</a></span></li>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/1dot5/quiz">1.5 quiz "GiveID.github.io/codehs/1dot5/quiz"</a></span></li>
+            <li><span class="link-wrapper"><a href="https://GiveID.github.io/codehs/2dot1">2.1 WIP "GiveID.github.io/codehs/2dot1"</a></span></li>
+        </ul>
+
+        <!-- Floating hearts -->
+        <div class="heart" style="top: 10%; left: 30%;"></div>
+        <div class="heart" style="top: 20%; left: 60%;"></div>
+        <div class="heart" style="top: 40%; left: 50%;"></div>
+        <div class="heart" style="top: 60%; left: 40%;"></div>
+        <div class="heart" style="top: 80%; left: 70%;"></div>
+    </div>
+</body>
+</html>
