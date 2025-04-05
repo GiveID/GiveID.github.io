@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Copy with Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f3460;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
 
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .code-container {
+            display: inline-block;
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 10px;
+            background-color: #1a1a2e;
+            border-radius: 8px;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #8e44ad;
+            transform: scale(1.1);
+        }
+
+        .copy-confirmation {
+            color: #0a84ff;
+            font-size: 1rem;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-confirmation.show {
+            opacity: 1;
+        }
+
+        /* Animations */
+        .fadeIn {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hidden textarea for fallback copy */
+        textarea {
+            position: absolute;
+            left: -9999px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Copy and Paste</h1>
+
+    <div class="code-container fadeIn">
+        <pre id="code-section">
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnLeft();
+            move();
+            turnLeft();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall(); 
+                }
+            }
+
+            turnRight();
+            move();
+            turnRight();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnLeft();
+            move();
+            turnLeft();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+
+            turnRight();
+            move();
+            turnRight();
+
+            while (frontIsClear()) {
+                move();
+                if (colorIs(Color.gray)) {
+                    putBall();
+                }
+            }
+        </pre>
+        <button class="copy-btn">Copy Code</button>
+        <div class="copy-confirmation">Copied!</div>
+    </div>
+
+    <!-- Hidden textarea for fallback copy -->
+    <textarea id="copyFallback"></textarea>
+
+    <script>
+        // Copy Button Logic with Fallback
+        const copyButton = document.querySelector('.copy-btn');
+        const codeText = document.getElementById('code-section').textContent;
+        const fallbackTextarea = document.getElementById('copyFallback');
+        const confirmationMessage = document.querySelector('.copy-confirmation');
+
+        copyButton.addEventListener('click', () => {
+            // Try to use Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(codeText).then(() => {
+                    showCopyConfirmation();
+                }).catch(() => {
+                    fallbackCopy(codeText);
+                });
+            } else {
+                fallbackCopy(codeText); // Fallback for older browsers or unsupported devices
+            }
+        });
+
+        // Fallback for unsupported devices
+        function fallbackCopy(text) {
+            fallbackTextarea.value = text;
+            fallbackTextarea.select();
+            document.execCommand('copy');
+            showCopyConfirmation();
+        }
+
+        // Show confirmation message after copying
+        function showCopyConfirmation() {
+            confirmationMessage.classList.add('show');
+            setTimeout(() => {
+                confirmationMessage.classList.remove('show');
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
