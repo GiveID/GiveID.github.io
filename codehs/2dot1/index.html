@@ -154,18 +154,32 @@ function checkColor() {
     <div id="section2" class="content">
 <pre>
 function start() {
-    while (!colorIs(Color.red)) move();
-    move();
-    while (!colorIs(Color.yellow)) {
-        if (colorIs(Color.purple)) turnRight();
+    IfrickingHateCodeHS();
+}
+function IfrickingHateCodeHS() {
+    while (!colorIs(Color.red)) { 
+        move();
+    }
+    move(); 
+    while (!colorIs(Color.yellow)) { 
+        if (colorIs(Color.red)) {
+        }
+        if (colorIs(Color.purple)) {
+            greg(); 
+        }
         move();
         if (colorIs(Color.yellow)) {
-            turnLeft();
-            break;
+            FaceFrickingSouth();
+            break; 
         }
     }
 }
-function turnRight() { turnLeft(); turnLeft(); turnLeft(); }
+function greg() {
+    turnRight();
+}
+function FaceFrickingSouth() {
+    turnLeft();  
+}
 </pre>
         <button class="copy-btn">Copy</button>
         <div class="copy-confirmation">Copied! ✅</div>
