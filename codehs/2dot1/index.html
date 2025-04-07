@@ -175,21 +175,29 @@ function turnRight() { turnLeft(); turnLeft(); turnLeft(); }
     <div id="section3" class="content">
 <pre>
 function start() {
-    handleFirstSquare();
-    while (frontIsClear()) {
+    handleFirstSquare(); // Handles the initial position of Karel
+    while (frontIsClear()) { // Continue as long as the front is clear
         move();
-        checkColor();
+        checkAndActOnColor(); // Checks the color of the square and acts accordingly
     }
 }
+
 function handleFirstSquare() {
-    checkColor();
+    // Perform actions on the first square before the loop starts
+    checkAndActOnColor();
 }
-function checkColor() {
+
+function checkAndActOnColor() {
+    // Use if/else-if/else to handle different actions based on the square's color
     if (colorIs(Color.yellow)) {
-        turnLeft(); turnRight();
+        // Look up at the statue
+        turnLeft();
+        turnRight(); // Turning right immediately after turning left has no effect, consider revising
     } else if (colorIs(Color.purple)) {
+        // Leave footprints by painting it black
         paint(Color.black);
     } else if (colorIs(Color.gray)) {
+        // Leave footprints by painting it purple
         paint(Color.purple);
     }
 }
